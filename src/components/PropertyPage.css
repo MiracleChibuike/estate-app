@@ -1,0 +1,68 @@
+
+:root{
+  --primary-dark: #020202;
+  --clr-logo: rgba(0, 121, 107, 1);
+  --clr-light-green : rgba(12, 188, 139, 0.4);
+  --green-deem: rgba(12, 188, 139, 0.1);
+  --primary-white: #fff;
+}
+
+.propertyContainer{
+    padding: 20px 40px;
+}
+.propetyHead{
+    text-align: center;
+    margin: 15px 0;
+}
+#backLink{
+    cursor: pointer;
+    transition: transform 0.9s ease, background-color 0.9s ease;
+}
+#backLink:hover{
+    transform: translateX(-10px);
+    transition: .8s;
+}
+#houseImg{
+    width: 100%;
+    margin: 15px 0;
+}
+.houseInfos{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    font-weight: bold;
+}
+.houseDetails{
+    margin: 15px 0;
+    line-height: 30px;
+}
+.houseContents h2{
+    text-align: center;
+    margin: 10px 0;
+}
+.houseContents span{
+    padding: 0 10px;
+    line-height: 30px;
+    font-weight: 500;
+}
+.buyButton{
+    margin: 40px 0 0 0;
+    text-align: center;
+}
+.buyButton button{
+    width: 50%;
+    border: none;
+    border-radius: 7px;
+    background: var(--clr-logo);
+    color: var(--primary-white);
+    padding: 12px 0;
+    margin: 15px 0;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+@media screen and (min-width: 0) and (max-width: 820px) {
+    .buyButton button{
+        width: 70%;
+    }
+}

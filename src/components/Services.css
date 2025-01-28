@@ -1,0 +1,88 @@
+:root{
+  --primary-dark: #020202;
+  --clr-logo: rgba(0, 121, 107, 1);
+  --clr-light-green : rgba(12, 188, 139, 0.4);
+  --green-deem: rgba(12, 188, 139, 0.1);
+  --primary-white: #fff;
+  --gradient-color: rgba(31, 30, 30, 0.6);
+}
+
+.servicesHome{
+    margin: 100px 0 0 0;
+}
+.homeImg{
+     background: linear-gradient(rgba(31, 30, 30, 0.4), rgba(31, 30, 30, 0.4)),
+      url("../assets/Erect.png") no-repeat center center/cover;
+    height: 100vh;
+    display: grid;
+    place-content: center;
+    color: var(--primary-white);
+}
+.headingHome{
+    font-size: 2rem;
+    line-height: 60px;
+}
+
+/* Featured CSS Section */
+.featured{
+    margin: 30px 0;
+    padding: 20px 40px;
+}
+.featuresHead{
+       text-align: center;
+    font-weight: 700;
+    line-height: 38px;
+    margin-bottom: 50px;
+    word-spacing: 2px;
+}
+.featuresHead span{
+    border-bottom: 2px solid var(--clr-logo);
+    padding-bottom: 10px;
+}
+.featuredHouses{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 15px;
+    row-gap: 30px;
+}
+.cardFeatured{
+    cursor: grab;
+    transition: transform 0.9s ease, background-color 0.9s ease;
+}
+.cardFeatured:hover{
+    transform: translateY(15px);
+}
+.cardFeatured img{
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.cardFeatured img:hover{
+    filter: brightness(80%);
+    transition: .9s ease;
+}
+.cardInfo{
+    color: var(--primary-dark);
+    background: var(--primary-white);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    filter: blur(4);
+}
+.housedetails, .houseLocation{
+    display: flex;
+    justify-content: space-between;
+}
+/* Media Queery */
+@media screen and (min-width: 0) and (max-width: 820px) {
+    .headingHome{
+        font-size: 1.7rem;
+        text-align: center;
+    }
+    .featuredHouses{
+    display: block;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 15px;
+}
+.cardFeatured{
+    margin: 20px 0;
+}
+}

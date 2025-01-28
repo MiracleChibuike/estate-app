@@ -1,0 +1,52 @@
+
+:root{
+  --primary-dark: #020202;
+  --clr-logo: rgba(0, 121, 107, 1);
+  --clr-light-green : rgba(12, 188, 139, 0.4);
+  --green-deem: rgba(12, 188, 139, 0.1);
+  --primary-white: #fff;
+}
+
+.footer{
+    background: var(--clr-logo);
+    color: var(--primary-white);
+    padding: 20px 40px;
+
+}
+.footerArrange{
+    display: flex;
+    justify-content: space-between;
+}
+.footerLinks{
+    display: flex;
+    justify-content: space-between;
+}
+.logoFooter h2{
+    margin: 15px 0;
+}
+.about, .support, .social{
+    margin: 15px 25px;
+}
+.about ul, .support ul, .social ul{
+    list-style: none;
+}
+.about ul li, .support ul li, .social ul li{
+    padding: 10px 0;
+}
+hr{
+    display: none;
+}
+
+/* Media Querry */
+@media screen and (min-width: 0) and (max-width: 820px) {
+    .footerArrange, .footerLinks{
+        display: block;
+        text-align: center;
+    }
+    .about, .support, .social{
+    margin: 35px 25px;
+}
+    hr{
+        display: block;
+    }
+}
