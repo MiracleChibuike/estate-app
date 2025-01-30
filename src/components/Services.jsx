@@ -51,6 +51,8 @@ const Services = () => {
     redirect: "follow",
   };
 
+  headers.append("X-Api-Key", "API_KEY");
+
 useEffect(() => {
   // errorDisplayVal = document.getElementById("errorDisplay");
 
