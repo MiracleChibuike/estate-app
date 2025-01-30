@@ -21,6 +21,9 @@
     padding: 20px 40px;
     margin: 100px 0 0 0;
 }
+.HomeContainer div{
+    margin: 0 10px;
+}
 
 .HomeInfo{
     line-height: 28px;
@@ -267,6 +270,9 @@
    .HomeInfo{
     top: 0;
     margin: 20px 0;
+   }
+   .HomeText h2{
+    text-align: center;
    }
    .moreText h2{
     text-align: center;

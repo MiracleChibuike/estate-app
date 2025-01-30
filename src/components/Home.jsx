@@ -71,12 +71,16 @@ const Home = () => {
             Find Your Perfect Dream House <br /> with us
           </h2>
           <p className="HomeInfo">
-            Explore our magnificent buildings, crafted with unparalleled <br />{" "}
-            attention to detail and exceptional design. Each structure <br /> is
-            a masterpiece that harmoniously blends luxury, <br /> functionality,
-            and style. Our homes are meticulously <br /> tailored to bring your
-            unique dream vision to life, offering <br /> bespoke features that
-            reflect your personality and preferences.
+            Explore our magnificent buildings, crafted with unparalleled
+            attention to detail and exceptional design. Each structure is a
+            masterpiece that harmoniously blends luxury, functionality, and
+            style. Our homes are meticulously tailored to bring your unique
+            dream vision to life, offering bespoke features that reflect your
+            personality and preferences. Whether you're looking for a serene
+            escape from the hustle and bustle of city life or a vibrant
+            community to call home, Keev Luxurious Estates offers a wide range
+            of premium properties designed with you and your family's happiness
+            in mind.
           </p>
         </div>
         <div className="homeImgs">

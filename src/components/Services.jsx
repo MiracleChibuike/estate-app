@@ -1,5 +1,5 @@
 import { Links } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import NavServices from "./NavServices";
 import "./Services.css";
@@ -35,7 +35,98 @@ const Services = () => {
           navigateDesc("/Description");
       })
     }
-  }, [])
+  }, []);
+
+  // Fetch Data from API
+
+  const selectTag = useRef(null);
+  let errorDisplayVal = useRef(null);
+  // errorDisplayVal.style.display = "none";
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+useEffect(() => {
+  // errorDisplayVal = document.getElementById("errorDisplay");
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        "https://naija-places.toneflix.com.ng/api/v1/states"
+      ); // Fetch data from the API
+      if (!response.ok) {
+        const errorMessage = `An error occurred: ${response.status}`;
+        throw new Error(errorMessage);
+      }
+      const statesdata = await response.json();
+      // console.log(statesdata);
+      const showAllData = statesdata.data;
+      console.log(showAllData);
+      // console.log(showAllData[0].name);
+      showAllData.forEach((state) => {
+        const option = document.createElement("option");
+        option.value = state.id;
+        option.textContent = state.name;
+        selectTag.current.appendChild(option);
+        errorDisplayVal.current.style.display = "none";
+      });
+    } catch (error) {
+      console.error("Error fetching data:", error); 
+      setError(error.errorMessage);
+      // errorDisplayVal.style.display = "block";
+      errorDisplayVal.current.textContent = `An error occurred while fetching data: ${error.message}`;
+      // selectTag.current.textContent = ;
+      // Improved error handling
+      // ... handle the error, e.g., display an error message to the user
+    } finally{
+      setLoading(false)
+    }
+  };
+  // console.log(selectTag);
+  console.log(errorDisplayVal)
+
+  fetchData();
+  // selectTag.addEventListener("click", fetchData)
+}, []);
+
+    if (loading) {
+      return <div>Fetching states.....</div>;
+    }
+
+    // if (error) {
+    //   return a
+    // }
+  
+
+    // Call another API to fetch the properties
+
+    // useEffect(() => {
+    //   const headers = new Headers();
+    //   const options = {
+    //     method: "GET",
+    //     headers: headers,
+    //     redirect: "follow",
+    //   };
+
+    //   headers.append("X-Api-Key", "API_KEY");
+    //   const fetchCities = async () => {
+    //     try {
+    //       const citiesUrl = await fetch(
+    //         "https://naija-places.toneflix.com.ng/api/v1/states/{siso}/cities", options
+    //       );
+    //       if (!citiesUrl.ok) {
+    //         const NewErrorMessage = `An error occurred: ${citiesUrl.status}`;
+    //         throw new Error(NewErrorMessage);
+        
+    //       }
+    //       const showCities = await citiesUrl.json();
+    //       console.log(showCities);
+    //     } catch (error) {
+    //       console.error("Error fetching data:", error);
+    //     }
+    //   };
+    //   fetchCities();
+    // }, []);
+
 
   return (
     <>
@@ -51,6 +142,19 @@ const Services = () => {
           <h2 className="featuresHead">
             Our Featured <span>Property</span>
           </h2>
+
+          {/* Filter Section */}
+          <div className="filter">
+            <div className="filterItems">
+              <p>Filter by States:</p>
+              <select
+                name="filter"
+                id="filter"
+                ref={selectTag}>
+                <option value="" id="errorDisplay" ref={errorDisplayVal}></option>
+              </select>
+            </div>
+          </div>
           <div className="featuredHouses">
             <div className="cardFeatured">
               <img src={house2} alt="" />

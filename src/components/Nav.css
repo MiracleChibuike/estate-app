@@ -5,6 +5,7 @@
   --clr-light-green : rgba(12, 188, 139, 0.4);
   --green-deem: rgba(12, 188, 139, 0.1);
   --primary-white: #fff;
+    --clr-shadow-light: rgba(0, 0, 0, 0.25);
 }
 .NavContainer{
     display: flex;
@@ -16,6 +17,12 @@
     top: 0;
     z-index: 100;
     background: var(--primary-white);
+    /* box-shadow: 0 0 10px var(--clr-shadow-light); */
+
+}
+.addshadow{
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+     transition: .7s ease;
 }
 .logoText{
     color: var(--clr-logo);
@@ -80,7 +87,7 @@
         position: absolute;
         left: 0;
         right: 0;
-        top: 94px;
+        /* top: 90px; */
         min-height: 100vh;
         /* height: 100vh; */
         width: 80%;

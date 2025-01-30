@@ -5,6 +5,7 @@
   --green-deem: rgba(12, 188, 139, 0.1);
   --primary-white: #fff;
   --gradient-color: rgba(31, 30, 30, 0.6);
+  --clr-shadow-light: rgba(0, 0, 0, 0.25);
 }
 
 .servicesHome{
@@ -23,6 +24,29 @@
     line-height: 60px;
 }
 
+.filter{
+    margin: 15px 0;
+}
+.filterItems{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+#filter{
+    width: 60%;
+    padding: 10px 0;
+    border: 2px solid var(--primary-dark);
+    outline: none;
+    border-radius: 8px;
+    position: relative;
+    transition: .4s ease;
+    top: -8px;
+}
+#filter:focus{
+    outline: 2px solid var(--clr-logo);
+    transition: .4s ease;
+    border: 2px solid var(--clr-logo);
+}
 /* Featured CSS Section */
 .featured{
     margin: 30px 0;

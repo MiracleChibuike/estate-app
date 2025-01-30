@@ -16,10 +16,15 @@
     z-index: 100;
     background: var(--primary-white);
 }
+.addshadow{
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+     transition: .7s ease;
+}
 .logoText{
     color: var(--clr-logo);
     font-weight: 800;
     letter-spacing: 4px;
+    cursor: pointer;
 }
 .menu{
     display: none;
@@ -73,7 +78,7 @@
         position: absolute;
         left: 0;
         right: 0;
-        top: 96px;
+        top: 94px;
         min-height: 100vh;
         /* height: 100vh; */
         width: 80%;
