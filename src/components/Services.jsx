@@ -40,7 +40,7 @@ const Services = () => {
   // Fetch Data from API
 
   const selectTag = useRef(null);
-  let errorDisplayVal = useRef(null);
+  // let errorDisplayVal = useRef(null);
   // errorDisplayVal.style.display = "none";
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -73,7 +73,7 @@ useEffect(() => {
       console.error("Error fetching data:", error); 
       setError(error.errorMessage);
       // errorDisplayVal.style.display = "block";
-      errorDisplayVal.current.textContent = `An error occurred while fetching data: ${error.message}`;
+      // errorDisplayVal.current.textContent = `An error occurred while fetching data: ${error.message}`;
       // selectTag.current.textContent = ;
       // Improved error handling
       // ... handle the error, e.g., display an error message to the user
@@ -151,7 +151,7 @@ useEffect(() => {
                 name="filter"
                 id="filter"
                 ref={selectTag}>
-                <option value="" id="errorDisplay" ref={errorDisplayVal}></option>
+                {/* <option value="" id="errorDisplay" ref={errorDisplayVal}></option> */}
               </select>
             </div>
           </div>
