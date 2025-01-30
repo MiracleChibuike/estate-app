@@ -67,7 +67,7 @@ useEffect(() => {
         option.value = state.id;
         option.textContent = state.name;
         selectTag.current.appendChild(option);
-        errorDisplayVal.current.style.display = "none";
+        // errorDisplayVal.current.style.display = "none";
       });
     } catch (error) {
       console.error("Error fetching data:", error); 
@@ -82,7 +82,7 @@ useEffect(() => {
     }
   };
   // console.log(selectTag);
-  console.log(errorDisplayVal)
+  // console.log(errorDisplayVal)
 
   fetchData();
   // selectTag.addEventListener("click", fetchData)
