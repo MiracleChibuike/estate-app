@@ -19,6 +19,7 @@ import hous11 from "../assets/house11.png";
 import last from "../assets/last.png";
 import last2 from "../assets/last2.png";
 import main from "../assets/main.png"
+import { use } from "react";
 
 const Services = () => {
 
@@ -26,32 +27,40 @@ const Services = () => {
 
   let allcards = (null)
     
-  useEffect(() => {
-    allcards = document.querySelectorAll(".cardFeatured");
+ useEffect(() => {
+   allcards = document.querySelectorAll(".cardFeatured");
+   console.log(allcards);
 
-    for (let i = 0; i < allcards.length; i++) {
-      const cards = allcards[i]
-      cards.addEventListener("click", () => {
-          navigateDesc("/Description");
-      })
-    }
-  }, []);
+   const clickHandlers = [];
+   for (let i = 0; i < allcards.length; i++) {
+     const cards = allcards[i];
+     const handler = () => navigateDesc("/Description");
+     cards.addEventListener("click", handler);
+     clickHandlers.push({ cards, handler });
+   }
+
+   return () => {
+     clickHandlers.forEach(({ cards, handler }) => {
+       cards.removeEventListener("click", handler);
+     });
+   };
+ }, []);
 
   // Fetch Data from API
 
   const selectTag = useRef(null);
-  let errorDisplayVal = useRef(null);
+  const errorDisplayVal = useRef(null);
   // errorDisplayVal.style.display = "none";
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const headers = new Headers();
+    headers.append("X-Api-Key", "API_KEY");
+
   const options = {
     method: "GET",
     headers: headers,
     redirect: "follow",
   };
-
-  headers.append("X-Api-Key", "API_KEY");
 
 useEffect(() => {
   // errorDisplayVal = document.getElementById("errorDisplay");
@@ -99,6 +108,8 @@ useEffect(() => {
     if (loading) {
       return <div>Fetching states.....</div>;
     }
+
+
 
     // if (error) {
     //   return a
