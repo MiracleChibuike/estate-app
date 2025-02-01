@@ -44,14 +44,6 @@ const Services = () => {
   // errorDisplayVal.style.display = "none";
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const headers = new Headers();
-  headers.append("X-Api-Key", "API_KEY");
-
-  const options = {
-    method: "GET",
-    headers: headers,
-    redirect: "follow",
-  };
 
   useEffect(() => {
     // errorDisplayVal = document.getElementById("errorDisplay");
@@ -59,8 +51,7 @@ const Services = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://naija-places.toneflix.com.ng/api/v1/states",
-          options
+          "http://api.geonames.org/childrenJSON?geonameId=2328926&username=softwareeasy"
         ); // Fetch data from the API
         if (!response.ok) {
           const errorMessage = `An error occurred: ${response.status}`;
@@ -68,12 +59,13 @@ const Services = () => {
         }
         const statesdata = await response.json();
         // console.log(statesdata);
-        const showAllData = statesdata.data;
+        const showAllData = statesdata.geonames;
         console.log(showAllData);
         // console.log(showAllData[0].name);
         showAllData.forEach((state) => {
+          // console.log(state.lat);
           const option = document.createElement("option");
-          option.value = state.id;
+          option.value = state.geonameId;
           option.textContent = state.name;
           selectTag.current.appendChild(option);
           // errorDisplayVal.current.style.display = "none";
