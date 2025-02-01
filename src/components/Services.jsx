@@ -51,7 +51,7 @@ const Services = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://api.geonames.org/childrenJSON?geonameId=2328926&username=softwareeasy"
+          "https://corsproxy.io/?http://api.geonames.org/childrenJSON?geonameId=2328926&username=softwareeasy"
         ); // Fetch data from the API
         if (!response.ok) {
           const errorMessage = `An error occurred: ${response.status}`;
