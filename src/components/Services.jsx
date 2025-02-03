@@ -53,7 +53,7 @@ const Services = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://api.geonames.org/childrenJSON?geonameId=2328926&username=softwareeasy"
+          "https://naija-places.toneflix.com.ng/api/v1/states"
         ); // Fetch data from the API
         // if (!response.ok) {
         //   const errorMessage = `An error occurred: ${response.status}`;
@@ -63,13 +63,13 @@ const Services = () => {
         console.log(response)
         // const statesdata = await response.json();
         // console.log(statesdata);
-        const showAllData = response.data.geonames;
+        const showAllData = response.data.data;
         console.log(showAllData);
-        // // console.log(showAllData[0].name);
+        // // // console.log(showAllData[0].name);
         showAllData.forEach((state) => {
           // console.log(state.lat);
           const option = document.createElement("option");
-          option.value = state.geonameId;
+          option.value = state.name;
           option.textContent = state.name;
           selectTag.current.appendChild(option);
           // errorDisplayVal.current.style.display = "none";

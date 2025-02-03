@@ -7,8 +7,7 @@ export default defineConfig({
   base: "./estate-app/",
   server: {
     "/api": {
-      target:
-        "http://api.geonames.org/childrenJSON?geonameId=2328926&username=softwareeasy",
+      target: "https://naija-places.toneflix.com.ng/api/v1/states",
       changeOrigin: true,
       secure: false,
     },
