@@ -20,6 +20,7 @@ import last from "../assets/last.png";
 import last2 from "../assets/last2.png";
 import main from "../assets/main.png"
 import { use } from "react";
+import axios from "axios"
 
 const Services = () => {
   const navigateDesc = useNavigate();
@@ -44,24 +45,27 @@ const Services = () => {
   // errorDisplayVal.style.display = "none";
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  // const [data, setData] = useState([]);
 
   useEffect(() => {
     // errorDisplayVal = document.getElementById("errorDisplay");
 
     const fetchData = async () => {
       try {
-        const response = await fetch(
+        const response = await axios.get(
           "http://api.geonames.org/childrenJSON?geonameId=2328926&username=softwareeasy"
         ); // Fetch data from the API
-        if (!response.ok) {
-          const errorMessage = `An error occurred: ${response.status}`;
-          throw new Error(errorMessage);
-        }
-        const statesdata = await response.json();
+        // if (!response.ok) {
+        //   const errorMessage = `An error occurred: ${response.status}`;
+        //   throw new Error(errorMessage);
+        // }
+        // setData(response.data);
+        console.log(response)
+        // const statesdata = await response.json();
         // console.log(statesdata);
-        const showAllData = statesdata.geonames;
+        const showAllData = response.data.geonames;
         console.log(showAllData);
-        // console.log(showAllData[0].name);
+        // // console.log(showAllData[0].name);
         showAllData.forEach((state) => {
           // console.log(state.lat);
           const option = document.createElement("option");
