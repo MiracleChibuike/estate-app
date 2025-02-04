@@ -48,6 +48,7 @@ const Services = () => {
   // const [data, setData] = useState([]);
 
   useEffect(() => {
+    // if (!selectTag.current) return;
     // errorDisplayVal = document.getElementById("errorDisplay");
     const headers = new Headers();
         headers.append("X-Api-Key", "4hueXJfjAZAV3FaBKX93Z9xun0Ffnxdo");
@@ -74,14 +75,15 @@ const Services = () => {
         const showAllData = response.data.data;
         console.log(showAllData);
         // // // console.log(showAllData[0].name);
+      if (selectTag.current) {
         showAllData.forEach((state) => {
-          // console.log(state.lat);
           const option = document.createElement("option");
           option.value = state.name;
           option.textContent = state.name;
           selectTag.current.appendChild(option);
-          // errorDisplayVal.current.style.display = "none";
         });
+      }
+
       } catch (error) {
         console.error("Error fetching data:", error);
         setError(error.errorMessage);
