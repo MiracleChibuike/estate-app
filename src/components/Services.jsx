@@ -45,7 +45,7 @@ const Services = () => {
   // errorDisplayVal.style.display = "none";
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  // const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     // if (!selectTag.current) return;
@@ -68,21 +68,21 @@ const Services = () => {
         //   const errorMessage = `An error occurred: ${response.status}`;
         //   throw new Error(errorMessage);
         // }
-        // setData(response.data);
+        setData(response.data.data);
         console.log(response)
         // const statesdata = await response.json();
         // console.log(statesdata);
         const showAllData = response.data.data;
         console.log(showAllData);
         // // // console.log(showAllData[0].name);
-      if (selectTag.current) {
-        showAllData.forEach((state) => {
-          const option = document.createElement("option");
-          option.value = state.name;
-          option.textContent = state.name;
-          selectTag.current.appendChild(option);
-        });
-      }
+      // if (selectTag.current) {
+      //   showAllData.forEach((state) => {
+      //     const option = document.createElement("option");
+      //     option.value = state.name;
+      //     option.textContent = state.name;
+      //     selectTag.current.appendChild(option);
+      //   });
+      // }
 
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -162,6 +162,12 @@ const Services = () => {
             <div className="filterItems">
               <p>Filter by States:</p>
               <select name="filter" id="filter" ref={selectTag}>
+                <option value="">Select a state</option>
+                {data.map((state) => (
+                  <option key={state.name} value={state.name}>
+                    {state.name}
+                  </option>
+                ))}
                 {/* <option value="" id="errorDisplay" ref={errorDisplayVal}></option> */}
               </select>
             </div>
