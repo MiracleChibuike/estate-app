@@ -46,6 +46,7 @@ const Services = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("")
 
   useEffect(() => {
     // if (!selectTag.current) return;
@@ -63,17 +64,11 @@ const Services = () => {
       try {
         const response = await axios.get(
           "https://naija-places.toneflix.com.ng/api/v1/states", options
-        ); // Fetch data from the API
-        // if (!response.ok) {
-        //   const errorMessage = `An error occurred: ${response.status}`;
-        //   throw new Error(errorMessage);
-        // }
+        );
         setData(response.data.data);
-        console.log(response)
-        // const statesdata = await response.json();
-        // console.log(statesdata);
-        const showAllData = response.data.data;
-        console.log(showAllData);
+        // console.log(response)
+        // const showAllData = response.data.data;
+        // console.log(showAllData);
         // // // console.log(showAllData[0].name);
       // if (selectTag.current) {
       //   showAllData.forEach((state) => {
@@ -86,13 +81,12 @@ const Services = () => {
 
       } catch (error) {
         console.error("Error fetching data:", error);
-        setError(error.errorMessage);
-        // alert(`An error occurred while fetching lists of states: ${error.message}`);
-        // errorDisplayVal.style.display = "block";
-        // errorDisplayVal.current.textContent = `An error occurred while fetching data: ${error.message}`;
-        // selectTag.current.textContent = ;
-        // Improved error handling
-        // ... handle the error, e.g., display an error message to the user
+        const errorTxt = `Sorry can't fetch states: ${error.message}`;
+       
+          if (!errorMessage) {
+             setErrorMessage(errorTxt);
+             alert(errorTxt);
+          }
       } finally {
         setLoading(false);
       }
@@ -108,49 +102,116 @@ const Services = () => {
     return <div>Fetching states.....</div>;
   }
 
-  // if (error) {
-  //   return a
-  // }
-
-  // Call another API to fetch the properties
-
-  // useEffect(() => {
-  //   const headers = new Headers();
-  //   const options = {
-  //     method: "GET",
-  //     headers: headers,
-  //     redirect: "follow",
-  //   };
-
-  //   headers.append("X-Api-Key", "API_KEY");
-  //   const fetchCities = async () => {
-  //     try {
-  //       const citiesUrl = await fetch(
-  //         "https://naija-places.toneflix.com.ng/api/v1/states/{siso}/cities", options
-  //       );
-  //       if (!citiesUrl.ok) {
-  //         const NewErrorMessage = `An error occurred: ${citiesUrl.status}`;
-  //         throw new Error(NewErrorMessage);
-
-  //       }
-  //       const showCities = await citiesUrl.json();
-  //       console.log(showCities);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
-  //   fetchCities();
-  // }, []);
-
   return (
     <>
       <NavServices />
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-bs-ride="carousel">
+        <div className="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            className="active"
+            aria-current="true"
+            aria-label="Slide 1"></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            <img
+              src={house8}
+              className="d-block w-100"
+              alt=""
+              style={{ filter: "brightness(50%)" }}
+            />
+            <div className="houseTextHome">
+              <p className="headingHome">
+                Easy way to find your <strong>Dream Property</strong>
+              </p>
+              <small>
+                Find the ideal space that suits your needs, whether it's for
+                living, working, or investing
+              </small>
+            </div>
+          </div>
+          <div className="carousel-item">
+            <img
+              src={house7}
+              className="d-block w-100"
+              id="image"
+              style={{ filter: "brightness(50%)", width: "100px" }}
+              alt=""
+            />
+            <div className="houseTextHome">
+              <p className="headingHome">
+                Easy way to find your <strong>Ideal Home</strong>
+              </p>
+              <small>
+                Explore a wide variety of properties that fit your lifestyle and
+                budget, making your dream home a reality
+              </small>
+            </div>
+          </div>
+          <div className="carousel-item">
+            <img
+              src={house4}
+              className="d-block w-100"
+              id="image33"
+              alt="..."
+              style={{ filter: "brightness(50%)" }}
+            />
+            <div className="houseTextHome">
+              <p className="headingHome">
+                Easy way to find your <strong>Perfect Space</strong>
+              </p>
+              <small>
+                Find the ideal space that suits your needs, whether it's for
+                living, working, or investing
+              </small>
+            </div>
+          </div>
+        </div>
+        <button
+          className="carousel-control-prev"
+          style={{ color: "white" }}
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev">
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"></span>
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next">
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"></span>
+          <span className="visually-hidden">Next</span>
+        </button>
+      </div>
       <div className="servicesHome">
-        <div className="homeImg">
+        {/* <div className="homeImg">
+          <img src={Erect} alt="" id="erect" />
           <p className="headingHome">
             Easy way to find your <strong>Dream Property</strong>
           </p>
-        </div>
+        </div> */}
         {/* Featured Property */}
         <div className="featured">
           <h2 className="featuresHead">
@@ -400,6 +461,64 @@ const Services = () => {
                 <div className="houseLocation">
                   <p>Abuja, Nigeria</p>
                   <p>6 Bedroom Flat</p>
+                </div>
+              </div>
+            </div>
+            {/* Card 2 */}
+            <div className="cardFeatured">
+              <img src={house7} alt="" />
+              <div className="cardInfo">
+                <div className="housedetails">
+                  <p>
+                    <strong>Willow Cottage</strong>
+                  </p>
+
+                  <p>
+                    {" "}
+                    <strong>₦20,500,000</strong>
+                  </p>
+                </div>
+                <div className="houseLocation">
+                  <p>Delta, Nigeria</p>
+                  <p>3 Bedroom Flat</p>
+                </div>
+              </div>
+            </div>
+            {/* Card 3 */}
+            <div className="cardFeatured">
+              <img src={background} alt="" />
+              <div className="cardInfo">
+                <div className="housedetails">
+                  <p>
+                    {" "}
+                    <strong>Ivy Hall</strong>
+                  </p>
+                  <p>
+                    <strong>₦50,500,000</strong>
+                  </p>
+                </div>
+                <div className="houseLocation">
+                  <p>Anambra, Nigeria</p>
+                  <p>4 Bedroom Flat</p>
+                </div>
+              </div>
+            </div>
+            {/* Card 4 */}
+            <div className="cardFeatured">
+              <img src={house3} alt="" />
+              <div className="cardInfo">
+                <div className="housedetails">
+                  <p>
+                    {" "}
+                    <strong>Tranquility Base</strong>
+                  </p>
+                  <p>
+                    <strong>₦30,000,000</strong>
+                  </p>
+                </div>
+                <div className="houseLocation">
+                  <p>Enugu, Nigeria</p>
+                  <p>5 Bedroom Flat</p>
                 </div>
               </div>
             </div>

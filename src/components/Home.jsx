@@ -68,7 +68,7 @@ const Home = () => {
       <div className="HomeContainer">
         <div className="HomeText">
           <h2>
-            Find Your Perfect Dream House <br /> with us
+            Find Your Perfect Dream <br /> House with us
           </h2>
           <p className="HomeInfo">
             Explore our magnificent buildings, crafted with unparalleled
@@ -239,110 +239,112 @@ const Home = () => {
       {/* What Our Clients Say */}
       <div className="clientsComment">
         <h2 className="clientsHeading">What Our Clients Say</h2>
-        <div className="clientsDiv">
-          <div className="clientCard">
-            <img src={client} id="client" alt="" />
-            <div className="clientDetails">
-              <div className="clientInfo">
-                <div className="clientContact">
-                  <img
-                    id="clientImage"
-                    src="https://s3-alpha-sig.figma.com/img/7006/d133/5da1d1728d752a9e2c7053fe112fdfce?Expires=1738540800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JDlchvXkINMvUwaR3vxYFpl1eouBZzQ7oxXF51MTAz1puQQkyzfpH1Dq3~bmqNOVL0iF56TmRpeLKdSfcDJqcxI3LdNgAk3i4CpKOdMvKSNWuXeGs55W94w7UGN7QjDeQ5miauIG945Ol-ZQcg1zFOJhoM7IcOELH~sQpo-vISRh-47Z9FucLFtxQC~ree2h3gksfKq~8uMelIZg480in-AiLQtlGkVWy7E3ANYRZvnVGzkJ9qI6prgm4DKOoZt~t3nvuboIlimqjpTXsTb8nnsNHDxKwqGMlLp-u2c1EVoLDx4aS-NGQzZBXmfeE1E0ojxI724wv7U2wSpw9NEAaQ__"
-                    alt=""
-                  />
-                  <div className="clientName">
-                    <p>
-                      {" "}
-                      <strong>Sarah Nguyen</strong>
-                    </p>
-                    <p className="locationClient">San Francisco</p>
+        <div className="clientsRecordDiv">
+          <div className="clientsDiv">
+            <div className="clientCard">
+              <img src={client} id="client" alt="" />
+              <div className="clientDetails">
+                <div className="clientInfo">
+                  <div className="clientContact">
+                    <img
+                      id="clientImage"
+                      src="https://s3-alpha-sig.figma.com/img/7006/d133/5da1d1728d752a9e2c7053fe112fdfce?Expires=1738540800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JDlchvXkINMvUwaR3vxYFpl1eouBZzQ7oxXF51MTAz1puQQkyzfpH1Dq3~bmqNOVL0iF56TmRpeLKdSfcDJqcxI3LdNgAk3i4CpKOdMvKSNWuXeGs55W94w7UGN7QjDeQ5miauIG945Ol-ZQcg1zFOJhoM7IcOELH~sQpo-vISRh-47Z9FucLFtxQC~ree2h3gksfKq~8uMelIZg480in-AiLQtlGkVWy7E3ANYRZvnVGzkJ9qI6prgm4DKOoZt~t3nvuboIlimqjpTXsTb8nnsNHDxKwqGMlLp-u2c1EVoLDx4aS-NGQzZBXmfeE1E0ojxI724wv7U2wSpw9NEAaQ__"
+                      alt=""
+                    />
+                    <div className="clientName">
+                      <p>
+                        {" "}
+                        <strong>Sarah Nguyen</strong>
+                      </p>
+                      <p className="locationClient">San Francisco</p>
+                    </div>
+                  </div>
+                  <div className="clientRating">
+                    <button>
+                      <img src={star} alt="" />
+                      <span>
+                        <strong>5.0</strong>
+                      </span>
+                    </button>
                   </div>
                 </div>
-                <div className="clientRating">
-                  <button>
-                    <img src={star} alt="" />
-                    <span>
-                      <strong>5.0</strong>
-                    </span>
-                  </button>
-                </div>
+                <p className="clientComment">
+                  Keev truly cares about their clients. They listened to my
+                  needs and preferences and helped me find the perfect home in
+                  the Bay Area. Their professionalism and attention to detail
+                  are unmatched.
+                </p>
               </div>
-              <p className="clientComment">
-                Keev truly cares about their clients. They listened to my needs
-                and preferences and helped me find the perfect home in the Bay
-                Area. Their professionalism and attention to detail are
-                unmatched.
-              </p>
             </div>
-          </div>
-          {/* card 2 */}
-          <div className="clientCard">
-            <img src={client2} id="client2" alt="" />
-            <div className="clientDetails">
-              <div className="clientInfo">
-                <div className="clientContact">
-                  <img
-                    id="clientImage"
-                    src="https://s3-alpha-sig.figma.com/img/17dd/a0dc/6b2014c0909aeac602a7156070f6f637?Expires=1738540800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=PRIcPpZe3fsxn2JKFa6UyuDA09JecwI43~07W7~rPKMYO7nfg-3rge524qFMk9qarYLj8msCokaceowv0gB8y1TW9R7wf7sgau0jGm8pD9k47kvOhQ3QmZaXSL6vkvlnYFsEXzU3s4tkXNNYemAdJ~f~ruECGyfwG6zPOdNvFs8yrFjTRkM9JH~eG3Ur0vP59TL-gGxiWEMVyTRtAy5DflRoOx9u2tdySvD6bnbf~7xYXQiZqGb5EAppU~nNvvBQByI~vn4KI6DeF86uWA2cLxetDz-vOi1QKcU5LMVAOFJTB1ALNa-m4OgK8eEgYQokuTOfCOX~gtoyE1ZhOQShCQ__"
-                    alt=""
-                  />
-                  <div className="clientName">
-                    <p>
-                      {" "}
-                      <strong>Michael Rodriguez</strong>
-                    </p>
-                    <p className="locationClient">New York</p>
+            {/* card 2 */}
+            <div className="clientCard">
+              <img src={client2} id="client2" alt="" />
+              <div className="clientDetails">
+                <div className="clientInfo">
+                  <div className="clientContact">
+                    <img
+                      id="clientImage"
+                      src="https://s3-alpha-sig.figma.com/img/17dd/a0dc/6b2014c0909aeac602a7156070f6f637?Expires=1738540800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=PRIcPpZe3fsxn2JKFa6UyuDA09JecwI43~07W7~rPKMYO7nfg-3rge524qFMk9qarYLj8msCokaceowv0gB8y1TW9R7wf7sgau0jGm8pD9k47kvOhQ3QmZaXSL6vkvlnYFsEXzU3s4tkXNNYemAdJ~f~ruECGyfwG6zPOdNvFs8yrFjTRkM9JH~eG3Ur0vP59TL-gGxiWEMVyTRtAy5DflRoOx9u2tdySvD6bnbf~7xYXQiZqGb5EAppU~nNvvBQByI~vn4KI6DeF86uWA2cLxetDz-vOi1QKcU5LMVAOFJTB1ALNa-m4OgK8eEgYQokuTOfCOX~gtoyE1ZhOQShCQ__"
+                      alt=""
+                    />
+                    <div className="clientName">
+                      <p>
+                        {" "}
+                        <strong>Michael Rodriguez</strong>
+                      </p>
+                      <p className="locationClient">New York</p>
+                    </div>
+                  </div>
+                  <div className="clientRating">
+                    <button>
+                      <img src={star} alt="" />
+                      <span>
+                        <strong>5.0</strong>
+                      </span>
+                    </button>
                   </div>
                 </div>
-                <div className="clientRating">
-                  <button>
-                    <img src={star} alt="" />
-                    <span>
-                      <strong>5.0</strong>
-                    </span>
-                  </button>
-                </div>
+                <p className="clientComment">
+                  I had a fantastic experience working with Keev. Their
+                  expertise and personalized service exceeded my expectations. I
+                  found my dream home quickly and smoothly. Highly recommended!
+                </p>
               </div>
-              <p className="clientComment">
-                I had a fantastic experience working with Keev. Their expertise
-                and personalized service exceeded my expectations. I found my
-                dream home quickly and smoothly. Highly recommended!
-              </p>
             </div>
-          </div>
-          {/* Card 3 */}
-          <div className="clientCard">
-            <img src={client3} id="client3" alt="" />
-            <div className="clientDetails">
-              <div className="clientInfo">
-                <div className="clientContact">
-                  <img
-                    id="clientImage"
-                    src="https://s3-alpha-sig.figma.com/img/280b/4169/15299eb07800efb50bf2c635b6985dee?Expires=1738540800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HziYnQ4MJl9~MUua05zr6V~7runP9L9UEHrTqdnyl9L~iGdS84o034sHuGPWmOl4DaGzeDpsoxFScFvUWmzOrM2Vfuubus2wXh49oS2UsqAdkThM~Yi7VlnTjFqAauGQXE7vHmY6avUanJSliVRHuGxVTE-RRXrYemyhcdnKFbJ38kWOHI~DoGH4lsKsIZXkP~VUVqQMz6hJmNsSoEkJQiUKtjPVZEhwfIV3fZ6mIcQpvi8PtD2gob-qWs-Pj9RPLB2yiTCcO~xzkU2cUOaeG1gWvbJIFTfYu4XDzcDH-W5YqWcPY2MGHnWMz2Zeo0FbyhYgHRXn~1qcRJnjkGTwcA__"
-                    alt=""
-                  />
-                  <div className="clientName">
-                    <p>
-                      {" "}
-                      <strong>Emily Johnson</strong>
-                    </p>
-                    <p className="locationClient">Los Angeles</p>
+            {/* Card 3 */}
+            <div className="clientCard">
+              <img src={client3} id="client3" alt="" />
+              <div className="clientDetails">
+                <div className="clientInfo">
+                  <div className="clientContact">
+                    <img
+                      id="clientImage"
+                      src="https://s3-alpha-sig.figma.com/img/280b/4169/15299eb07800efb50bf2c635b6985dee?Expires=1738540800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HziYnQ4MJl9~MUua05zr6V~7runP9L9UEHrTqdnyl9L~iGdS84o034sHuGPWmOl4DaGzeDpsoxFScFvUWmzOrM2Vfuubus2wXh49oS2UsqAdkThM~Yi7VlnTjFqAauGQXE7vHmY6avUanJSliVRHuGxVTE-RRXrYemyhcdnKFbJ38kWOHI~DoGH4lsKsIZXkP~VUVqQMz6hJmNsSoEkJQiUKtjPVZEhwfIV3fZ6mIcQpvi8PtD2gob-qWs-Pj9RPLB2yiTCcO~xzkU2cUOaeG1gWvbJIFTfYu4XDzcDH-W5YqWcPY2MGHnWMz2Zeo0FbyhYgHRXn~1qcRJnjkGTwcA__"
+                      alt=""
+                    />
+                    <div className="clientName">
+                      <p>
+                        {" "}
+                        <strong>Emily Johnson</strong>
+                      </p>
+                      <p className="locationClient">Los Angeles</p>
+                    </div>
+                  </div>
+                  <div className="clientRating">
+                    <button>
+                      <img src={star} alt="" />
+                      <span>
+                        <strong>5.0</strong>
+                      </span>
+                    </button>
                   </div>
                 </div>
-                <div className="clientRating">
-                  <button>
-                    <img src={star} alt="" />
-                    <span>
-                      <strong>5.0</strong>
-                    </span>
-                  </button>
-                </div>
+                <p className="clientComment">
+                  Keev made my dream of owning a home a reality! Their team
+                  provided exceptional support and guided me through every step
+                  of the process. I couldn't be happier with my new home!
+                </p>
               </div>
-              <p className="clientComment">
-                Keev made my dream of owning a home a reality! Their team
-                provided exceptional support and guided me through every step of
-                the process. I couldn't be happier with my new home!
-              </p>
             </div>
           </div>
         </div>

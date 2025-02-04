@@ -3,6 +3,7 @@ import "./PropertyPage.css";
 import backlink from "../assets/backlink.svg";
 import main from "../assets/main.png";
 import NewDescp from "../assets/NewDescp.svg"
+import { useEffect, useRef } from "react";
 
 const Description = () => {
 
@@ -11,6 +12,17 @@ const Description = () => {
     const backLinkNav = () => {
         bacKnavigate("/Services")
     }
+      const buyMessage = () => {
+        alert(
+          "Sorry, placing orders is not availabel currently!  \n Please check again later  "
+        );
+      };
+    // const buyButtonRef = useRef(null);
+
+    // useEffect(() => {
+      
+    // }, [])
+
   return (
     <>
       <div className="propertyContainer">
@@ -68,7 +80,9 @@ const Description = () => {
           <span> Automated smart home</span>
         </div>
         <div className="buyButton">
-          <button>Buy</button>
+          <button id="buyButton" onClick={buyMessage}>
+            Buy
+          </button>
         </div>
       </div>
     </>
