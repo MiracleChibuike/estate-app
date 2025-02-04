@@ -49,11 +49,19 @@ const Services = () => {
 
   useEffect(() => {
     // errorDisplayVal = document.getElementById("errorDisplay");
+    const headers = new Headers();
+        headers.append("X-Api-Key", "4hueXJfjAZAV3FaBKX93Z9xun0Ffnxdo");
+
+    const options = {
+      method: "GET",
+      headers: headers,
+      redirect: "follow",
+    };
 
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://naija-places.toneflix.com.ng/api/v1/states"
+          "https://naija-places.toneflix.com.ng/api/v1/states", options
         ); // Fetch data from the API
         // if (!response.ok) {
         //   const errorMessage = `An error occurred: ${response.status}`;
