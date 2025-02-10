@@ -63,7 +63,7 @@ const Description = () => {
         </div>
         <div className="houseContents">
           <h2>Features</h2>
-          <span>2 Storey building</span>
+          <span>Storey building</span>
           <span>3 Living rooms</span>
           <span>1 Library/study room</span>
           <span>2 Kitchens</span>

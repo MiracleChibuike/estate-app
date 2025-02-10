@@ -40,74 +40,98 @@ const Services = () => {
 
   // Fetch Data from API
 
-  const selectTag = useRef(null);
-  // const errorDisplayVal = useRef(null);
-  // errorDisplayVal.style.display = "none";
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [data, setData] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("")
+  // const selectTag = useRef(null);
+  // // const errorDisplayVal = useRef(null);
+  // // errorDisplayVal.style.display = "none";
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
+  // const [data, setData] = useState([]);
+  // const [errorMessage, setErrorMessage] = useState("")
+
+  // useEffect(() => {
+  //   // if (!selectTag.current) return;
+  //   // errorDisplayVal = document.getElementById("errorDisplay");
+  //   const headers = new Headers();
+  //       headers.append("X-Api-Key", "4hueXJfjAZAV3FaBKX93Z9xun0Ffnxdo");
+
+  //   const options = {
+  //     method: "GET",
+  //     headers: headers,
+  //     redirect: "follow",
+  //   };
+
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "https://naija-places.toneflix.com.ng/api/v1/states", options
+  //       );
+  //       setData(response.data.data);
+  //       // console.log(response)
+  //       // const showAllData = response.data.data;
+  //       // console.log(showAllData);
+  //       // // // console.log(showAllData[0].name);
+  //     // if (selectTag.current) {
+  //     //   showAllData.forEach((state) => {
+  //     //     const option = document.createElement("option");
+  //     //     option.value = state.name;
+  //     //     option.textContent = state.name;
+  //     //     selectTag.current.appendChild(option);
+  //     //   });
+  //     // }
+
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //       const errorTxt = `Sorry can't fetch states: ${error.message}`;
+       
+  //         if (!errorMessage) {
+  //            setErrorMessage(errorTxt);
+  //            alert(errorTxt);
+  //         }
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   // console.log(selectTag);
+  //   // console.log(errorDisplayVal)
+
+  //   fetchData();
+  //   // selectTag.addEventListener("click", fetchData)
+  // }, []);
+
+  // if (loading) {
+  //   return <div>Fetching states.....</div>;
+  // }
+
+  // Return houses according to user search
+
+  const filterRef = useRef(null);
 
   useEffect(() => {
-    // if (!selectTag.current) return;
-    // errorDisplayVal = document.getElementById("errorDisplay");
-    const headers = new Headers();
-        headers.append("X-Api-Key", "4hueXJfjAZAV3FaBKX93Z9xun0Ffnxdo");
+    console.log(filterRef);
+          console.log(cards);
 
-    const options = {
-      method: "GET",
-      headers: headers,
-      redirect: "follow",
+    const runFilter = () => {
+      const filterCase = filterRef.current.value.toLowerCase();
+      cards.current.forEach((list) => {
+        const cardText = list.textContent;
+        if (cardText.toLowerCase().includes(filterCase.toLowerCase())) {
+          list.style.display = ""
+          cardText.style.color = "blue"
+        }else{
+          list.style.display = "none"
+        }
+      })
     };
-
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://naija-places.toneflix.com.ng/api/v1/states", options
-        );
-        setData(response.data.data);
-        // console.log(response)
-        // const showAllData = response.data.data;
-        // console.log(showAllData);
-        // // // console.log(showAllData[0].name);
-      // if (selectTag.current) {
-      //   showAllData.forEach((state) => {
-      //     const option = document.createElement("option");
-      //     option.value = state.name;
-      //     option.textContent = state.name;
-      //     selectTag.current.appendChild(option);
-      //   });
-      // }
-
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        const errorTxt = `Sorry can't fetch states: ${error.message}`;
-       
-          if (!errorMessage) {
-             setErrorMessage(errorTxt);
-             alert(errorTxt);
-          }
-      } finally {
-        setLoading(false);
-      }
-    };
-    // console.log(selectTag);
-    // console.log(errorDisplayVal)
-
-    fetchData();
-    // selectTag.addEventListener("click", fetchData)
-  }, []);
-
-  if (loading) {
-    return <div>Fetching states.....</div>;
-  }
+    filterRef.current.addEventListener("input", runFilter)
+  
+  })
 
   return (
     <>
       <NavServices />
       <div
         id="carouselExampleIndicators"
-        class="carousel slide"
+        className="carousel slide"
         data-bs-ride="carousel">
         <div className="carousel-indicators">
           <button
@@ -195,7 +219,7 @@ const Services = () => {
           <span className="visually-hidden">Previous</span>
         </button>
         <button
-          class="carousel-control-next"
+          className="carousel-control-next"
           type="button"
           data-bs-target="#carouselExampleIndicators"
           data-bs-slide="next">
@@ -219,7 +243,7 @@ const Services = () => {
           </h2>
 
           {/* Filter Section */}
-          <div className="filter">
+          {/* <div className="filter">
             <div className="filterItems">
               <p>Filter by States:</p>
               <select name="filter" id="filter" ref={selectTag}>
@@ -229,9 +253,16 @@ const Services = () => {
                     {state.name}
                   </option>
                 ))}
-                {/* <option value="" id="errorDisplay" ref={errorDisplayVal}></option> */}
               </select>
             </div>
+          </div> */}
+          <div className="searchFilter">
+            <input
+              type="se"
+              placeholder="Search by location"
+              ref={filterRef}
+              id="filter"
+            />
           </div>
           <div className="featuredHouses">
             <div className="cardFeatured">

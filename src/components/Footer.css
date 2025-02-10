@@ -32,6 +32,8 @@
 }
 .about ul li, .support ul li, .social ul li{
     padding: 10px 0;
+    position: relative;
+    left: -28px;
 }
 hr{
     display: none;
@@ -43,6 +45,11 @@ hr{
         display: block;
         text-align: center;
     }
+    .about ul li, .support ul li, .social ul li{
+    padding: 10px 0;
+    position: relative;
+    left: -8px;
+}
     .about, .support, .social{
     margin: 35px 25px;
 }

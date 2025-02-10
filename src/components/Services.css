@@ -43,18 +43,14 @@
      /* display: grid; */
 }
 
-.filter{
-    margin: 15px 0;
-}
-.filterItems{
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
+.searchFilter{
+    margin: 0 20px;
 }
 #filter{
-    width: 60%;
-    padding: 10px 0;
-    border: 2px solid var(--primary-dark);
+    width: 40%;
+    margin: 15px 0;
+    padding: 10px 10px;
+    border: 1px solid var(--primary-dark);
     outline: none;
     border-radius: 8px;
     position: relative;
@@ -63,9 +59,9 @@
     background: var(--primary-white);
 }
 #filter:focus{
-    outline: 2px solid var(--clr-logo);
+    outline: 1px solid var(--clr-logo);
     transition: .4s ease;
-    border: 2px solid var(--clr-logo);
+    border: 1px solid var(--clr-logo);
 }
 /* Featured CSS Section */
 .featured{
@@ -129,6 +125,9 @@
         left: 2%;
         text-align: center;
     }
+    .carousel-control-prev-icon, .carousel-control-next-icon{
+    display: none;
+}
     .featuredHouses{
     display: block;
     grid-template-columns: repeat(3, 1fr);
@@ -136,5 +135,8 @@
 }
 .cardFeatured{
     margin: 20px 0;
+}
+#filter{
+    width: 100%;
 }
 }
