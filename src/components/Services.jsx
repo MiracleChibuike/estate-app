@@ -116,7 +116,6 @@ const Services = () => {
         const cardText = list.textContent;
         if (cardText.toLowerCase().includes(filterCase.toLowerCase())) {
           list.style.display = ""
-          cardText.style.color = "blue"
         }else{
           list.style.display = "none"
         }
