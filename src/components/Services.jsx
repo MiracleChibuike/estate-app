@@ -20,23 +20,90 @@ import last from "../assets/last.png";
 import last2 from "../assets/last2.png";
 import main from "../assets/main.png"
 import { use } from "react";
-import axios from "axios"
+import axios from "axios";
+// import House from "./House";
 
 const Services = () => {
   const navigateDesc = useNavigate();
 
   const cards = useRef(null);
-
+const navigateHouse = useNavigate()
   useEffect(() => {
     cards.current = document.querySelectorAll(".cardFeatured");
     console.log(cards);
     cards.current.forEach((card) => {
-      card.addEventListener("click", () => {
-        navigateDesc("/Description");
+      card.addEventListener("click", (event) => {
+        const imgSrc = card.querySelector("img")?.src || "";
+        const houseInfo = card.querySelector(".housedetails")?.textContent || "";
+        const houseLocation = card.querySelector(".houseLocation")?.textContent || "";
+        // Store both image and info in LocalStorage
+        localStorage.setItem(
+          "selectedHouse",
+          JSON.stringify({ imgSrc, houseInfo, houseLocation }));
+          navigateHouse("/House")
       });
     });
-  })
 
+
+    // Clean up event listeners
+    return () => {
+        cards.current.forEach((card) => {
+          card.removeEventListener("click", (event) => {
+            const imgSrc = card.querySelector("img")?.src || "";
+             const houseInfo =
+               card.querySelector(".housedetails")?.textContent || "";
+             const houseLocation =
+               card.querySelector(".houseLocation")?.textContent || "";
+            // Store both image and info in LocalStorage
+            localStorage.setItem(
+              "selectedHouse",
+              JSON.stringify({ imgSrc, houseInfo, houseLocation })
+            );
+            navigateHouse("/House");
+          });
+        });
+    };
+
+  }, [])
+
+
+  // Script to get all images and route to specific pages when selected
+//   const allImages = useRef(null);
+//   const houseNavigate = useNavigate()
+// useEffect(() => {
+//   allImages.current = document.querySelectorAll(".imageDesc");
+//   console.log(allImages);
+
+//   allImages.current.forEach((img) => {
+//     img.addEventListener("click", (e) => {
+//       localStorage.setItem("selectedImg", e.target.src);
+//       houseNavigate("/House");
+//     });
+//   });
+
+//   // Cleanup function to remove event listeners when the component unmounts
+//   return () => {
+//     allImages.current.forEach((img) => {
+//       img.removeEventListener("click", (e) => {
+//         localStorage.setItem("selectedImg", e.target.src);
+//         houseNavigate("/House");
+//       });
+//     });
+//   };
+// }, []);
+
+// const allCardsInfo = useRef(null);
+
+// useEffect(() => {
+//     allCardsInfo.current = document.querySelectorAll(".cardInfo");
+//     console.log(allCardsInfo);
+//     allCardsInfo.current.forEach((info) => {
+//       info.addEventListener("click", (e) => {
+//         sessionStorage.setItem("houseInfo", info.textContent)
+//        houseNavigate("/House")
+//       })
+//     })
+// }, [])
 
   // Fetch Data from API
 
@@ -103,7 +170,8 @@ const Services = () => {
   // }
 
   // Return houses according to user search
-
+  const [showMessage, setMessage] = useState(false);
+  const messageDiv = useRef(null)
   const filterRef = useRef(null);
 
   useEffect(() => {
@@ -112,18 +180,30 @@ const Services = () => {
 
     const runFilter = () => {
       const filterCase = filterRef.current.value.toLowerCase();
+      let matchFound = false;
       cards.current.forEach((list) => {
         const cardText = list.textContent;
         if (cardText.toLowerCase().includes(filterCase.toLowerCase())) {
-          list.style.display = ""
+          list.style.display = "";
+          matchFound = true;
+          //  messageDiv.current.style.display == "none";
         }else{
           list.style.display = "none"
+          // return messageDiv.current
+        //  messageDiv.current.style.display = "block"
         }
-      })
+      });
+
+      if (matchFound) {
+        messageDiv.current.style.display = "none"
+      }else{
+        messageDiv.current.style.display = "block"
+      }
     };
     filterRef.current.addEventListener("input", runFilter)
   
-  })
+  }, []);
+
 
   return (
     <>
@@ -258,19 +338,27 @@ const Services = () => {
           <div className="searchFilter">
             <input
               type="se"
-              placeholder="Search by location"
+              placeholder="Search by location or house name"
               ref={filterRef}
               id="filter"
             />
           </div>
+          {/* Div to display incase search houses return error */}
+          <div
+            className="messageInvalid"
+            style={{ display: "none" }}
+            ref={messageDiv}>
+            No houses match your search. Keep searching, your perfect match
+            might be here
+          </div>
           <div className="featuredHouses">
             <div className="cardFeatured">
-              <img src={house2} alt="" />
+              <img src={house2} className="imageDesc" alt="" />
               <div className="cardInfo">
                 <div className="housedetails">
                   <p>
                     {" "}
-                    <strong>Bluebell Cottage</strong>
+                    <strong className="houseName">Bluebell Cottage</strong>
                   </p>
 
                   <p>
@@ -286,7 +374,7 @@ const Services = () => {
             </div>
             {/* Card 2 */}
             <div className="cardFeatured">
-              <img src={house7} alt="" />
+              <img src={house7} className="imageDesc" alt="" />
               <div className="cardInfo">
                 <div className="housedetails">
                   <p>
@@ -306,7 +394,7 @@ const Services = () => {
             </div>
             {/* Card 3 */}
             <div className="cardFeatured">
-              <img src={background} alt="" />
+              <img src={background} className="imageDesc" alt="" />
               <div className="cardInfo">
                 <div className="housedetails">
                   <p>
@@ -325,7 +413,7 @@ const Services = () => {
             </div>
             {/* Card 4 */}
             <div className="cardFeatured">
-              <img src={house3} alt="" />
+              <img src={house3} className="imageDesc" alt="" />
               <div className="cardInfo">
                 <div className="housedetails">
                   <p>
@@ -344,7 +432,7 @@ const Services = () => {
             </div>
             {/* Card 5 */}
             <div className="cardFeatured">
-              <img src={house4} alt="" />
+              <img src={house4} className="imageDesc" alt="" />
               <div className="cardInfo">
                 <div className="housedetails">
                   <p>
@@ -363,7 +451,7 @@ const Services = () => {
             </div>
             {/* card 6 */}
             <div className="cardFeatured">
-              <img src={house5} alt="" />
+              <img src={house5} className="imageDesc" alt="" />
               <div className="cardInfo">
                 <div className="housedetails">
                   <p>
@@ -382,7 +470,7 @@ const Services = () => {
             </div>
             {/* Card 7 */}
             <div className="cardFeatured">
-              <img src={house6} alt="" />
+              <img src={house6} className="imageDesc" alt="" />
               <div className="cardInfo">
                 <div className="housedetails">
                   <p>
@@ -401,7 +489,7 @@ const Services = () => {
             </div>
             {/* Card 8 */}
             <div className="cardFeatured">
-              <img src={house8} alt="" />
+              <img src={house8} className="imageDesc" alt="" />
               <div className="cardInfo">
                 <div className="housedetails">
                   <p>
@@ -420,7 +508,7 @@ const Services = () => {
             </div>
             {/* Card 9 */}
             <div className="cardFeatured">
-              <img src={house9} alt="" />
+              <img src={house9} className="imageDesc" alt="" />
               <div className="cardInfo">
                 <div className="housedetails">
                   <p>
@@ -439,7 +527,7 @@ const Services = () => {
             </div>
             {/* Card 10 */}
             <div className="cardFeatured">
-              <img src={house10} alt="" />
+              <img src={house10} className="imageDesc" alt="" />
               <div className="cardInfo">
                 <div className="housedetails">
                   <p>
@@ -458,7 +546,7 @@ const Services = () => {
             </div>
             {/* Card 11 */}
             <div className="cardFeatured">
-              <img src={hous11} alt="" />
+              <img src={hous11} className="imageDesc" alt="" />
               <div className="cardInfo">
                 <div className="housedetails">
                   <p>
@@ -477,7 +565,7 @@ const Services = () => {
             </div>
             {/* Card 12 */}
             <div className="cardFeatured">
-              <img src={main} alt="" />
+              <img src={main} className="imageDesc" alt="" />
               <div className="cardInfo">
                 <div className="housedetails">
                   <p>
@@ -494,9 +582,9 @@ const Services = () => {
                 </div>
               </div>
             </div>
-            {/* Card 2 */}
+            {/* Card 13 */}
             <div className="cardFeatured">
-              <img src={house7} alt="" />
+              <img src={house7} className="imageDesc" alt="" />
               <div className="cardInfo">
                 <div className="housedetails">
                   <p>
@@ -514,9 +602,9 @@ const Services = () => {
                 </div>
               </div>
             </div>
-            {/* Card 3 */}
+            {/* Card 14 */}
             <div className="cardFeatured">
-              <img src={background} alt="" />
+              <img src={background} className="imageDesc" alt="" />
               <div className="cardInfo">
                 <div className="housedetails">
                   <p>
@@ -533,9 +621,9 @@ const Services = () => {
                 </div>
               </div>
             </div>
-            {/* Card 4 */}
+            {/* Card 15 */}
             <div className="cardFeatured">
-              <img src={house3} alt="" />
+              <img src={house3} className="imageDesc" alt="" />
               <div className="cardInfo">
                 <div className="housedetails">
                   <p>
