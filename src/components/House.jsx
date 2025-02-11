@@ -91,7 +91,6 @@ useEffect(() => {
                     style={{
                       display: "flex",
                       justifyContent: "space-between",
-                      padding: "30px"
                     }}>
                     <div
                       className="housedetails"
