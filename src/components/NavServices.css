@@ -70,6 +70,9 @@
     position: relative;
     /* top: -10px; */
 }
+#user:hover{
+    border-bottom: none;
+}
 
 @media screen and (min-width: 0) and (max-width: 820px) {
     .nav-Links{
@@ -79,8 +82,8 @@
         left: 0;
         right: 0;
         top: 90px;
+        /* overflow-y: scroll; */
         min-height: 100vh;
-        /* height: 100vh; */
         width: 80%;
         padding: 5px 20px;
         border-top-right-radius: 30px;

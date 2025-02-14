@@ -1,0 +1,115 @@
+
+
+:root{
+  --primary-dark: #020202;
+  --clr-logo: rgba(0, 121, 107, 1);
+  --clr-light-green : rgba(12, 188, 139, 0.4);
+  --green-deem: rgba(12, 188, 139, 0.1);
+  --primary-white: #fff;
+}
+
+/* Here, I am styling all things related to the dashboard in this this
+   single CSS file as to not have many CSS files
+ */
+.container_Dashboard, .profile_Container{
+    padding: 20px 30px;
+}
+
+.pageHead{
+    text-align: center;
+    margin: 10px 0;
+    /* color: var(--clr-logo);
+    margin-bottom: 20px; */
+}
+.pageHead h2{
+    font-weight: 700;
+    line-height: 68.26px;
+}
+
+.buttonsNav{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 40px;
+    column-gap: 20px;
+    margin: 30px 0 0 0;
+}
+.buttonsNav button{
+    padding: 15px;
+    border: 1px solid var(--primary-dark);
+    background: var(--primary-white);
+}
+
+.buttonsNav button:hover, .buttonsNav button:focus{
+    transition: .3s ease;
+    background: var(--clr-logo);
+    color: var(--primary-white);
+    border: 1px solid var(--clr-logo);
+}
+
+/* Styles for Profile Component */
+.profileImage{
+    text-align: center;
+}
+#user-image-profile{
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+}
+#user-camera-profile{
+    width: 30px;
+    height: 30px;
+    background: var(--clr-logo);
+    padding: 5px;
+    border-radius: 50%;
+    position: relative;
+    top: 35px;
+    left: -35px;
+    box-shadow: 0 0 5px var(--primary-dark);
+    cursor: pointer;
+}
+
+.personalInfo{
+    margin: 35px 0;
+}
+.personalInfo h2{
+    text-align: center;
+}
+#userForm{
+    margin: 35px 0;
+}
+.fullName, .userName, .email, .mobile, .location{
+    margin: 25px 0;
+    display: flex;
+    flex-direction: column;
+}
+.fullName input, .userName input, .email input, .mobile input, .location select{
+    padding: 7px 10px;
+    margin: 10px 0;
+    outline: none;
+    border: 1px solid var(--primary-dark);
+    border-radius: 5px; 
+}
+.fullName input:focus, .userName input:focus, .email input:focus, 
+.mobile input:focus, .location select:focus{
+    border: 1px solid var(--clr-logo);
+    outline: 2px solid var(--clr-logo);
+    transition: .2s;
+    box-shadow: 0 0 4px var(--primary-dark);
+}
+.saveDiv{
+    text-align: center;
+}
+.saveDiv button{
+    width: 80%;
+    padding: 8px;
+    border: none;
+    background: var(--clr-logo);
+    color: var(--primary-white);
+    border-radius: 5px;
+}
+@media screen and (min-width: 0) and (max-width: 768px){
+    .buttonsNav{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+}

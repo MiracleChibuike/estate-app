@@ -19,6 +19,9 @@ import client from "../assets/client.svg";
 import client2 from "../assets/client2.svg";
 import client3 from "../assets/client3.svg";
 import star from "../assets/star.svg";
+import clientSerah from "../assets/clientSerah.svg";
+import maleUserClient from "../assets/maleUserClient.svg";
+import lastClient from "../assets/lastClient.svg";
 import "./Home.css"
 import Footer from "./Footer";
 const Home = () => {
@@ -172,8 +175,8 @@ const Home = () => {
                 <strong className="caption">Available Prices</strong>
               </p>
               <p>
-                Benefit from our team's seasoned expertise for a smooth buying
-                experience
+                Our services that adapt to your unique needs comes with very
+                affordable and pocket friendly prices
               </p>
             </div>
           </div>
@@ -184,8 +187,8 @@ const Home = () => {
                 <strong className="caption">Availability</strong>
               </p>
               <p>
-                Benefit from our team's seasoned expertise for a smooth buying
-                experience
+                Our customers can always stay informed with us as we are always
+                available round the clock
               </p>
             </div>
           </div>
@@ -196,8 +199,8 @@ const Home = () => {
                 <strong className="caption">Support</strong>
               </p>
               <p>
-                Benefit from our team's seasoned expertise for a smooth buying
-                experience
+                Providing peace of mind with our responsive and attentive
+                customer service
               </p>
             </div>
           </div>
@@ -246,11 +249,7 @@ const Home = () => {
               <div className="clientDetails">
                 <div className="clientInfo">
                   <div className="clientContact">
-                    <img
-                      id="clientImage"
-                      src="https://s3-alpha-sig.figma.com/img/7006/d133/5da1d1728d752a9e2c7053fe112fdfce?Expires=1738540800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JDlchvXkINMvUwaR3vxYFpl1eouBZzQ7oxXF51MTAz1puQQkyzfpH1Dq3~bmqNOVL0iF56TmRpeLKdSfcDJqcxI3LdNgAk3i4CpKOdMvKSNWuXeGs55W94w7UGN7QjDeQ5miauIG945Ol-ZQcg1zFOJhoM7IcOELH~sQpo-vISRh-47Z9FucLFtxQC~ree2h3gksfKq~8uMelIZg480in-AiLQtlGkVWy7E3ANYRZvnVGzkJ9qI6prgm4DKOoZt~t3nvuboIlimqjpTXsTb8nnsNHDxKwqGMlLp-u2c1EVoLDx4aS-NGQzZBXmfeE1E0ojxI724wv7U2wSpw9NEAaQ__"
-                      alt=""
-                    />
+                    <img id="clientImage" src={clientSerah} alt="" />
                     <div className="clientName">
                       <p>
                         {" "}
@@ -282,11 +281,7 @@ const Home = () => {
               <div className="clientDetails">
                 <div className="clientInfo">
                   <div className="clientContact">
-                    <img
-                      id="clientImage"
-                      src="https://s3-alpha-sig.figma.com/img/17dd/a0dc/6b2014c0909aeac602a7156070f6f637?Expires=1738540800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=PRIcPpZe3fsxn2JKFa6UyuDA09JecwI43~07W7~rPKMYO7nfg-3rge524qFMk9qarYLj8msCokaceowv0gB8y1TW9R7wf7sgau0jGm8pD9k47kvOhQ3QmZaXSL6vkvlnYFsEXzU3s4tkXNNYemAdJ~f~ruECGyfwG6zPOdNvFs8yrFjTRkM9JH~eG3Ur0vP59TL-gGxiWEMVyTRtAy5DflRoOx9u2tdySvD6bnbf~7xYXQiZqGb5EAppU~nNvvBQByI~vn4KI6DeF86uWA2cLxetDz-vOi1QKcU5LMVAOFJTB1ALNa-m4OgK8eEgYQokuTOfCOX~gtoyE1ZhOQShCQ__"
-                      alt=""
-                    />
+                    <img id="clientImage" src={maleUserClient} alt="" />
                     <div className="clientName">
                       <p>
                         {" "}
@@ -317,11 +312,7 @@ const Home = () => {
               <div className="clientDetails">
                 <div className="clientInfo">
                   <div className="clientContact">
-                    <img
-                      id="clientImage"
-                      src="https://s3-alpha-sig.figma.com/img/280b/4169/15299eb07800efb50bf2c635b6985dee?Expires=1738540800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HziYnQ4MJl9~MUua05zr6V~7runP9L9UEHrTqdnyl9L~iGdS84o034sHuGPWmOl4DaGzeDpsoxFScFvUWmzOrM2Vfuubus2wXh49oS2UsqAdkThM~Yi7VlnTjFqAauGQXE7vHmY6avUanJSliVRHuGxVTE-RRXrYemyhcdnKFbJ38kWOHI~DoGH4lsKsIZXkP~VUVqQMz6hJmNsSoEkJQiUKtjPVZEhwfIV3fZ6mIcQpvi8PtD2gob-qWs-Pj9RPLB2yiTCcO~xzkU2cUOaeG1gWvbJIFTfYu4XDzcDH-W5YqWcPY2MGHnWMz2Zeo0FbyhYgHRXn~1qcRJnjkGTwcA__"
-                      alt=""
-                    />
+                    <img id="clientImage" src={lastClient} alt="" />
                     <div className="clientName">
                       <p>
                         {" "}

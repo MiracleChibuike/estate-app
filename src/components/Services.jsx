@@ -21,6 +21,8 @@ import last2 from "../assets/last2.png";
 import main from "../assets/main.png"
 import { use } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 // import House from "./House";
 
 const Services = () => {

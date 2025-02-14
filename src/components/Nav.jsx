@@ -5,6 +5,8 @@ import "./Nav.css";
 import menu from "../assets/hamburger.png";
 import { useNavigate } from "react-router-dom";
 import { Links } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 const Nav = () => {
   let menuIcon = null;
@@ -71,15 +73,21 @@ const Nav = () => {
     // Nav-Container
     <div className="NavContainer" ref={navContainerRef2}>
       <div className="logo">
-        <h2 className="logoText">KEEV</h2>
+        <Link to="/">
+          <h2 className="logoText">KEEV</h2>
+        </Link>
       </div>
       <div className="menu">
         <img src={menu} alt="" id="menuIcon" onClick={showNavs} />
       </div>
       <div className="nav-Links">
         <ul>
-          <li id="HomeTxt">Home</li>
-          <li onClick={goTonav}>Services</li>
+          <Link to="/">
+            <li id="HomeTxt">Home</li>
+          </Link>
+          <Link to="/Services">
+            <li>Services</li>
+          </Link>
           <li>About Us</li>
           <li>Blogs</li>
           <li>Agents</li>

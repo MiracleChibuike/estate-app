@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import "./NavServices.css";
 import menu from "../assets/hamburger.png";
-import user from "../assets/user.jpg"
-import { useNavigate } from "react-router-dom";
+import user from "../assets/user.jpg";
+import { useNavigate, Link } from "react-router-dom";
 const NavServices = () => {
 
         let menuIcon = (null);
@@ -55,9 +55,9 @@ const NavServices = () => {
       <>
         <div className="NavContainer" ref={navContainerRef}>
           <div className="logo">
-            <h2 className="logoText" onClick={returnHome}>
-              KEEV
-            </h2>
+            <Link to="/">
+              <h2 className="logoText">KEEV</h2>
+            </Link>
           </div>
           <div className="menu">
             <img src={menu} alt="" onClick={showNavs} id="menuIcon" />
@@ -65,7 +65,9 @@ const NavServices = () => {
           <div className="nav-Links">
             <ul>
               <li id="HomeTxt">Buy</li>
-              <li>Dashboard</li>
+              <Link to="/Dashboard">
+                <li>Dashboard</li>
+              </Link>
               <li>Find Realtors</li>
               <li>Lease</li>
               <li>Saved Houses</li>
