@@ -9,7 +9,7 @@ import NavServices from './components/NavServices'
 import Services from './components/Services'
 import PropertyPage from './components/PropertyPage'
 import Description from './components/Description'
-import House from './components/House'
+import HouseDescription from "./components/HouseDescription";
 
 function App() {
 
@@ -22,7 +22,7 @@ function App() {
           <Route path="/footer" element={<Footer />} />
           <Route path="/Services" element={<Services />} />
           <Route path="/Description" element={<Description />} />
-          <Route path="/House" element={<House />} />
+          <Route path="/HouseDescription" element={<HouseDescription />} />
         </Routes>
       </Router>
     </>

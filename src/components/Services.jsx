@@ -40,7 +40,7 @@ const navigateHouse = useNavigate()
         localStorage.setItem(
           "selectedHouse",
           JSON.stringify({ imgSrc, houseInfo, houseLocation }));
-          navigateHouse("/House")
+          navigateHouse("/HouseDescription");
       });
     });
 
@@ -59,7 +59,7 @@ const navigateHouse = useNavigate()
               "selectedHouse",
               JSON.stringify({ imgSrc, houseInfo, houseLocation })
             );
-            navigateHouse("/House");
+            navigateHouse("/HouseDescription");
           });
         });
     };
