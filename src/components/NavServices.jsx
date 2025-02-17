@@ -50,6 +50,16 @@ const NavServices = () => {
           const returnHome = () => {
             homeNavigate("/");
           }
+      
+
+          // Function to display the selected image of a user in the nav-bar
+          const imageBannerNav = useRef(null)
+          useEffect(() => {
+            const userImageStored = localStorage.getItem("userProfile");
+            if (userImageStored) {
+              imageBannerNav.current.src = userImageStored
+            }
+          }, [])
 
     return (
       <>
@@ -73,7 +83,7 @@ const NavServices = () => {
               <li>Saved Houses</li>
               <li>Just Sold</li>
               <li>
-                <img src={user} alt="" id="user" />
+                <img src={user} alt="" id="user" ref={imageBannerNav} />
               </li>
             </ul>
           </div>

@@ -68,6 +68,11 @@
     cursor: pointer;
 }
 
+/* FA Icon */
+/* #iconUser{
+    font-size: 100px;
+    position: relative;
+} */
 .personalInfo{
     margin: 35px 0;
 }

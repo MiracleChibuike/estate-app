@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import backlink from "../assets/backlink.svg";
 import "./Dashboard.css";
 import user from "../assets/user.jpg";
-import Camera from "../assets/Camera.svg"
+import Camera from "../assets/Camera.svg";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const Profile = () => {
           const navigateBack = useNavigate();
@@ -15,7 +16,9 @@ const Profile = () => {
 
 const fileInput = useRef(null);
 const userImage = useRef(null);
-const cameraIcon = useRef(null)
+const cameraIcon = useRef(null);
+   const userIcon = useRef(null);
+
 
    useEffect(() => {
              fileInput.current.addEventListener("change", (event) => {
@@ -27,7 +30,7 @@ const cameraIcon = useRef(null)
                         localStorage.setItem("userProfile", userImage.current.src)
                     })
                                     reader.readAsDataURL(files);
-
+                    
                 };
              });
    }, []);
@@ -41,6 +44,7 @@ const cameraIcon = useRef(null)
    useEffect(() => {
      const getUserImage = localStorage.getItem("userProfile");
      if (getUserImage) {
+      //  userIcon.current.style.display = "none";
        userImage.current.src = getUserImage; // Use the stored image
      }
    }, []);
@@ -56,21 +60,7 @@ const cameraIcon = useRef(null)
             alert("Please fill all fields")
         }else{
             alert(`Your account has been registered - ${userFullName.current.value.trim()}`);
-            let userData = {
-              fullName: userFullName.current.value.trim(),
-              userName: userName.current.value.trim(),
-              Email: userEmail.current.value.trim(),
-              mobile: userMobile.current.value.trim(),
-            };
-           let getUserInfo = localStorage.getItem("userInformation");
-
-           getUserInfo = getUserInfo ? JSON.parse(getUserInfo) : [];
-
-           if (!Array.isArray(getUserInfo)) {
-            getUserInfo = []
-           };
-
-           localStorage.setItem("userInformation", JSON.stringify(getUserInfo));
+        
 
         }
    }
@@ -90,7 +80,9 @@ const cameraIcon = useRef(null)
             event.preventDefault();
             validateForm();
         })
-   }, [])
+   }, []);
+
+   
   return (
     <>
       <div className="profile_Container">
@@ -110,6 +102,8 @@ const cameraIcon = useRef(null)
             style={{ display: "none" }}
           />
           <img id="user-image-profile" ref={userImage} alt="" />
+          {/* Default image to be shown on page load */}
+          {/* <i className="fa-solid fa-user" id="iconUser" ref={userIcon}></i> */}
           <img src={Camera} id="user-camera-profile" ref={cameraIcon} alt="" />
         </div>
         <div className="personalInfo">
