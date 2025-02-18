@@ -10,8 +10,9 @@ import Services from './components/Services'
 import PropertyPage from './components/PropertyPage'
 import Description from './components/Description'
 import HouseDescription from "./components/HouseDescription";
-import Dashboard from './components/Dashboard'
-import Profile from './components/Profile'
+import Dashboard from './components/Dashboard';
+import Profile from './components/Profile';
+import ProfileEdit from './components/ProfileEdit'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/HouseDescription" element={<HouseDescription />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/Profile" element={<Profile />} /> 
+          <Route path='/EditProfile' element={<ProfileEdit />} />
         </Routes>
       </Router>
     </>

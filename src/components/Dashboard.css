@@ -49,6 +49,20 @@
 /* Styles for Profile Component */
 .profileImage{
     text-align: center;
+    position: relative;
+    left: 10px;
+}
+.editButton{
+    text-align: center;
+    margin: 20px 0 0 0;
+}
+.editButton button{
+    padding: 5px 50px;
+    /* width: 30%; */
+    border: none;
+    background: var(--clr-logo);
+    color: var(--primary-white);
+    border-radius: 5px;
 }
 #user-image-profile{
     width: 110px;

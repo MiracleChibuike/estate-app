@@ -7,82 +7,97 @@ import "./Dashboard.css";
 import user from "../assets/user.jpg";
 import Camera from "../assets/Camera.svg";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import ProfileEdit from "../components/ProfileEdit";
 
 const Profile = () => {
-          const navigateBack = useNavigate();
-          const backLinkNav = () => {
-            navigateBack("/Dashboard");
-          };
+  const navigateBack = useNavigate();
+  const backLinkNav = () => {
+    navigateBack("/Dashboard");
+  };
 
-const fileInput = useRef(null);
-const userImage = useRef(null);
-const cameraIcon = useRef(null);
-   const userIcon = useRef(null);
+  const EditPageNavigate = useNavigate();
 
-
-   useEffect(() => {
-             fileInput.current.addEventListener("change", (event) => {
-                const files = event.target.files[0];
-                if (files) {
-                    const reader = new FileReader();
-                    reader.onload = ((e) => {
-                        userImage.current.src = e.target.result;
-                        localStorage.setItem("userProfile", userImage.current.src)
-                    })
-                                    reader.readAsDataURL(files);
-                    
-                };
-             });
-   }, []);
+  const fileInput = useRef(null);
+  const userImage = useRef(null);
+  const cameraIcon = useRef(null);
+  const userIcon = useRef(null);
 
   useEffect(() => {
-     cameraIcon.current.addEventListener("click", () => {
-       fileInput.current.click();
-     });
+    fileInput.current.addEventListener("change", (event) => {
+      const files = event.target.files[0];
+      if (files) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          userImage.current.src = e.target.result;
+          localStorage.setItem("userProfile", userImage.current.src);
+        };
+        reader.readAsDataURL(files);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    cameraIcon.current.addEventListener("click", () => {
+      fileInput.current.click();
+    });
   });
 
-   useEffect(() => {
-     const getUserImage = localStorage.getItem("userProfile");
-     if (getUserImage) {
+  useEffect(() => {
+    const getUserImage = localStorage.getItem("userProfile");
+    if (getUserImage) {
       //  userIcon.current.style.display = "none";
-       userImage.current.src = getUserImage; // Use the stored image
-     }
-   }, []);
+      userImage.current.src = getUserImage; // Use the stored image
+    }
+  }, []);
 
-   const userForm = useRef(null);
-   const userFullName = useRef(null);
-   const userName = useRef(null);
-   const userEmail = useRef(null);
-   const userMobile = useRef(null)
-   const validateForm = () => {
-        if (userFullName.current.value.trim() == "" || userName.current.value.trim() == ""
-              || userEmail.current.value.trim() == "" || userMobile.current.value.trim() == ""  ) {
-            alert("Please fill all fields")
-        }else{
-            alert(`Your account has been registered - ${userFullName.current.value.trim()}`);
-        
+  const userForm = useRef(null);
+  const userFullName = useRef(null);
+  const userName = useRef(null);
+  const userEmail = useRef(null);
+  const userMobile = useRef(null);
+  const validateForm = () => {
+    if (
+      userFullName.current.value.trim() == "" ||
+      userName.current.value.trim() == "" ||
+      userEmail.current.value.trim() == "" ||
+      userMobile.current.value.trim() == ""
+    ) {
+      alert("Please fill all fields");
+    } else {
+      alert(
+        `Thank you, ${userFullName.current.value.trim()}. Your account has been succesfully registered. `
+      );
+      localStorage.setItem("fullName", userFullName.current.value.trim());
+      localStorage.setItem("userName", userName.current.value.trim());
+      localStorage.setItem("userEmail", userEmail.current.value.trim());
+      localStorage.setItem("userMobile", userMobile.current.value.trim());
+      EditPageNavigate("/EditProfile");
+    }
+  };
+  //    store User details in LS
+  useEffect(() => {
+    if (
+      userFullName.current &&
+      userName.current &&
+      userEmail.current &&
+      userMobile.current
 
-        }
-   }
-//    store User details in LS
-   useEffect(() => {
-            const storeInLocal = () => {
-              let getUserInfo = localStorage.getItem("userInformation");
-            //   Check if info exists
-              if (!Array.isArray(getUserInfo)) {
-                getUserInfo = [];
-              }
-            userFullName.current.value = userData.fullName
-            }
-   }, [])
-   useEffect(() => {
-        userForm.current.addEventListener("submit", (event) => {
-            event.preventDefault();
-            validateForm();
-        })
-   }, []);
+    ) {
+      userFullName.current.value = localStorage.getItem("fullName") || "";
+      userName.current.value = localStorage.getItem("userName") || "";
+      userEmail.current.value = localStorage.getItem("userEmail") || "";
+      userMobile.current.value = localStorage.getItem("userMobile") || "";
+    }
+  }, []);
+  
+  // Call the function on button click
+  useEffect(() => {
+    userForm.current.addEventListener("submit", (event) => {
+      event.preventDefault();
+      validateForm();
+    });
+  }, []);
 
-   
   return (
     <>
       <div className="profile_Container">

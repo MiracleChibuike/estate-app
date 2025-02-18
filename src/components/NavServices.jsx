@@ -83,7 +83,9 @@ const NavServices = () => {
               <li>Saved Houses</li>
               <li>Just Sold</li>
               <li>
-                <img src={user} alt="" id="user" ref={imageBannerNav} />
+                <Link to="/EditProfile">
+                  <img src={user} alt="" id="user" ref={imageBannerNav} />
+                </Link>
               </li>
             </ul>
           </div>
