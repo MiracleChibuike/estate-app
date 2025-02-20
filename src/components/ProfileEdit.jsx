@@ -15,7 +15,7 @@ const ProfileEdit = () => {
 
     const fileInput = useRef(null);
     const userImage = useRef(null);
-    const cameraIcon = useRef(null);
+    // const cameraIcon = useRef(null);
     const userIcon = useRef(null);
 
       useEffect(() => {
@@ -32,11 +32,11 @@ const ProfileEdit = () => {
         });
       }, []);
     
-      useEffect(() => {
-        cameraIcon.current.addEventListener("click", () => {
-          fileInput.current.click();
-        });
-      });
+      // useEffect(() => {
+      //   cameraIcon.current.addEventListener("click", () => {
+      //     fileInput.current.click();
+      //   });
+      // });
     
       useEffect(() => {
         const getUserImage = localStorage.getItem("userProfile");
@@ -51,6 +51,7 @@ const ProfileEdit = () => {
         const userName = useRef(null);
         const userEmail = useRef(null);
         const userMobile = useRef(null);
+          const userState = useRef(null)
         const validateForm = () => {
             if (
               userFullName.current.value.trim() == "" ||
@@ -67,6 +68,7 @@ const ProfileEdit = () => {
               localStorage.setItem("userName", userName.current.value.trim());
               localStorage.setItem("userEmail", userEmail.current.value.trim());
               localStorage.setItem("userMobile", userMobile.current.value.trim());
+              localStorage.setItem("userState", userState.current.value.trim());
               return ProfileEdit;
             }
           };
@@ -83,6 +85,7 @@ const ProfileEdit = () => {
               userName.current.value = localStorage.getItem("userName") || "";
               userEmail.current.value = localStorage.getItem("userEmail") || "";
               userMobile.current.value = localStorage.getItem("userMobile") || "";
+              userState.current.value = localStorage.getItem("userState") || "";
             }
           }, []);
           
@@ -94,10 +97,13 @@ const ProfileEdit = () => {
             });
           }, []);
 
+
+          const profileNav = useNavigate()
           const buttonEdit = useRef(null)
           useEffect(() => {
             buttonEdit.current.addEventListener("click", () => {
-                alert("Can't edit Profile now. Try again later")
+              profileNav("/Profile")
+                // alert("Can't edit Profile now. Try again later")
             })
           }, [])
   return (
@@ -121,7 +127,7 @@ const ProfileEdit = () => {
           <img id="user-image-profile" ref={userImage} alt="" />
           {/* Default image to be shown on page load */}
           {/* <i className="fa-solid fa-user" id="iconUser" ref={userIcon}></i> */}
-          <img src={Camera} id="user-camera-profile" ref={cameraIcon} alt="" />
+          {/* <img src={Camera} id="user-camera-profile" ref={cameraIcon} alt="" /> */}
           {/* button for Edit */}
         </div>
         <div className="editButton">
@@ -135,6 +141,7 @@ const ProfileEdit = () => {
             <div className="fullName">
               <label htmlFor="fullName">Full Name</label>
               <input
+                readOnly
                 type="text"
                 name="name"
                 placeholder="Full Name"
@@ -145,6 +152,7 @@ const ProfileEdit = () => {
             <div className="userName">
               <label htmlFor="user-name">User Name</label>
               <input
+                readOnly
                 type="text"
                 name="name"
                 placeholder="User Name"
@@ -155,6 +163,7 @@ const ProfileEdit = () => {
             <div className="email">
               <label htmlFor="email-address">Email Address</label>
               <input
+                readOnly
                 type="email"
                 name="email"
                 id="email-address"
@@ -165,6 +174,7 @@ const ProfileEdit = () => {
             <div className="mobile">
               <label htmlFor="mobile-number">Mobile No</label>
               <input
+                readOnly
                 type="tel"
                 name="tel"
                 id="mobile-number"
@@ -174,7 +184,11 @@ const ProfileEdit = () => {
             </div>
             <div className="location">
               <label htmlFor="location-user">Location</label>
-              <select name="address" id="location-user"></select>
+              <input
+                readOnly
+                name="address"
+                id="location-user"
+                ref={userState}></input>
             </div>
             <div className="saveDiv">
               {/* <button id="save-button" type="submit">

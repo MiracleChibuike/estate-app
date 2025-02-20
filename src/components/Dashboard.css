@@ -101,7 +101,7 @@
     display: flex;
     flex-direction: column;
 }
-.fullName input, .userName input, .email input, .mobile input, .location select{
+.fullName input, .userName input, .email input, .mobile input, .location select, #location-user{
     padding: 7px 10px;
     margin: 10px 0;
     outline: none;
@@ -109,7 +109,7 @@
     border-radius: 5px; 
 }
 .fullName input:focus, .userName input:focus, .email input:focus, 
-.mobile input:focus, .location select:focus{
+.mobile input:focus, .location select:focus, #location-user:focus{
     border: 1px solid var(--clr-logo);
     outline: 2px solid var(--clr-logo);
     transition: .2s;

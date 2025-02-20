@@ -8,6 +8,8 @@ import user from "../assets/user.jpg";
 import Camera from "../assets/Camera.svg";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import ProfileEdit from "../components/ProfileEdit";
+import axiox from "axios";
+import axios from "axios";
 
 const Profile = () => {
   const navigateBack = useNavigate();
@@ -55,22 +57,34 @@ const Profile = () => {
   const userName = useRef(null);
   const userEmail = useRef(null);
   const userMobile = useRef(null);
+  const userState = useRef(null)
+  const [loader, setLoader] = useState(true);
+  const [error, setError] = useState(null);
+  const [newData, setNewData] = useState([]);
+
   const validateForm = () => {
     if (
       userFullName.current.value.trim() == "" ||
       userName.current.value.trim() == "" ||
       userEmail.current.value.trim() == "" ||
-      userMobile.current.value.trim() == ""
+      userMobile.current.value.trim() == "" ||
+      userState.current.value == ""
     ) {
       alert("Please fill all fields");
+      // const selectedvalue = userState.current.value;
+      // const selectedOption = userState.current.options[userState.current.selectedIndex];
+      // console.log(selectedOption.text)
     } else {
       alert(
-        `Thank you, ${userFullName.current.value.trim()}. Your account has been succesfully registered. `
+        `Thank you, ${userFullName.current.value.trim()}. Your account has been succesfully registered
+        and profile updated succesfully. `
       );
+      console.log(userState.current.value)
       localStorage.setItem("fullName", userFullName.current.value.trim());
       localStorage.setItem("userName", userName.current.value.trim());
       localStorage.setItem("userEmail", userEmail.current.value.trim());
       localStorage.setItem("userMobile", userMobile.current.value.trim());
+      localStorage.setItem("userState", userState.current.value.trim());
       EditPageNavigate("/EditProfile");
     }
   };
@@ -87,6 +101,7 @@ const Profile = () => {
       userName.current.value = localStorage.getItem("userName") || "";
       userEmail.current.value = localStorage.getItem("userEmail") || "";
       userMobile.current.value = localStorage.getItem("userMobile") || "";
+      userState.current.value = localStorage.getItem("userState") || "";
     }
   }, []);
   
@@ -97,6 +112,46 @@ const Profile = () => {
       validateForm();
     });
   }, []);
+
+  // Fetch lists of states API
+
+  useEffect(() => {
+       const headers = new Headers();
+      //  headers.append("X-Api-Key", "4hueXJfjAZAV3FaBKX93Z9xun0Ffnxdo");
+
+      //  const options = {
+      //    method: "GET",
+      //    headers: headers,
+      //    redirect: "follow",
+      //  };
+          const fetchAllStates = async () => {
+         
+             try {
+               const statesURl = await axios.get(
+                 "https://naija-places.toneflix.com.ng/api/v1/states",
+                 {
+                   headers: {
+                     "X-Api-Key": "4hueXJfjAZAV3FaBKX93Z9xun0Ffnxdo",
+                   },
+                 }
+               );
+               // console.log(statesURl.statusText)
+               const statesData = await statesURl.data.data;
+               console.log(statesData);
+               setNewData(statesURl.data.data);
+              
+             } catch (error) {
+               console.error(
+                 `Error fetching data: ${error.response?.status || "Unknown"} - ${error.message} `
+               );
+             } finally {
+               setLoader(false);
+             }
+          };
+
+          fetchAllStates();
+  }, []);
+
 
   return (
     <>
@@ -166,7 +221,14 @@ const Profile = () => {
             </div>
             <div className="location">
               <label htmlFor="location-user">Location</label>
-              <select name="address" id="location-user"></select>
+              <select name="address" id="location-user" ref={userState}>
+                <option value=""> Select a State </option>
+                  {newData.map((state) => (
+                    <option key={state.id} value={state.name}>
+                      {state.name}
+                    </option>
+                  ))}
+              </select>
             </div>
             <div className="saveDiv">
               <button id="save-button" type="submit">
