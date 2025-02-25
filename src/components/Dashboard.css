@@ -11,6 +11,49 @@
 /* Here, I am styling all things related to the dashboard in this this
    single CSS file as to not have many CSS files
  */
+
+ .loader-container{
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    background: var(--primary-white)
+ }
+ .loader2 {
+  width: 300px;
+  height: 300px;
+  display: block;
+  margin: auto;
+  position: relative;
+  background: #FFF;
+  box-sizing: border-box;
+}
+.loader2::after {
+  content: '';
+  width: calc(100% - 30px);
+  height: calc(100% - 30px);
+  top: 25px;
+  left: 15px;
+  position: absolute;
+  background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
+   radial-gradient(circle 50px , #DDD 100%, transparent 0),
+   linear-gradient(#DDD 16px, transparent 0),
+   linear-gradient(#DDD 24px, transparent 0);
+  background-repeat: no-repeat;
+  background-size: 75px 175px, 100% 100px, 80% 16px, 80% 16px;
+  background-position: -185px 0, center 10px, center 125px, center 155px;
+  box-sizing: border-box;
+  animation: animloader 1s linear infinite;
+}
+
+@keyframes animloader {
+  to {
+    background-position: 185px 0, center 10px, center 125px, center 155px;
+  }
+}
+  /* Display Profile Container none by default */
+  #profileContentLoad{
+    display: none;
+  }
 .container_Dashboard, .profile_Container{
     padding: 20px 30px;
 }

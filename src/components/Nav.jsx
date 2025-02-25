@@ -91,7 +91,9 @@ const Nav = () => {
           <li>About Us</li>
           <li>Blogs</li>
           <li>Agents</li>
-          <li>Contact Us</li>
+          <Link to="/Contact">
+            <li>Contact Us</li>
+          </Link>
           <li id="LogIn">Log In</li>
         </ul>
       </div>

@@ -105,10 +105,30 @@ const ProfileEdit = () => {
               profileNav("/Profile")
                 // alert("Can't edit Profile now. Try again later")
             })
-          }, [])
+          }, []);
+    const loaderEdit = useState(null);
+    const containerEdit = useState(null);
+
+    useEffect(() => {
+      const showloaderPro = () => {
+        setTimeout(() => {
+          loaderEdit.current.style.display = "none";
+          containerEdit.current.style.display = "block";
+        }, 7000)
+      };
+
+      showloaderPro();
+    })
   return (
     <>
-      <div className="profile_Container">
+      {/* Loader for Profile container */}
+      <header class="loader-container" ref={loaderEdit}>
+        <span class="loader2"></span>
+      </header>
+      <div
+        className="profile_Container"
+        id="profileContentLoad"
+        ref={containerEdit}>
         <div className="icon_Back">
           <img src={backlink} id="backLink" onClick={backLinkNav} alt="" />
         </div>

@@ -5,6 +5,11 @@
   --clr-light-green : rgba(12, 188, 139, 0.4);
   --green-deem: rgba(12, 188, 139, 0.1);
   --primary-white: #fff;
+    --clr-color-gray-trans: #ccc;
+
+}
+.edit{
+    display: none;
 }
 .activeLink{
     color: var(--clr-logo);
@@ -14,7 +19,47 @@
     border-bottom-right-radius: 2px;
     border-bottom-left-radius: 2px;
 }
+/* For Headre Animation */
+#headertag{
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    background: var(--primary-dark);
+}
+.loader {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      position: relative;
+      background: var(--clr-light-green);
+    }
+    .loader:before , .loader:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--clr-logo);
+      animation: slide 1s infinite linear alternate;
+      opacity: 0.5;
+    }
+    .loader:after {
+      animation: slide2 1s infinite linear alternate;
+      opacity: 1;
 
+    }
+    @keyframes slide {
+      0% , 20% {  transform: translate(0, 0)  }
+      80% , 100% { transform: translate(15px, 15px) }
+    }
+    @keyframes slide2 {
+      0% , 20% {  transform: translate(0, 0) }
+      80% , 100% { transform: translate(-15px, -15px) }
+    }
+/* Home Section */
+    
 .HomeContainer{
     display: flex;
     justify-content: space-between;

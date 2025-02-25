@@ -12,7 +12,8 @@ import Description from './components/Description'
 import HouseDescription from "./components/HouseDescription";
 import Dashboard from './components/Dashboard';
 import Profile from './components/Profile';
-import ProfileEdit from './components/ProfileEdit'
+import ProfileEdit from './components/ProfileEdit';
+import Contact from './components/Contact'
 
 function App() {
 
@@ -27,8 +28,9 @@ function App() {
           <Route path="/Description" element={<Description />} />
           <Route path="/HouseDescription" element={<HouseDescription />} />
           <Route path="/Dashboard" element={<Dashboard />} />
-          <Route path="/Profile" element={<Profile />} /> 
-          <Route path='/EditProfile' element={<ProfileEdit />} />
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/EditProfile" element={<ProfileEdit />} />
+          <Route path="/Contact" element={<Contact />} />
         </Routes>
       </Router>
     </>

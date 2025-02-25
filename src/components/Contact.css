@@ -1,0 +1,61 @@
+:root{
+  --primary-dark: #020202;
+  --clr-logo: rgba(0, 121, 107, 1);
+  --clr-light-green : rgba(12, 188, 139, 0.4);
+  --green-deem: rgba(12, 188, 139, 0.1);
+  --primary-white: #fff;
+    --clr-color-gray-trans: #ccc;
+}
+
+.contact{
+    margin: 90px 0 0 0;
+    padding: 10px 30px;
+}
+#contact_header{
+    font-weight: 800;
+    line-height: 68px;
+    margin: 30px 0;
+    text-align: center;
+}
+.contactForm{
+    margin: 10px 250px;
+}
+.formName, .formEmail, .formMessage{
+    display: flex;
+    flex-direction: column;
+}
+.formName input, .formEmail input, .formMessage textarea{
+    padding: 7px 10px;
+    margin: 10px 0;
+    outline: none;
+    border: none;
+    background: var(--clr-color-gray-trans);
+    border-radius: 5px; 
+}
+.formName input:focus, .formEmail input:focus, .formMessage textarea:focus{
+     border: 1px solid var(--clr-color-gray-trans);
+    outline: 2px solid var(--clr-logo);
+    transition: .2s;
+    box-shadow: 0 0 4px var(--clr-color-gray-trans);
+    background: var(--primary-white);
+}.formMessage textarea{
+    resize: none;
+}
+.submit{
+    margin: 20px 0;
+}
+.submit button{
+        width: 100%;
+    padding: 8px;
+    border: none;
+    background: var(--clr-logo);
+    color: var(--primary-white);
+    border-radius: 5px;
+}
+
+@media screen and (min-width: 0) and (max-width: 820px){
+    .contactForm{
+        margin: 10px 15px;
+    }
+    
+}
