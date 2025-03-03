@@ -13,26 +13,29 @@ import HouseDescription from "./components/HouseDescription";
 import Dashboard from './components/Dashboard';
 import Profile from './components/Profile';
 import ProfileEdit from './components/ProfileEdit';
-import Contact from './components/Contact'
+import Contact from './components/Contact';
+import { HelmetProvider} from 'react-helmet-async'
 
 function App() {
 
   return (
     <>
-      <Router>
-        <Routes>
-          {/* <Route path="/" element={<Nav />} /> */}
-          <Route path="/" element={<Home />} />
-          <Route path="/footer" element={<Footer />} />
-          <Route path="/Services" element={<Services />} />
-          <Route path="/Description" element={<Description />} />
-          <Route path="/HouseDescription" element={<HouseDescription />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
-          <Route path="/Profile" element={<Profile />} />
-          <Route path="/EditProfile" element={<ProfileEdit />} />
-          <Route path="/Contact" element={<Contact />} />
-        </Routes>
-      </Router>
+      <HelmetProvider>
+        <Router>
+          <Routes>
+            {/* <Route path="/" element={<Nav />} /> */}
+            <Route path="/" element={<Home />} />
+            <Route path="/footer" element={<Footer />} />
+            <Route path="/Services" element={<Services />} />
+            <Route path="/Description" element={<Description />} />
+            <Route path="/HouseDescription" element={<HouseDescription />} />
+            <Route path="/Dashboard" element={<Dashboard />} />
+            <Route path="/Profile" element={<Profile />} />
+            <Route path="/EditProfile" element={<ProfileEdit />} />
+            <Route path="/Contact" element={<Contact />} />
+          </Routes>
+        </Router>
+      </HelmetProvider>
     </>
   );
 }

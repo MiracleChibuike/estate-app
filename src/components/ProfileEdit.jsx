@@ -6,6 +6,8 @@ import backlink from "../assets/backlink.svg";
 import "./Dashboard.css";
 import user from "../assets/user.jpg";
 import Camera from "../assets/Camera.svg";
+import { Helmet } from "react-helmet-async";
+
 
 const ProfileEdit = () => {
   const navigateBack = useNavigate();
@@ -121,6 +123,11 @@ const ProfileEdit = () => {
     })
   return (
     <>
+    <Helmet>
+        <title>Edit your Profile | KEEV</title>
+        <meta name="description" content="Profile Edit Page" />
+        <meta name="keywords" content="Edit Profile" />
+    </Helmet>
       {/* Loader for Profile container */}
       <header class="loader-container" ref={loaderEdit}>
         <span class="loader2"></span>

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import backlink from "../assets/backlink.svg";
 import "./Dashboard.css";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
   const navigateBack = useNavigate();
@@ -25,6 +26,10 @@ const Dashboard = () => {
 
   return (
     <>
+    <Helmet>
+        <title>General Information | KEEV</title>
+        <meta name="description" content="General Information Page" />
+    </Helmet>
       <div className="container_Dashboard">
         <div className="icon_Back">
           <img src={backlink} id="backLink" onClick={backLinkNav} alt="" />

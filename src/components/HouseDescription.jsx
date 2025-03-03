@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import backlink from "../assets/backlink.svg";
 import "./PropertyPage.css";
 import { useNavigate } from "react-router-dom";
-
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -58,13 +58,22 @@ const HouseDescription = () => {
 
     fetchHouse();
   }, []);
-
+  const titleRef = useRef(null);
+  // useEffect(() => {
+  //  if (displayCardInfo) {
+  //    titleRef.current.innerHTML = { houseInfo };
+  //  }
+  // })
   // if(loader) {
   //     return <div>Getting houses...</div>
   // }
 
   return (
     <>
+      <Helmet>
+        <title ref={titleRef}> House Descriptions | KEEV</title>
+        <meta name="description" content="House Description Page" />
+      </Helmet>
       <div className="propertyContainer">
         <div className="main">
           <div className="icon_Back">

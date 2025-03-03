@@ -22,6 +22,7 @@ import main from "../assets/main.png"
 import { use } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 // import House from "./House";
 
@@ -209,6 +210,10 @@ const navigateHouse = useNavigate()
 
   return (
     <>
+      <Helmet>
+        <title>Explore our Services | KEEV</title>
+        <meta name="description" content="Explore our Services" />
+      </Helmet>
       <NavServices />
       <div
         id="carouselExampleIndicators"
@@ -239,6 +244,8 @@ const navigateHouse = useNavigate()
               src={house8}
               className="d-block w-100"
               alt=""
+              rel="preload"
+              fetchPriority="high"
               style={{ filter: "brightness(50%)" }}
             />
             <div className="houseTextHome">
@@ -258,6 +265,8 @@ const navigateHouse = useNavigate()
               id="image"
               style={{ filter: "brightness(50%)", width: "100px" }}
               alt=""
+              rel="preload"
+              fetchPriority="high"
             />
             <div className="houseTextHome">
               <p className="headingHome">
@@ -274,7 +283,9 @@ const navigateHouse = useNavigate()
               src={house4}
               className="d-block w-100"
               id="image33"
-              alt="..."
+              alt=""
+              rel="preload"
+              fetchPriority="high"
               style={{ filter: "brightness(50%)" }}
             />
             <div className="houseTextHome">

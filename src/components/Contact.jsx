@@ -4,10 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Nav from "./Nav";
 import "./Contact.css";
+import { Helmet } from "react-helmet-async";
 
 const Contact = () => {
   return (
     <>
+    <Helmet>
+      <title>Contact Us | KEEV</title>
+      <meta name="description" content="Contact page" />
+    </Helmet>
       {/* Container for Contact */}
       <div className="contact-Container">
         <Nav />

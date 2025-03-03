@@ -24,6 +24,10 @@ import maleUserClient from "../assets/maleUserClient.svg";
 import lastClient from "../assets/lastClient.svg";
 import "./Home.css"
 import Footer from "./Footer";
+import { Helmet
+
+
+ } from "react-helmet-async";
 const Home = () => {
   const navigate = useNavigate();
 
@@ -50,19 +54,19 @@ const Home = () => {
       console.log(image)
   }, []);
 
-  const CheckImg = () => {
-    image.forEach((img) => {
-      img.addEventListener("mousedown", (event) => {
-        event.preventDefault();
-      });
-      img.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-      });
-    });
-  };
+  // useEffect(() => {
+  //   document.querySelectorAll(image).forEach((img) => {
+  //     img.current.addEventListener("mousedown", (e) => {
+  //       e.preventDefault();
+  //     });
+  //     img.current.addEventListener("contextmenu", (e) => {
+  //       e.preventDefault();
+  //     })
+  //   })
+  // })
 
 
-  document.addEventListener("DOMContentLoaded", CheckImg)
+  // document.addEventListener("DOMContentLoaded", CheckImg)
   // Load an Animation on page Load
   const headerRef = useState(null);
   const bodyContainer = useState(null)
@@ -78,6 +82,17 @@ const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Keev Luxurious Estates</title>
+        <meta
+          name="description"
+          content="Keev Estate developed to suit your standard"
+        />
+        <meta
+          name="description"
+          content="Keev Estate, Real Estate, Property, House, Land, Apartment, Rent, Sale, Buy"
+        />
+      </Helmet>
       <header id="headertag" ref={headerRef}>
         <span className="loader"></span>
       </header>
@@ -102,12 +117,24 @@ const Home = () => {
             </p>
           </div>
           <div className="homeImgs">
-            <img src={home} alt="" id="homeImage" />
+            <img
+              src={home}
+              alt=""
+              id="homeImage"
+              rel="preload"
+              fetchPriority="high"
+            />
           </div>
         </div>
         <div className="helpInfo">
           <div className="moreImg">
-            <img src={more} alt="" id="moreImage" />
+            <img
+              src={more}
+              alt=""
+              id="moreImage"
+              rel="preload"
+              fetchPriority="high"
+            />
           </div>
           <div className="moreText">
             <h2>
@@ -226,7 +253,7 @@ const Home = () => {
           <h2 className="popularHead">Our Popular Residences</h2>
           <div className="popularDiv">
             <div className="popularCard">
-              <img src={california} alt="" />
+              <img src={california} alt="" rel="preload" fetchPriority="high" />
               <div className="cardInfo">
                 <p>
                   <strong>san Francisco, California</strong>
@@ -235,7 +262,7 @@ const Home = () => {
               </div>
             </div>
             <div className="popularCard">
-              <img src={beverly} alt="" />
+              <img src={beverly} alt="" rel="preload" fetchPriority="high" />
               <div className="cardInfo">
                 <p>
                   <strong>Beverly Hills, California</strong>
@@ -244,7 +271,7 @@ const Home = () => {
               </div>
             </div>
             <div className="popularCard">
-              <img src={newyork} alt="" />
+              <img src={newyork} alt="" rel="preload" fetchPriority="high" />
               <div className="cardInfo">
                 <p>
                   <strong>New York, USA</strong>
@@ -260,11 +287,23 @@ const Home = () => {
           <div className="clientsRecordDiv">
             <div className="clientsDiv">
               <div className="clientCard">
-                <img src={client} id="client" alt="" />
+                <img
+                  src={client}
+                  id="client"
+                  alt=""
+                  rel="preload"
+                  fetchPriority="high"
+                />
                 <div className="clientDetails">
                   <div className="clientInfo">
                     <div className="clientContact">
-                      <img id="clientImage" src={clientSerah} alt="" />
+                      <img
+                        id="clientImage"
+                        src={clientSerah}
+                        alt=""
+                        rel="preload"
+                        fetchPriority="high"
+                      />
                       <div className="clientName">
                         <p>
                           {" "}
@@ -275,7 +314,12 @@ const Home = () => {
                     </div>
                     <div className="clientRating">
                       <button>
-                        <img src={star} alt="" />
+                        <img
+                          src={star}
+                          alt=""
+                          rel="preload"
+                          fetchPriority="high"
+                        />
                         <span>
                           <strong>5.0</strong>
                         </span>
@@ -292,11 +336,23 @@ const Home = () => {
               </div>
               {/* card 2 */}
               <div className="clientCard">
-                <img src={client2} id="client2" alt="" />
+                <img
+                  src={client2}
+                  id="client2"
+                  alt=""
+                  rel="preload"
+                  fetchPriority="high"
+                />
                 <div className="clientDetails">
                   <div className="clientInfo">
                     <div className="clientContact">
-                      <img id="clientImage" src={maleUserClient} alt="" />
+                      <img
+                        id="clientImage"
+                        src={maleUserClient}
+                        alt=""
+                        rel="preload"
+                        fetchPriority="high"
+                      />
                       <div className="clientName">
                         <p>
                           {" "}
@@ -324,11 +380,23 @@ const Home = () => {
               </div>
               {/* Card 3 */}
               <div className="clientCard">
-                <img src={client3} id="client3" alt="" />
+                <img
+                  src={client3}
+                  id="client3"
+                  alt=""
+                  rel="preload"
+                  fetchPriority="high"
+                />
                 <div className="clientDetails">
                   <div className="clientInfo">
                     <div className="clientContact">
-                      <img id="clientImage" src={lastClient} alt="" />
+                      <img
+                        id="clientImage"
+                        src={lastClient}
+                        alt=""
+                        rel="preload"
+                        fetchPriority="high"
+                      />
                       <div className="clientName">
                         <p>
                           {" "}

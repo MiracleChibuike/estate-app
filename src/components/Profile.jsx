@@ -10,6 +10,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import ProfileEdit from "../components/ProfileEdit";
 import axiox from "axios";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
+
 
 const Profile = () => {
   const navigateBack = useNavigate();
@@ -155,6 +157,10 @@ const Profile = () => {
 
   return (
     <>
+    <Helmet>
+        <title>Profile | KEEV</title>
+        <meta name="description" content="Profile page" />
+    </Helmet>
       <div className="profile_Container">
         <div className="icon_Back">
           <img src={backlink} id="backLink" onClick={backLinkNav} alt="" />
