@@ -1,0 +1,131 @@
+
+:root{
+  --primary-dark: #020202;
+  --clr-logo: rgba(0, 121, 107, 1);
+  --clr-light-green : rgba(12, 188, 139, 0.4);
+  --green-deem: rgba(12, 188, 139, 0.1);
+  --primary-white: #fff;
+    --clr-color-gray-trans: #ccc;
+}
+
+
+.aboutContainer{
+    margin: 100px 0 0 0;
+}
+
+.aboutHome{
+    background: linear-gradient(rgba(115, 115, 115, 0.7), rgba(115, 115, 115, 0.7)), 
+    url(../assets/AboutHomeImage.svg) no-repeat center/cover;
+    height: 90vh;
+    display: grid;
+    place-content: center;
+    color: var(--primary-white);
+    animation: gradientFade 5s infinite alternate ease-in-out;
+    transition: .5s;
+}
+@keyframes gradientFade {
+  0% {
+    background: linear-gradient(rgba(115, 115, 115, 0.2), rgba(115, 115, 115, 0.1)), 
+    url(../assets/AboutHomeImage.svg) no-repeat center/cover;
+  }
+  25% {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.4)),
+    url(../assets/house5.png) no-repeat center/cover;
+  }
+  50% {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.6)),
+    url(../assets/california.svg) no-repeat center/cover;
+  }
+  75% {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.8)),
+    url(../assets/AboutHomeImage.svg) no-repeat center/cover;
+  }
+  100%{
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2)),
+    url(../assets/AboutHomeImage.svg) no-repeat center/cover;
+  }
+}
+.homeTitle{
+    font-weight: 700;
+    line-height: 100%;
+}
+.aboutTxt{
+    margin: 40px 0;
+}
+.aboutTxt h2{
+    font-weight: 700;
+    line-height: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+.abt-info{
+    background: var(--clr-logo);
+    color: var(--primary-white);
+    margin: 30px 0 0 0;
+    padding: 15px 30px;
+    line-height: 2;
+    border-top-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    box-shadow: 0 0 15px var(--clr-color-gray-trans);
+}
+.journey_Info{
+    border-bottom-left-radius: 40px;
+    border-top-right-radius: 40px;
+       background: var(--clr-logo);
+    color: var(--primary-white);
+    margin: 30px 0 0 0;
+    padding: 15px 30px;
+    line-height: 2;
+    box-shadow: 0 0 15px var(--clr-color-gray-trans);
+}
+
+.missionDetail{
+    display: flex;
+    justify-content: space-evenly;
+    margin:  10px 30px;
+}
+.mission-info{
+    margin: 0 20px;
+}
+.img-info{
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 35px;
+    row-gap: 20px;
+}
+.Vst-Last{
+    grid-row-start: 2;
+    grid-row-end: 4;
+    grid-column: 2;
+}
+.Journey{
+    margin: 40px 0;
+}
+.Journey h2{
+    text-align: center;
+}
+.Journey h2 span{
+   color: var(--clr-logo);
+   font-weight: bold;
+}
+
+/* Media code */
+@media screen and (min-width: 0) and (max-width: 820px) {
+    .homeTitle{
+        text-align: center;
+    }
+    .missionDetail{
+        display: block;
+    }
+    .img-info{
+      display: block;
+      text-align: center;
+    }
+    .mission-info{
+        margin: 0;
+    }
+    .img-info img{
+        margin: 10px 0;
+        width: 300px;
+    }
+}

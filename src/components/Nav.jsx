@@ -12,23 +12,32 @@ const Nav = () => {
   let menuIcon = null;
   let navsItem = null;
 
+      const menuIconRef = useRef(null);
+      const navsItemRef = useRef(null)
+  // useEffect(() => {
+  //   menuIcon = document.getElementById("menuIcon");
+  //   navsItem = document.querySelector(".nav-Links");
+  //   navsItem.classList.toggle("show");
+  // }, []);
+
+  // Try Do the right thing
   useEffect(() => {
-    menuIcon = document.getElementById("menuIcon");
-    navsItem = document.querySelector(".nav-Links");
-  }, []);
+    const handleClick = () => {
+      if (navsItemRef.current) {
+        navsItemRef.current.classList.toggle("show");
+      }
+    };
+    const menu = menuIconRef.current;
+    if (menu) {
+      menu.addEventListener("click", handleClick);
+    }
 
-  const showNavs = () => {
-    // console.log(menuIcon, navsItem)
-    navsItem.classList.toggle("show");
-    navsItem.classList.add("rushnav");
-    let una = document.getElementById("hello");
-  };
-
-  let homeText = null;
-
-  useEffect(() => {
-    homeText = document.getElementById("HomeTxt");
-    console.log(homeText);
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      if (menu) {
+        menu.removeEventListener("click", handleClick);
+      }
+    };
   }, []);
 
   // Add Active Link
@@ -78,9 +87,9 @@ const Nav = () => {
         </Link>
       </div>
       <div className="menu">
-        <img src={menu} alt="" id="menuIcon" onClick={showNavs} />
+        <img src={menu} alt="" id="menuIcon" ref={menuIconRef} />
       </div>
-      <div className="nav-Links">
+      <div className="nav-Links" ref={navsItemRef}>
         <ul>
           <Link to="/">
             <li id="HomeTxt">Home</li>
@@ -88,7 +97,9 @@ const Nav = () => {
           <Link to="/Services">
             <li>Services</li>
           </Link>
-          <li>About Us</li>
+          <Link to="/About">
+            <li>About Us</li>
+          </Link>
           <li>Blogs</li>
           <li>Agents</li>
           <Link to="/Contact">
