@@ -245,7 +245,7 @@ const navigateHouse = useNavigate()
               className="d-block w-100"
               alt=""
               rel="preload"
-              fetchPriority="high"
+              fetchpriority="high"
               style={{ filter: "brightness(50%)" }}
             />
             <div className="houseTextHome">
@@ -266,7 +266,7 @@ const navigateHouse = useNavigate()
               style={{ filter: "brightness(50%)", width: "100px" }}
               alt=""
               rel="preload"
-              fetchPriority="high"
+              fetchpriority="high"
             />
             <div className="houseTextHome">
               <p className="headingHome">
@@ -285,7 +285,7 @@ const navigateHouse = useNavigate()
               id="image33"
               alt=""
               rel="preload"
-              fetchPriority="high"
+              fetchpriority="high"
               style={{ filter: "brightness(50%)" }}
             />
             <div className="houseTextHome">

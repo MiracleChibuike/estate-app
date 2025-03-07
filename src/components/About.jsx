@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Nav from "./Nav";
@@ -7,11 +7,28 @@ import vision from "../assets/vision.svg";
 import vision2 from "../assets/vision2.svg";
 import mission from "../assets/mission.svg";
 import lastmission from "../assets/lastmission.svg"
-import AboutHomeImage from "../assets/AboutHomeImage.svg"
+import AboutHomeImage from "../assets/AboutHomeImage.svg";
+import Ceo from "../assets/teams/Ceo.svg";
+import Laura from "../assets/teams/Laura.svg";
+import Florence from "../assets/teams/Florence.svg";
+import Ahmed from "../assets/teams/Ahmed.svg"
+import Footer from "./Footer";
 
 
 const About = () => {
+    const headre = useRef(null);
+    const abtPage = useRef(null);
 
+    // Load the animation
+    useEffect(() => {
+      const AboutLoader = () => {
+         setTimeout(() => {
+          headre.current.style.display = "none";
+          abtPage.current.style.display = "block"
+      }, 4000);
+      };
+      AboutLoader();
+    }, [])
 
     return (
       <>
@@ -23,7 +40,12 @@ const About = () => {
           />
           <meta name="keywords" content="About KEEV" />
         </Helmet>
-        <Nav />
+        <header id="headreTag" ref={headre}>
+        <span className="loader"></span>
+        </header>
+        {/* About Container */}
+          <div className="aboutPage" ref={abtPage}>
+              <Nav />
         <div className="aboutContainer">
           <div className="aboutHome">
             <h2 className="homeTitle">
@@ -66,17 +88,17 @@ const About = () => {
                 <p>
                   Our mission and Visionis to provide exceptional real estate{" "}
                   services by offering personalized guidance, expert market{" "}
-                  <br />
+                
                   insights, and a commitment to integrity. We strive to make
-                  every real estate transaction seamless and stress-free, <br />
+                  every real estate transaction seamless and stress-free,
                   helping our clients find their perfect property while building{" "}
                   lasting relationships. Through innovation, professionalism,{" "}
                   and dedication, we aim to be the trusted partner for all your{" "}
-                  <br />
+                
                   real estate needs. lasting relationships. Through innovation,
                   professionalism, insights, and a commitment to integrity. We
                   strive to make every real estate transaction seamless and
-                  stress-free, <br />
+                  stress-free,
                 </p>
               </div>
               <div className="img-info">
@@ -109,7 +131,72 @@ const About = () => {
               </p>
             </div>
           </div>
+          {/* Team Section */}
+          <div className="team">
+            <h2>Meet <span>Our Team</span></h2>
+            <div className="teamsSpec">
+                <div className="teamHead">
+                    <img src={Ceo} alt="Cover image of Mr Miracle Chibuike - CEO" />
+                    <div className="teamHead-Details">
+                      <p className="nameTeam"><strong>Mr. Miracle</strong></p>
+                      <p>Operations Manager</p>
+                    </div>
+                </div>
+                {/* team2 */}
+                 <div className="teamHead">
+                    <img src={Laura} alt="Cover image of Mrs. Laura - PROPERTY MANAGER" />
+                    <div className="teamHead-Details">
+                      <p className="nameTeam"><strong>Mrs. Laura</strong></p>
+                      <p>Property Manager</p>
+                    </div>
+                </div>
+                {/* Team -3 */}
+                 <div className="teamHead">
+                    <img src={Florence} alt="Cover image of Mrs. Florence - CONSULTANT" />
+                    <div className="teamHead-Details">
+                      <p className="nameTeam"><strong>Mrs. Florence</strong></p>
+                      <p>Consultant</p>
+                    </div>
+                </div>
+                {/* team -4 */}
+                 <div className="teamHead">
+                    <img src={Ahmed} alt="Cover image of Mr Ahmed - ENGINEER" />
+                    <div className="teamHead-Details">
+                      <p className="nameTeam"><strong>Mr. Ahmed</strong></p>
+                      <p>Engineer</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+            {/* News Letter */}
+        <div className="newsLetter">
+          <h2>Subscribe to our Newsletter</h2>
+          <div className="newsLetterDiv">
+            <div className="newsLetterText">
+              <p>
+                Stay up to date with the latest news, trends, and offers in the
+                real estate industry.
+              </p>
+            </div>
+            <div className="newsLetterInput">
+              <form action="">
+                <input
+                  type="text"
+                  placeholder="Enter your email"
+                  id="inputNews"
+                  name="Email"
+                />
+                <button type="submit" id="subscribeBtn">
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
+        {/* Footer */}
+        <Footer />
+        </div>
+          </div>
       </>
     );
 

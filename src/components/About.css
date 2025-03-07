@@ -8,10 +8,51 @@
     --clr-color-gray-trans: #ccc;
 }
 
-
+.aboutPage{
+    display: none;
+}
 .aboutContainer{
     margin: 100px 0 0 0;
 }
+/* For Headre Animation */
+#headreTag{
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    background: var(--primary-dark);
+}
+.loader {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      position: relative;
+      background: var(--clr-light-green);
+    }
+    .loader:before , .loader:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--clr-logo);
+      animation: slide 1s infinite linear alternate;
+      opacity: 0.5;
+    }
+    .loader:after {
+      animation: slide2 1s infinite linear alternate;
+      opacity: 1;
+
+    }
+    @keyframes slide {
+      0% , 20% {  transform: translate(0, 0)  }
+      80% , 100% { transform: translate(15px, 15px) }
+    }
+    @keyframes slide2 {
+      0% , 20% {  transform: translate(0, 0) }
+      80% , 100% { transform: translate(-15px, -15px) }
+    }
 
 .aboutHome{
     background: linear-gradient(rgba(115, 115, 115, 0.7), rgba(115, 115, 115, 0.7)), 
@@ -20,25 +61,28 @@
     display: grid;
     place-content: center;
     color: var(--primary-white);
-    animation: gradientFade 5s infinite alternate ease-in-out;
+    animation: gradientFade 10s infinite alternate ease-in-out;
     transition: .5s;
 }
 @keyframes gradientFade {
   0% {
-    background: linear-gradient(rgba(115, 115, 115, 0.2), rgba(115, 115, 115, 0.1)), 
+    background: linear-gradient(rgba(61, 136, 211, 0.8), rgba(61, 136, 211, 0.2)), 
     url(../assets/AboutHomeImage.svg) no-repeat center/cover;
+    transition: all .5s;
   }
   25% {
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.4)),
     url(../assets/house5.png) no-repeat center/cover;
+        transition: all .4s;
+
   }
   50% {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.6)),
+    background: linear-gradient(rgba(37, 115, 232, 0.6), rgba(37, 115, 232, 0.1)),
     url(../assets/california.svg) no-repeat center/cover;
   }
   75% {
     background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.8)),
-    url(../assets/AboutHomeImage.svg) no-repeat center/cover;
+    url(../assets/house2.png) no-repeat center/cover;
   }
   100%{
     background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2)),
@@ -57,6 +101,7 @@
     line-height: 100%;
     text-align: center;
     margin: 10px 0;
+    /* text-wrap: balance; */
 }
 .abt-info{
     background: var(--clr-logo);
@@ -82,6 +127,7 @@
 .missionDetail{
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     margin:  10px 30px;
 }
 .mission-info{
@@ -93,6 +139,24 @@
     column-gap: 35px;
     row-gap: 20px;
 }
+.img-info img{
+    animation: imageInfo 3s linear infinite;
+}
+@keyframes imageInfo {
+    0%{
+        transition: .0;
+        transform: translateY(0);
+    }
+    25%, 50%{
+        transition: .5s ease-in-out;
+        transform: translateY(10px);
+        box-shadow:  0 2.9px 5px #aba8a8;
+    }
+    100%{
+        transition: .10s;
+        transform: translateX(5px);
+    }
+}
 .Vst-Last{
     grid-row-start: 2;
     grid-row-end: 4;
@@ -101,14 +165,61 @@
 .Journey{
     margin: 40px 0;
 }
-.Journey h2{
+.Journey h2, .team h2{
     text-align: center;
 }
-.Journey h2 span{
+.Journey h2 span, .team h2 span{
    color: var(--clr-logo);
    font-weight: bold;
 }
 
+/* Team */
+.team{
+    margin: 50px 0;
+}
+.teamsSpec{
+    margin: 30px 0 0 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.teamHead{
+    margin: 5px 15px;
+        transition: transform 0.9s ease, background-color 0.9s ease;
+
+}
+.teamHead:hover{
+            transform: scale(1.1);
+            transition: .5s;
+}
+.teamHead img{
+        transition: transform 0.9s ease, background-color 0.9s ease;
+
+}
+
+.teamHead img:hover{
+        border-top-left-radius: 150px;
+        transition: .5s;
+        cursor: pointer;
+        filter: saturate(50%);
+}
+.teamHead-Details{
+    background: var(--clr-logo);
+    color: var(--primary-white);
+    text-align: center;
+    padding: 15px;
+    position: relative;
+    bottom: 5px;
+    border-bottom-left-radius: 10px;
+     border-bottom-right-radius: 10px;
+    transition: transform 0.9s ease, background-color 0.9s ease;
+
+}
+.teamHead-Details:hover{
+            box-shadow: 0 2.9px 10px var(--primary-white);
+    transition: .5s;
+     border-top-right-radius: 150px;
+}
 /* Media code */
 @media screen and (min-width: 0) and (max-width: 820px) {
     .homeTitle{
@@ -128,4 +239,9 @@
         margin: 10px 0;
         width: 300px;
     }
+    /* teams */
+    .teamHead{
+        margin: 15px ;
+    }
+  
 }

@@ -134,6 +134,7 @@
 .chooseDiv{
         background: var(--clr-light-green);
         display: flex;
+        /* flex-wrap: wrap; */
         justify-content: space-evenly;
         padding: 50px 20px;
 }
@@ -165,6 +166,7 @@
 }
 .popularDiv{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding: 20px 40px;
 }
@@ -303,7 +305,8 @@
 }
 @media screen and (min-width: 0) and (max-width: 820px) {
    .HomeContainer, .helpInfo, .chooseDiv, .popularDiv{
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
    }
    .expert, .prices, .Availability, .ChatBot{
     margin: 20px 0;
@@ -338,7 +341,8 @@
    }
    /* Clients */
    .clientsDiv{
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
     /* overflow-x: scroll; */
     padding: 10px 15px;
    }

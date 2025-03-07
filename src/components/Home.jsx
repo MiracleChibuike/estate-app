@@ -426,7 +426,7 @@ const Home = () => {
         </div>
         {/* News Letter */}
         <div className="newsLetter">
-          <h2 onClick={navigateFooter}>Subscribe to our Newsletter</h2>
+          <h2 >Subscribe to our Newsletter</h2>
           <div className="newsLetterDiv">
             <div className="newsLetterText">
               <p>
