@@ -241,7 +241,10 @@
     }
     /* teams */
     .teamHead{
-        margin: 15px ;
+        margin: 15px 50px ;
+    }
+    .teamHead img{
+        width: 100%;
     }
   
 }
