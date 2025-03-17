@@ -1,12 +1,9 @@
-
 import React, { useEffect } from "react";
 import { useState, useRef } from "react";
 import backlink from "../assets/backlink.svg";
 import "./PropertyPage.css";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-
-
 
 const HouseDescription = () => {
   // Re-direct back to services page
@@ -18,8 +15,11 @@ const HouseDescription = () => {
   };
   // Message to show when Buy button is clicked
   const buyMessage = () => {
-    alert("Site still in progress  \n Can't place order at the moment ");
+        houseName.current.style.display = "block"
   };
+
+ const modal_Close = useRef(null);
+  const modal_Close2 = useRef(null);
 
   const displayImg = useRef(null);
   const displayCardInfo = useRef(null);
@@ -59,6 +59,38 @@ const HouseDescription = () => {
     fetchHouse();
   }, []);
   const titleRef = useRef(null);
+
+  // Show House Informations on alert Trigger
+  const houseName = useRef(null);
+  const houseLocation = useRef(null);
+  const eq_Form = useRef(null);
+  const eq_Name = useRef(null);
+  const eq_Email = useRef(null);
+  const eq_textArea = useRef(null)
+      useEffect(() => {
+         eq_Form.current.addEventListener("submit", (e) => {
+           e.preventDefault();
+
+           const fields = [eq_Name, eq_Email, eq_textArea]; // Store all inputs in an array
+           let allFilled = true;
+
+           fields.forEach((field) => {
+             if (field.current.value.trim() === "") {
+               field.current.style.outline = "1px solid red"; // Highlight empty fields
+               allFilled = false;
+             } else {
+               field.current.style.outline = "1px solid var(--clr-light-green)"; // Reset filled fields (optional)
+
+             }
+           });
+
+           if (!allFilled) {
+             alert("Please fill all fields.");
+             return;
+           }
+           alert(`Message sent succesfully. Our Admin is going to get back to you`);
+         });
+      }, [])
   // useEffect(() => {
   //  if (displayCardInfo) {
   //    titleRef.current.innerHTML = { houseInfo };
@@ -67,6 +99,20 @@ const HouseDescription = () => {
   // if(loader) {
   //     return <div>Getting houses...</div>
   // }
+
+  useEffect(() => {
+    modal_Close.current.addEventListener("click", () => {
+      houseName.current.style.display = "none"
+    })
+  });
+
+  useEffect(() => {
+    modal_Close2.current.addEventListener("click", () => {
+      alert("Operation Cancelled. We hope you are going to come back again");
+            houseName.current.style.display = "none";
+
+    })
+  })
 
   return (
     <>
@@ -122,8 +168,84 @@ const HouseDescription = () => {
           <h2 style={{ textAlign: "center", margin: "30px 0" }}>Feautures</h2>
           <div className="buyButton">
             <button id="buyButton" onClick={buyMessage}>
-              Buy
+              Send a Request
             </button>
+          </div>
+        </div>
+        {/* Modal for Buy */}
+        <div
+          className="shadow-lg p-3 mb-5 bg-body-tertiary rounded"
+          id="buy_Modal"
+          ref={houseName}>
+          <div className="modal_Container">
+            <div className="modalClose">
+              <button ref={modal_Close} id="closeMd" className="btn-secondary ">
+                <i className="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <h2 className="modalTitle" style={{ textAlign: "center" }}>
+              You're One Step Away from Your Dream Home
+            </h2>
+            <div className="form_Contents">
+              <form
+                ref={eq_Form}
+                action="james@gmail.com"
+                encType="plain"
+                method="get"
+                id="eq-form">
+                <div class="mb-3">
+                  <label for="email" className="form-label">
+                    Email address
+                  </label>
+                  <input
+                    ref={eq_Email}
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    placeholder="Please Enter Your Email Address"
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="Name" className="form-label">
+                    Name
+                  </label>
+                  <input
+                    ref={eq_Name}
+                    type="text"
+                    className="form-control"
+                    id="Name"
+                    placeholder="Please Enter Your Name"
+                  />
+                </div>
+                <div className="mb-3">
+                  <label for="enquiry" class="form-label">
+                    Enquiry
+                  </label>
+                  <textarea
+                    ref={eq_textArea}
+                    className="form-control"
+                    id="enquiry"
+                    rows="3"
+                    placeholder="Need more details? Type any further inquiry below."></textarea>
+                </div>
+                <ul>
+                  {/* <li className="houseImage-buy">
+                    <img alt="" />
+                  </li> */}
+                  {/* <li className="housename" ref={houseName}></li>
+                  <li className="houseLocation-buy" ref={houseLocation}></li> */}
+                </ul>
+                <div className="buyNow">
+                  <button type="submit">Confirm Purchase</button> <br />
+                  <button
+                    id="close-btn-purchase"
+                    type="button"
+                    ref={modal_Close2}>
+                    Cancel Purchase
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

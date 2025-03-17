@@ -45,11 +45,11 @@
     line-height: 30px;
     font-weight: 500;
 }
-.buyButton{
+.buyButton, .buyNow{
     margin: 40px 0 0 0;
     text-align: center;
 }
-.buyButton button{
+.buyButton button, .buyNow button{
     width: 50%;
     border: none;
     border-radius: 7px;
@@ -59,10 +59,59 @@
     margin: 15px 0;
     cursor: pointer;
     font-weight: 500;
+    transition: transform 0.9s ease, background-color 0.9 ease;
 }
-
+.buyNow button:hover{
+    transform: scale(1.1);
+    transition: .3s;
+}
+#buy_Modal{
+    background: var(--primary-white);
+    margin: 20px 190px;
+    padding: 10px 15px;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50px;
+    z-index: 100;
+    transition: .5s ease;
+    transform: translateY(10px);
+    display: none;
+}
+.modalTitle{
+    margin: 10px 0;
+}
+#eq-form{
+    margin: 25px 0;
+    padding: 0 10px;
+}
+#eq-form textarea{
+    resize: none;
+    scroll-snap-type: none;
+}
+.modalClose{
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 5px;
+}
+.modalClose button{
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    bottom: 15px;
+}
+#close-btn-purchase{
+    background: transparent;
+    color: var(--primary-dark);
+    border: 2px solid #ccc;
+}
 @media screen and (min-width: 0) and (max-width: 820px) {
-    .buyButton button{
+    .buyButton button, .buyNow .buyButton{
         width: 70%;
+    }
+    #buy_Modal{
+        margin: 20px 20px;
     }
 }
