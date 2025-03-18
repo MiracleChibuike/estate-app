@@ -107,11 +107,35 @@
     color: var(--primary-dark);
     border: 2px solid #ccc;
 }
+.msg-purchase-success{
+    background: var(--clr-logo);
+    color: var(--primary-white);
+    border-radius: 8px;
+    padding: 5px 5px;
+    /* display: flex; */
+    font-weight: bold;
+    font-size: 1.2rem;
+    /* width: 50%; */
+    margin: 10px 250px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30px;
+    display: none;
+    z-index: 100;
+}
+.closeMesg-success{
+    display: flex;
+    justify-content: flex-end;
+}
 @media screen and (min-width: 0) and (max-width: 820px) {
-    .buyButton button, .buyNow .buyButton{
-        width: 70%;
+    #btn-toggle-p, #close-btn-purchase{
+       width: 70%;
     }
     #buy_Modal{
         margin: 20px 20px;
+    }
+    .msg-purchase-success{
+          margin: 10px 20px;
     }
 }

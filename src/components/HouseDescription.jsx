@@ -15,10 +15,10 @@ const HouseDescription = () => {
   };
   // Message to show when Buy button is clicked
   const buyMessage = () => {
-        houseName.current.style.display = "block"
+    houseName.current.style.display = "block";
   };
 
- const modal_Close = useRef(null);
+  const modal_Close = useRef(null);
   const modal_Close2 = useRef(null);
 
   const displayImg = useRef(null);
@@ -60,37 +60,57 @@ const HouseDescription = () => {
   }, []);
   const titleRef = useRef(null);
 
+  // To be able to show a message after a succesful message recieival instead of alert
+  const message_Success = useRef(null);
+  const message_Success_Close = useRef(null);
+
+
   // Show House Informations on alert Trigger
   const houseName = useRef(null);
   const houseLocation = useRef(null);
   const eq_Form = useRef(null);
   const eq_Name = useRef(null);
   const eq_Email = useRef(null);
-  const eq_textArea = useRef(null)
+  const eq_textArea = useRef(null);
+
+  useEffect(() => {
+    eq_Form.current.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const fields = [eq_Name, eq_Email, eq_textArea]; // Store all inputs in an array
+      let allFilled = true;
+
+      fields.forEach((field) => {
+        if (field.current.value.trim() === "") {
+          field.current.style.outline = "1px solid red"; // Highlight empty fields
+          allFilled = false;
+        } else {
+          field.current.style.outline = "1px solid var(--clr-light-green)";
+           // Reset filled fields (optional)
+        }
+      });
+
+      if (!allFilled) {
+        alert("Please fill all fields.");
+        return;
+      }
+        // if (allFilled) {
+        //   eq_Name.current.value = ""
+        // }
+      houseName.current.style.display = "none"
+                message_Success.current.style.display = "block";
+            setTimeout(() => {
+                  message_Success.current.style.display = "none"
+            }, 4000)
+    });
+  }, []);
+
+    // Close the success Message
       useEffect(() => {
-         eq_Form.current.addEventListener("submit", (e) => {
-           e.preventDefault();
-
-           const fields = [eq_Name, eq_Email, eq_textArea]; // Store all inputs in an array
-           let allFilled = true;
-
-           fields.forEach((field) => {
-             if (field.current.value.trim() === "") {
-               field.current.style.outline = "1px solid red"; // Highlight empty fields
-               allFilled = false;
-             } else {
-               field.current.style.outline = "1px solid var(--clr-light-green)"; // Reset filled fields (optional)
-
-             }
-           });
-
-           if (!allFilled) {
-             alert("Please fill all fields.");
-             return;
-           }
-           alert(`Message sent succesfully. Our Admin is going to get back to you`);
-         });
-      }, [])
+         const closeMessageSuccess_Content = () => {
+          message_Success.current.style.display = "none"
+         }
+      })
   // useEffect(() => {
   //  if (displayCardInfo) {
   //    titleRef.current.innerHTML = { houseInfo };
@@ -102,17 +122,18 @@ const HouseDescription = () => {
 
   useEffect(() => {
     modal_Close.current.addEventListener("click", () => {
-      houseName.current.style.display = "none"
-    })
+      houseName.current.style.display = "none";
+    });
   });
 
   useEffect(() => {
     modal_Close2.current.addEventListener("click", () => {
       alert("Operation Cancelled. We hope you are going to come back again");
-            houseName.current.style.display = "none";
+      houseName.current.style.display = "none";
+    });
+  });
 
-    })
-  })
+ 
 
   return (
     <>
@@ -170,6 +191,21 @@ const HouseDescription = () => {
             <button id="buyButton" onClick={buyMessage}>
               Send a Request
             </button>
+          </div>
+        </div>
+        {/* Modal for a success Message Purchase */}
+        <div className="success_purchase">
+          <div
+            className="msg-purchase-success shadow-lg p-3 mb-5 bg-body-tertiary rounded"
+            ref={message_Success}>
+            <p
+              className="closeMesg-success"
+              ref={message_Success_Close}
+              >
+              {" "}
+              <i className="fa-solid fa-xmark"></i>
+            </p>
+            <p>Message sent succesfully... </p>
           </div>
         </div>
         {/* Modal for Buy */}
@@ -236,7 +272,10 @@ const HouseDescription = () => {
                   <li className="houseLocation-buy" ref={houseLocation}></li> */}
                 </ul>
                 <div className="buyNow">
-                  <button type="submit">Confirm Purchase</button> <br />
+                  <button type="submit" id="btn-toggle-p">
+                    Confirm Purchase
+                  </button>{" "}
+                  <br />
                   <button
                     id="close-btn-purchase"
                     type="button"
