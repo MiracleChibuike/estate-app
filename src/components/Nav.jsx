@@ -100,7 +100,9 @@ const Nav = () => {
           <Link to="/About">
             <li>About Us</li>
           </Link>
-          <li>Blogs</li>
+          <Link to="/Blogs">
+            <li>Blogs</li>
+          </Link>
           <li>Agents</li>
           <Link to="/Contact">
             <li>Contact Us</li>

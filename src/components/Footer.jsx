@@ -38,7 +38,7 @@ return (
               <strong>Our Social</strong>
               <ul>
                 <li>Instagram</li>
-                <li>Facebook</li>
+                <li>Facebook </li>
                 <li>Twitter (X)</li>
               </ul>
             </div>

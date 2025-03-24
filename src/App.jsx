@@ -14,7 +14,8 @@ import Dashboard from './components/Dashboard';
 import Profile from './components/Profile';
 import ProfileEdit from './components/ProfileEdit';
 import Contact from './components/Contact';
-import About from './components/About'
+import About from './components/About';
+import Blogs from './components/Blogs'
 import { HelmetProvider} from 'react-helmet-async'
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/EditProfile" element={<ProfileEdit />} />
+            <Route path="/Blogs" element={<Blogs />} />
             <Route path="/Contact" element={<Contact />} />
           </Routes>
         </Router>

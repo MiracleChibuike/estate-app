@@ -16,7 +16,12 @@ const HouseDescription = () => {
   // Message to show when Buy button is clicked
   const buyMessage = () => {
     houseName.current.style.display = "block";
+    // Scroll to the housename Container
+    houseName.current.scrollIntoView({ behavior: "smooth" });
+    // Add a dark shadow to the body when the modal is open
+    document.body.style.background = "rgba(31, 30, 30, 0.4)";
   };
+ 
 
   const modal_Close = useRef(null);
   const modal_Close2 = useRef(null);
@@ -111,6 +116,7 @@ const HouseDescription = () => {
           message_Success.current.style.display = "none"
          }
       })
+      // Scroll Into View Function
   // useEffect(() => {
   //  if (displayCardInfo) {
   //    titleRef.current.innerHTML = { houseInfo };
@@ -123,6 +129,7 @@ const HouseDescription = () => {
   useEffect(() => {
     modal_Close.current.addEventListener("click", () => {
       houseName.current.style.display = "none";
+      document.body.style.background = "white";
     });
   });
 
@@ -198,10 +205,7 @@ const HouseDescription = () => {
           <div
             className="msg-purchase-success shadow-lg p-3 mb-5 bg-body-tertiary rounded"
             ref={message_Success}>
-            <p
-              className="closeMesg-success"
-              ref={message_Success_Close}
-              >
+            <p className="closeMesg-success" ref={message_Success_Close}>
               {" "}
               <i className="fa-solid fa-xmark"></i>
             </p>
