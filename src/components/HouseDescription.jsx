@@ -13,13 +13,14 @@ const HouseDescription = () => {
   const backLinkNav = () => {
     navigateBack("/Services");
   };
+  const propertyContainer = useRef(null)
   // Message to show when Buy button is clicked
   const buyMessage = () => {
     houseName.current.style.display = "block";
     // Scroll to the housename Container
     houseName.current.scrollIntoView({ behavior: "smooth" });
     // Add a dark shadow to the body when the modal is open
-    document.body.style.background = "rgba(31, 30, 30, 0.4)";
+    // document.body.classList.add("backgroundAppend");
   };
  
 
@@ -129,7 +130,7 @@ const HouseDescription = () => {
   useEffect(() => {
     modal_Close.current.addEventListener("click", () => {
       houseName.current.style.display = "none";
-      document.body.style.background = "white";
+      // document.body.classList.remove("backgroundAppend");
     });
   });
 
@@ -140,7 +141,22 @@ const HouseDescription = () => {
     });
   });
 
- 
+//  Show the features bar message when clicked on the bar icon
+const featuresBar = useRef(null);
+const featuresMsg = useRef(null);
+const delFeaturesBar = useRef(null);
+useEffect(() => {
+   featuresBar.current.addEventListener("click", () => {
+      featuresMsg.current.style.display = "block";
+   })
+});
+
+// Close the features bar message when clicked on the close icon
+useEffect(() => {
+  delFeaturesBar.current.addEventListener("click", () => {
+    featuresMsg.current.style.display = "none";
+  })
+});
 
   return (
     <>
@@ -148,7 +164,7 @@ const HouseDescription = () => {
         <title ref={titleRef}> House Descriptions | KEEV</title>
         <meta name="description" content="House Description Page" />
       </Helmet>
-      <div className="propertyContainer">
+      <div className="propertyContainer" ref={propertyContainer}>
         <div className="main">
           <div className="icon_Back">
             <img src={backlink} id="backLink" onClick={backLinkNav} alt="" />
@@ -193,7 +209,28 @@ const HouseDescription = () => {
               </div>
             </div>
           </div>
-          <h2 style={{ textAlign: "center", margin: "30px 0" }}>Feautures</h2>
+          <h2 style={{ textAlign: "center", margin: "30px 0" }}>
+            Feautures{" "}
+            <i
+              class="fa-solid fa-circle-exclamation"
+              id="features-bar"
+              ref={featuresBar}></i>
+          </h2>
+          <div className="featuresMsg" ref={featuresMsg}>
+            <p className="del-features-container">
+              <i
+                class="fa-solid fa-xmark"
+                id="del-features-bar"
+                ref={delFeaturesBar}></i>
+            </p>
+            <p>
+              {" "}
+              <small>
+                To explore the features and amenities of this house, please
+                submit a request to the admin for further details.
+              </small>
+            </p>
+          </div>
           <div className="buyButton">
             <button id="buyButton" onClick={buyMessage}>
               Send a Request

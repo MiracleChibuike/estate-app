@@ -6,7 +6,11 @@
   --green-deem: rgba(12, 188, 139, 0.1);
   --primary-white: #fff;
 }
-
+/* Append a background-coor to the HouseDescription Component */
+.backgroundAppend{
+    transition: all .5s;
+    background: linear-gradient(rgba(0, 0, 0,  0.1), rgba(0, 0, 0, 0.2));
+}
 .propertyContainer{
     padding: 20px 20px;
 }
@@ -64,6 +68,39 @@
 .buyNow button:hover{
     transform: scale(1.1);
     transition: .3s;
+}
+/* Features Styles */
+.featuresMsg{
+    background: var(--clr-light-green);
+    border-radius: 10px;
+    padding: 10px 10px;
+    box-shadow: 0 2.9px 50px #ccc;
+    display: none;
+    transition: transform 0.9s ease, background-color 0.9s ease;
+}
+.del-features-container{
+    display: flex;
+    justify-content: flex-end;
+}
+#del-features-bar{
+    font-size: 20px;
+    color: var(--primary-dark);
+    cursor: pointer;
+    padding: 5px 5px;
+}
+#features-bar{
+    font-size: 20px;
+    position: relative;
+    left: -12px;
+    top: -10px;
+    box-shadow: 0 2.9px 50px #ccc;
+    color: var(--clr-logo);
+    cursor: pointer;
+}
+#features-bar:hover{
+    transform: scale(1.1);
+    transition: .3s;
+    box-shadow: 0 0 10px var(--primary-white)
 }
 #buy_Modal{
     background: var(--primary-white);
