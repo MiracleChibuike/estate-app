@@ -79,37 +79,46 @@ const HouseDescription = () => {
   const eq_Email = useRef(null);
   const eq_textArea = useRef(null);
 
-  useEffect(() => {
-    eq_Form.current.addEventListener("submit", (e) => {
-      e.preventDefault();
+ useEffect(() => {
+   const handleSubmit = (e) => {
+     e.preventDefault();
 
-      const fields = [eq_Name, eq_Email, eq_textArea]; // Store all inputs in an array
-      let allFilled = true;
+     const fields = [eq_Name, eq_Email, eq_textArea]; // Store all inputs in an array
+     let allFilled = true;
 
-      fields.forEach((field) => {
-        if (field.current.value.trim() === "") {
-          field.current.style.outline = "1px solid red"; // Highlight empty fields
-          allFilled = false;
-        } else {
-          field.current.style.outline = "1px solid var(--clr-light-green)";
-           // Reset filled fields (optional)
-        }
-      });
+     fields.forEach((field) => {
+       if (field.current.value.trim() === "") {
+         field.current.style.outline = "1px solid red"; // Highlight empty fields
+         allFilled = false;
+       } else {
+         field.current.style.outline = "1px solid #ccc";
+       }
+     });
 
-      if (!allFilled) {
-        alert("Please fill all fields.");
-        return;
-      }
-        // if (allFilled) {
-        //   eq_Name.current.value = ""
-        // }
-      houseName.current.style.display = "none"
-                message_Success.current.style.display = "block";
-            setTimeout(() => {
-                  message_Success.current.style.display = "none"
-            }, 4000)
-    });
-  }, []);
+     if (!allFilled) {
+       alert("Please fill all fields.");
+       return;
+     }
+
+     // Hide house name and show success message
+     houseName.current.style.display = "none";
+     message_Success.current.style.display = "block";
+
+     // Clear input fields
+     fields.forEach((field) => {
+       field.current.value = ""; // Reset each input field
+     });
+
+     setTimeout(() => {
+       message_Success.current.style.display = "none";
+     }, 4000);
+   };
+
+   eq_Form.current.addEventListener("submit", handleSubmit);
+
+   return () => eq_Form.current.removeEventListener("submit", handleSubmit);
+ }, []);
+
 
     // Close the success Message
       useEffect(() => {
