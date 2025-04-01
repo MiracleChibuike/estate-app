@@ -1,6 +1,8 @@
 
 *{
     font-family: "Mulish", serif;
+    user-select: none;
+    -webkit-user-select: var(--clr-logo);
 }
 
 

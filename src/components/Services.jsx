@@ -349,8 +349,31 @@ const navigateHouse = useNavigate()
             </div>
           </div> */}
           <div className="searchFilter">
+            <i
+              class="fa-solid fa-magnifying-glass"
+              id="search-icon-media"
+              style={{
+                color: "var(--clr-color-gray-trans)",
+                fontSize: "15px",
+                position: "relative",
+                top: "40px",
+                left: "7px",
+                zIndex: "100",
+              }}></i>
+            {/* Search Icon Desktop */}
+            <i
+              class="fa-solid fa-magnifying-glass"
+              id="search-icon-Desktop"
+              style={{
+                color: "var(--clr-color-gray-trans)",
+                fontSize: "15px",
+                position: "relative",
+                top: "-7px",
+                left: "21px",
+                zIndex: "100",
+              }}></i>
             <input
-              type="se"
+              type="search"
               placeholder="Search by location or house name"
               ref={filterRef}
               id="filter"

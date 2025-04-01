@@ -47,10 +47,13 @@
 .searchFilter{
     margin: 0 20px;
 }
+#search-icon-media{
+    display: none;
+}
 #filter{
     width: 40%;
     margin: 15px 0;
-    padding: 10px 10px;
+    padding: 10px 30px;
     border: 1.5px solid var(--clr-color-gray-trans);
     outline: none;
     border-radius: 8px;
@@ -58,6 +61,7 @@
     transition: .4s ease;
     top: -8px;
     background: var(--primary-white);
+    /* z-index: 100; */
 }
 #filter:focus{
     outline: 3px solid var(--clr-logo);
@@ -136,6 +140,15 @@
 }
 .cardFeatured{
     margin: 20px 0;
+}
+.searchFilter{
+    margin: 0 8px;
+}
+#search-icon-media{
+    display: block;
+}
+#search-icon-Desktop{
+    display: none;
 }
 #filter{
     width: 100%;

@@ -1,5 +1,7 @@
 import Nav from "./Nav";
 import React, { useEffect, useRef } from "react";
+// Help me import the aos dependency
+// Help me import the aos css file
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import home from "../assets/home.svg";
@@ -24,10 +26,11 @@ import maleUserClient from "../assets/maleUserClient.svg";
 import lastClient from "../assets/lastClient.svg";
 import "./Home.css"
 import Footer from "./Footer";
-import { Helmet
+import { Helmet} from "react-helmet-async";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 
- } from "react-helmet-async";
 const Home = () => {
   const navigate = useNavigate();
 
@@ -80,6 +83,19 @@ const Home = () => {
           loadAnimation();
     }, [])
 
+    // useEffect(() => {
+    //   AOS.init({
+    //     duration: 1000, // Animation duration
+    //     easing: "ease-in-out", // Animation easing
+    //     once: true, // Whether animation should only happen once
+    //   });
+    // }, []);
+  const divRef = useRef(null);
+
+  useEffect(() => {
+    Aos.init();
+  }, [])
+
   return (
     <>
       <Helmet>
@@ -99,7 +115,7 @@ const Home = () => {
       <div ref={bodyContainer} className="edit">
         <Nav />
         <div className="HomeContainer">
-          <div className="HomeText">
+          <div className="HomeText" ref={divRef} data-aos="fade-down">
             <h2>
               Find Your Perfect Dream <br /> House with us
             </h2>
@@ -156,7 +172,10 @@ const Home = () => {
           </div>
         </div>
         <div className="ratings">
-          <div className="ratingsDiv">
+          <div
+            className="ratingsDiv"
+            data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom">
             <div>
               <img src={houseA} alt="" />
               <p>8K+</p>
@@ -197,7 +216,7 @@ const Home = () => {
         {/* Why Choose US */}
         <div className="chooseUs">
           <h2 className="chooseHeading">Why Choose Us</h2>
-          <div className="chooseDiv">
+          <div className="chooseDiv" data-aos="fade-right">
             <div className="expert">
               <img src={expert} alt="" />
               <div>
@@ -251,7 +270,7 @@ const Home = () => {
         {/* Popular Residences */}
         <div className="popular">
           <h2 className="popularHead">Our Popular Residences</h2>
-          <div className="popularDiv">
+          <div className="popularDiv" data-aos="fade-up">
             <div className="popularCard">
               <img src={california} alt="" rel="preload" fetchPriority="high" />
               <div className="cardInfo">
@@ -284,7 +303,7 @@ const Home = () => {
         {/* What Our Clients Say */}
         <div className="clientsComment">
           <h2 className="clientsHeading">What Our Clients Say</h2>
-          <div className="clientsRecordDiv">
+          <div className="clientsRecordDiv" data-aos="fade-down">
             <div className="clientsDiv">
               <div className="clientCard">
                 <img
@@ -425,8 +444,8 @@ const Home = () => {
           </div>
         </div>
         {/* News Letter */}
-        <div className="newsLetter">
-          <h2 >Subscribe to our Newsletter</h2>
+        <div className="newsLetter" data-aos="zoom-in-up">
+          <h2>Subscribe to our Newsletter</h2>
           <div className="newsLetterDiv">
             <div className="newsLetterText">
               <p>

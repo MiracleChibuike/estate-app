@@ -99,6 +99,16 @@
 .moreInfo{
     margin-top: 35px;
 }
+#moreImage{
+        transition: transform 0.9s ease, background-color 0.9s ease;
+}
+#moreImage:hover{
+   transform: rotate(10deg);
+            filter: saturate(40%);
+            transition: .9s;
+            cursor: pointer;
+}
+
 
 .ratings{
     background: var(--clr-light-green);
@@ -113,6 +123,13 @@
 }
 .ratingsDiv img{
     width: 80px;
+    animation: ratings 1s ease-in-out infinite;
+}
+@keyframes ratings{
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+    
 }
 
 .ratingsDiv p{
@@ -264,8 +281,9 @@
 }
 .clientRating button span{
     position: relative;
-    bottom: 3px;
+    bottom: 0;
     margin: 1px 5px;
+    /* display: none; */
 }
 /* News Letter */
 .newsLetter{

@@ -5,6 +5,7 @@
   --clr-light-green : rgba(12, 188, 139, 0.4);
   --green-deem: rgba(12, 188, 139, 0.1);
   --primary-white: #fff;
+  --danger-faint: #eea2a2;
 }
 /* Append a background-coor to the HouseDescription Component */
 .backgroundAppend{
@@ -93,8 +94,8 @@
     position: relative;
     left: -12px;
     top: -10px;
-    box-shadow: 0 2.9px 50px #ccc;
-    color: var(--clr-logo);
+    /* box-shadow: 0 2.9px 50px #ccc; */
+    color: #949393;
     cursor: pointer;
 }
 #features-bar:hover{
@@ -165,6 +166,34 @@
     display: flex;
     justify-content: flex-end;
 }
+/* Cancel Purchase Modal */
+.cancel-Modal{
+    animation-name: trans;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    background: var(--danger-faint);
+    padding: 10px 5px;
+    border-radius: 8px;
+    box-shadow: 0 0 30px #ccc;
+    transition: .5s;
+    border: 1px solid var(--primary-white);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 15px 50px;
+    display: none;
+    /* color: var(--primary-white); */
+}
+@keyframes trans {
+    0%{transform: scale(0);
+        opacity: 0;
+    }
+    100%{transform: scale(1.1);
+        opacity: 1;
+    }
+}
 @media screen and (min-width: 0) and (max-width: 820px) {
     #btn-toggle-p, #close-btn-purchase{
        width: 70%;
@@ -174,5 +203,9 @@
     }
     .msg-purchase-success{
           margin: 10px 20px;
+    }
+    .cancel-Modal{
+            margin: 15px 20px;
+
     }
 }

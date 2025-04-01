@@ -26,6 +26,7 @@ const Blogs = () => {
           </div>
           <div className="blog-img">
             <img
+            id="blog-img"
               style={{}}
               loading="lazy"
               src="https://s3-alpha-sig.figma.com/img/eacb/6973/d565a23e3abef0c0587b68ad8b0f8821?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=YeAJnpdOoofcJZr6UUmTkLc5lkhy4CKuMOUBHXWf4TIPAFY2I-1Ude-vrobAMdgANYXeowHRS00bhoCnbeRQCRn~NrCkgm9AqRwhcFNBwOjY6kD~UJEOxIp2BW602I0Ok1Rinupzmzl0hYy89HWBAU2eLaD26ZO-CXIqUE5fNHMWyMYnd4NweCQKKHWWYH8sqWDQt2Zr2tQVw065idkpS85OTWABOmanNmDrgJN~-Q6-rDnrMp0-Wk6kwt5wWcSTEGiLx4A3LDYB~ndHBe5tlKKDjB6cJoaeQ2sEms6LbRhbwLS4iyUrVrZZ2c-KnHZKak6NhjCHQZ-vCNmta32TLA__"

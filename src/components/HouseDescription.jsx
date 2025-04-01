@@ -13,7 +13,7 @@ const HouseDescription = () => {
   const backLinkNav = () => {
     navigateBack("/Services");
   };
-  const propertyContainer = useRef(null)
+  const propertyContainer = useRef(null);
   // Message to show when Buy button is clicked
   const buyMessage = () => {
     houseName.current.style.display = "block";
@@ -22,7 +22,6 @@ const HouseDescription = () => {
     // Add a dark shadow to the body when the modal is open
     // document.body.classList.add("backgroundAppend");
   };
- 
 
   const modal_Close = useRef(null);
   const modal_Close2 = useRef(null);
@@ -70,7 +69,6 @@ const HouseDescription = () => {
   const message_Success = useRef(null);
   const message_Success_Close = useRef(null);
 
-
   // Show House Informations on alert Trigger
   const houseName = useRef(null);
   const houseLocation = useRef(null);
@@ -79,62 +77,52 @@ const HouseDescription = () => {
   const eq_Email = useRef(null);
   const eq_textArea = useRef(null);
 
- useEffect(() => {
-   const handleSubmit = (e) => {
-     e.preventDefault();
+  useEffect(() => {
+    const handleSubmit = (e) => {
+      e.preventDefault();
 
-     const fields = [eq_Name, eq_Email, eq_textArea]; // Store all inputs in an array
-     let allFilled = true;
+      const fields = [eq_Name, eq_Email, eq_textArea]; // Store all inputs in an array
+      let allFilled = true;
 
-     fields.forEach((field) => {
-       if (field.current.value.trim() === "") {
-         field.current.style.outline = "1px solid red"; // Highlight empty fields
-         allFilled = false;
-       } else {
-         field.current.style.outline = "1px solid #ccc";
-       }
-     });
+      fields.forEach((field) => {
+        if (field.current.value.trim() === "") {
+          field.current.style.outline = "1px solid red"; // Highlight empty fields
+          allFilled = false;
+        } else {
+          field.current.style.outline = "1px solid #ccc";
+        }
+      });
 
-     if (!allFilled) {
-       alert("Please fill all fields.");
-       return;
-     }
+      if (!allFilled) {
+        alert("Please fill all fields.");
+        return;
+      }
 
-     // Hide house name and show success message
-     houseName.current.style.display = "none";
-     message_Success.current.style.display = "block";
+      // Hide house name and show success message
+      houseName.current.style.display = "none";
+      message_Success.current.style.display = "block";
 
-     // Clear input fields
-     fields.forEach((field) => {
-       field.current.value = ""; // Reset each input field
-     });
+      // Clear input fields
+      fields.forEach((field) => {
+        field.current.value = ""; // Reset each input field
+      });
 
-     setTimeout(() => {
-       message_Success.current.style.display = "none";
-     }, 4000);
-   };
+      setTimeout(() => {
+        message_Success.current.style.display = "none";
+      }, 4000);
+    };
 
-   eq_Form.current.addEventListener("submit", handleSubmit);
+    eq_Form.current.addEventListener("submit", handleSubmit);
 
-   return () => eq_Form.current.removeEventListener("submit", handleSubmit);
- }, []);
+    // return () => eq_Form.current.removeEventListener("submit", handleSubmit);
+  }, []);
 
-
-    // Close the success Message
-      useEffect(() => {
-         const closeMessageSuccess_Content = () => {
-          message_Success.current.style.display = "none"
-         }
-      })
-      // Scroll Into View Function
-  // useEffect(() => {
-  //  if (displayCardInfo) {
-  //    titleRef.current.innerHTML = { houseInfo };
-  //  }
-  // })
-  // if(loader) {
-  //     return <div>Getting houses...</div>
-  // }
+  // Close the success Message
+  useEffect(() => {
+    const closeMessageSuccess_Content = () => {
+      message_Success.current.style.display = "none";
+    };
+  });
 
   useEffect(() => {
     modal_Close.current.addEventListener("click", () => {
@@ -143,29 +131,45 @@ const HouseDescription = () => {
     });
   });
 
+  // Error Message when a user clicks on cancel Request
+  const cancelBar = useRef(null);
+  const cancelBarIcon = useRef(null);
+
   useEffect(() => {
     modal_Close2.current.addEventListener("click", () => {
-      alert("Operation Cancelled. We hope you are going to come back again");
-      houseName.current.style.display = "none";
+            cancelBar.current.style.display = "block";
+            cancelBar.current.scrollIntoView({ behavior: "smooth" });
+              //  houseName.current.scrollIntoView({ behavior: "smooth" });
+            // alert("Operation Cancelled. We hope you are going to come back again");
+            houseName.current.style.display = "none";
     });
   });
 
-//  Show the features bar message when clicked on the bar icon
-const featuresBar = useRef(null);
-const featuresMsg = useRef(null);
-const delFeaturesBar = useRef(null);
-useEffect(() => {
-   featuresBar.current.addEventListener("click", () => {
-      featuresMsg.current.style.display = "block";
-   })
-});
 
-// Close the features bar message when clicked on the close icon
-useEffect(() => {
-  delFeaturesBar.current.addEventListener("click", () => {
-    featuresMsg.current.style.display = "none";
+  useEffect(() => {
+   cancelBarIcon.current.addEventListener("click", () => {
+     if (cancelBar.current) {
+       cancelBar.current.style.display = "none";
+     }
+   })
   })
-});
+
+  //  Show the features bar message when clicked on the bar icon
+  const featuresBar = useRef(null);
+  const featuresMsg = useRef(null);
+  const delFeaturesBar = useRef(null);
+  useEffect(() => {
+    featuresBar.current.addEventListener("click", () => {
+      featuresMsg.current.style.display = "block";
+    });
+  });
+
+  // Close the features bar message when clicked on the close icon
+  useEffect(() => {
+    delFeaturesBar.current.addEventListener("click", () => {
+      featuresMsg.current.style.display = "none";
+    });
+  });
 
   return (
     <>
@@ -245,6 +249,23 @@ useEffect(() => {
               Send a Request
             </button>
           </div>
+        </div>
+        {/* Modal to be triggered once a user clicks on cancel Request */}
+        <div className="cancel-Modal" ref={cancelBar}>
+          <i
+            ref={cancelBarIcon}
+            class="fa-solid fa-xmark"
+            id="del-features-bar2"
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              margin: "8px 10px",
+              cursor: "pointer",
+              fontSize: "20px",
+              position: "relative",
+              top: "-5px",
+            }}></i>
+          <p>Operation Cancelled. We hope you are going to come back again</p>
         </div>
         {/* Modal for a success Message Purchase */}
         <div className="success_purchase">
