@@ -10,89 +10,85 @@ import axios from "axios";
 import emailjs from "emailjs-com";
 
 const Contact = () => {
-    const modalShow = useRef(null);
-   const modalIcon = useRef(null);
-    const currentModal = modalShow.current;
-    const contactName = useRef(null);
-  const contactEmail = useRef(null);
-  const contactMessage = useRef(null);
-  const formHandler = useRef(null);
-  // Validate Form and Send Email
-  const valForm = () => {
-    let isValid = true;
-    const allFilled = [contactEmail, contactName, contactMessage];
+     const [isModalVisible, setIsModalVisible] = useState(false);
+     const modalShow = useRef(null);
+     const modalIcon = useRef(null);
+     const formHandler = useRef(null);
+     const contactName = useRef(null);
+     const contactEmail = useRef(null);
+     const contactMessage = useRef(null);
 
-    // Check if all fields are filled
-    allFilled.forEach((field) => {
-      if (field.current.value.trim() === "") {
-        field.current.style.outline = "3px solid #ddaaaa";
-        isValid = false;
-      } else {
-        field.current.style.outline = "2px solid #ccc";
-      }
-    });
+     // Validate Form and Send Email
+     const valForm = () => {
+       let isValid = true;
+       const allFilled = [contactEmail, contactName, contactMessage];
 
-    if (!isValid) {
-      alert("Please fill all fields");
-      return false;
-    }
+       // Check if all fields are filled
+       allFilled.forEach((field) => {
+         if (field.current.value.trim() === "") {
+           field.current.style.outline = "3px solid #ddaaaa";
+           isValid = false;
+         } else {
+           field.current.style.outline = "2px solid #ccc";
+         }
+       });
 
-    // If valid, send email
-    sendEmail();
-    return true;
-  };
+       if (!isValid) {
+         alert("Please fill all fields");
+         return false;
+       }
 
-  // Function to send email using EmailJS
-  const sendEmail = () => {
-    const form = formHandler.current;
-    emailjs
-      .sendForm(
-        "service_vb3crwp", // Your service ID
-        "template_w56qs5r", // Your template ID
-        form, // The form element
-        "HsZSbeZEi3KERFFS6" // Your user ID
-      )
-      .then(
-        (response) => {
-          console.log("Message sent:", response);
-          currentModal.style.display = "block";
-          currentModal.style.transiton = "all 0.5s ease-in-out";
-          currentModal.scrollIntoView({ behavior: "smooth" });
-          setTimeout(() => {
-            currentModal.style.display = "none"
-          }, 7000);
-          // alert("Message sent successfully!"); // alert for successful message
-          form.reset(); // Optionally reset the form after successful submission
-        },
-        (error) => {
-          console.error("Error sending message:", error);
-          alert("There was an error sending your message.");
-        }
-      );
-  };
+       // If valid, send email
+       sendEmail();
+       return true;
+     };
 
-  // Effect for handling form submit event
-  useEffect(() => {
-    const formElement = formHandler.current;
+     // Function to send email using EmailJS
+     const sendEmail = () => {
+       const form = formHandler.current;
+       emailjs
+         .sendForm(
+           "service_vb3crwp", // Your service ID
+           "template_w56qs5r", // Your template ID
+           form, // The form element
+           "HsZSbeZEi3KERFFS6" // Your user ID
+         )
+         .then(
+           (response) => {
+             console.log("Message sent:", response);
+             setIsModalVisible(true); // Show modal
+             form.reset(); // Optionally reset the form after successful submission
+           },
+           (error) => {
+             console.error("Error sending message:", error);
+             alert("There was an error sending your message.");
+           }
+         );
+     };
 
-    const submitHandler = (e) => {
-      e.preventDefault(); // Prevent the default form submission
-      if (valForm()) {
-        // Only proceed with sending email if the form is valid
-      }
-    };
+     // Effect for handling form submit event
+     useEffect(() => {
+       const formElement = formHandler.current;
 
-    formElement.addEventListener("submit", submitHandler);
+       const submitHandler = (e) => {
+         e.preventDefault(); // Prevent the default form submission
+         if (valForm()) {
+           // Only proceed with sending email if the form is valid
+         }
+       };
 
-    // Cleanup to avoid multiple event listeners
-    return () => {
-      formElement.removeEventListener("submit", submitHandler);
-    };
-  }, []);
+       formElement.addEventListener("submit", submitHandler);
 
-const closeModal = () => {
-  currentModal.style.display = "none";
-};
+       // Cleanup to avoid multiple event listeners
+       return () => {
+         formElement.removeEventListener("submit", submitHandler);
+       };
+     }, []);
+
+     // Close the modal
+     const closeModal = () => {
+       setIsModalVisible(false);
+     };
 
 
 
@@ -140,18 +136,20 @@ const closeModal = () => {
           </div>
         </div>
         {/* Contact-Modal */}
-        <div className="modal_Contact" ref={modalShow}>
-          <div className="content">
-            <p>
-              {" "}
-              <i
-                className="fa-solid fa-xmark"
-                ref={modalIcon}
-                onClick={closeModal}></i>
-            </p>
-            <p>Message sent successfully! We will get back to you soon.</p>
+        {isModalVisible && (
+          <div className="modal_Contact" ref={modalShow}>
+            <div className="content">
+              <p>
+                {" "}
+                <i
+                  className="fa-solid fa-xmark"
+                  ref={modalIcon}
+                  onClick={closeModal}></i>
+              </p>
+              <p>Message sent successfully! We will get back to you soon.</p>
+            </div>
           </div>
-        </div>
+        )}
         {/* Maps */}
         <div className="maps" style={{ margin: "40px 0" }}>
           <h2 className="text-center" style={{ margin: "40px 0" }}>
