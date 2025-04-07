@@ -4,6 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import "./Blogs.css";
 import Nav from "./Nav";
+import blogHome from "../assets/blogs/blogHome.svg"
+import fBlog from "../assets/blogs/fBlog.svg";
+import secondBlog from "../assets/blogs/secondBlog.svg";
+import tBlog from "../assets/blogs/tBlog.svg";
+import fourthBlog from "../assets/blogs/fourthBlog.svg";
+import fifthBlo from "../assets/blogs/fifthBlo.svg";
+import lastBlog from "../assets/blogs/lastBlog.svg";
+import Footer from "./Footer";
+
 const Blogs = () => {
   return (
     <>
@@ -26,10 +35,10 @@ const Blogs = () => {
           </div>
           <div className="blog-img">
             <img
-            id="blog-img"
+              id="blog-img"
               style={{}}
               loading="lazy"
-              src="https://s3-alpha-sig.figma.com/img/eacb/6973/d565a23e3abef0c0587b68ad8b0f8821?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=YeAJnpdOoofcJZr6UUmTkLc5lkhy4CKuMOUBHXWf4TIPAFY2I-1Ude-vrobAMdgANYXeowHRS00bhoCnbeRQCRn~NrCkgm9AqRwhcFNBwOjY6kD~UJEOxIp2BW602I0Ok1Rinupzmzl0hYy89HWBAU2eLaD26ZO-CXIqUE5fNHMWyMYnd4NweCQKKHWWYH8sqWDQt2Zr2tQVw065idkpS85OTWABOmanNmDrgJN~-Q6-rDnrMp0-Wk6kwt5wWcSTEGiLx4A3LDYB~ndHBe5tlKKDjB6cJoaeQ2sEms6LbRhbwLS4iyUrVrZZ2c-KnHZKak6NhjCHQZ-vCNmta32TLA__"
+              src={blogHome}
               alt="blog"
             />
           </div>
@@ -40,12 +49,7 @@ const Blogs = () => {
           </h2>
           <div className="blogPosts">
             <div className="post">
-              <img
-                src="https://s3-alpha-sig.figma.com/img/f1ef/bdc4/c0d7c130b083833dc9a03aaa34dab3d8?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=soOk3CaOp~fuDZDK2cCw3bqOnEEPd09uqBj4r-ABeRqBjbw0RP4auycCKk9enw-clYIQxeGiTKlODJVr~mkGyHxcI401SCUOyXm5lwlRRkRvbWPsI3u4rskNrpQPfKwOV4-jZQjirScZHZg6EciP1WEt~9xJVFNF3RmAW9OIzv-7jEgNn7MevTvd7VCSC2RZug531mpGbMBPWZJRitn-aXUxIV8BXSJArj2G6TPCZSYyGGOyHQvvrKz4hFrbjMgu4NMmIXIMFghpsmjDr9T3PmrSz2u5k5aknEPIsxyDUd01wMsF0zegWCkOnGXuTtvH99R3eGfP~gToTKeW6DZ52A__"
-                loading="lazy"
-                fetchPriority="high"
-                alt=""
-              />
+              <img src={fBlog} loading="lazy" fetchPriority="high" alt="" />
               <p
                 style={{
                   fontWeight: "600",
@@ -71,7 +75,7 @@ const Blogs = () => {
             {/* Post 2 */}
             <div className="post">
               <img
-                src="https://s3-alpha-sig.figma.com/img/ace2/ae72/0a494cca8bba6bcf3121c4709363532e?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=BKNt2xgIEwLlrWin4nfjE1EhFWt6y1S1pvsqXTgQ5sXh4At5yXzHO6aSGy0-2vhfYx6QgAAyj2zMgV7zqXyRuwOrEq680Oj7EIeRj~19e6W-XXLU-JLpd6FoxMjw7nEPelOo2Rq6hbSsm7siaF4pNUgMF50F~nFVzDhAC6ak6Z2XZ7Gj33Lo~yIfct1Kgvl~LTeK76xr0D4AsiYmXg9y73I4qRFroqon9DCp5ojtum5UDTkKVB8-wkZZr4-EwjtD6iOFpgg1z3h15cy1fozt-sqaFDFklLhtMqA~xrSXQ3mEf-6Cfkq2i2fbB04fxXZsUjOhYZZUo8A9iy-jnLMYeA__"
+                src={secondBlog}
                 loading="lazy"
                 fetchPriority="high"
                 alt=""
@@ -102,12 +106,7 @@ const Blogs = () => {
             </div>
             {/* Post 3 */}
             <div className="post">
-              <img
-                src="https://s3-alpha-sig.figma.com/img/05ed/78de/85f172ee4cd6b803b613a317948b5f95?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=kc1x9mVKsGQuj0ECHJwYWPUpOoMj0wvzLxKhJS8oKMSrSG1xBZ0L4oJP1j-XZTDWW2iI3-mLa8yBUSkbpzQes2EoTb06RGZ~1rqdvxNlynyedeUzwMTFLHLzunwdfPwF4J1DsCezo1bSnVkHOD~J6rX~llpBDWzgkbz86n-n603Cb40loCKLN6D4cQDncNzkrTT8mYgEmsrM9Fgk~~QzgWQWpAwdUkgII0A91sXOvFdycGjPsGJgILtn508vglw3jjFihilSTWr~mrjt~PgpWxe-KiLnYO9BK0SacMEDfl5sdyQdugYypgMk~EA9U-2-T1Lx-oK4V7gFSQXGAeaD1w__"
-                loading="lazy"
-                fetchPriority="high"
-                alt=""
-              />
+              <img src={tBlog} loading="lazy" fetchPriority="high" alt="" />
               <p
                 style={{
                   fontWeight: "600",
@@ -130,11 +129,11 @@ const Blogs = () => {
                 <strong>Read More</strong>
               </button>
             </div>
+
             {/* Post 4 */}
             <div className="post">
               <img
-               
-                src="https://s3-alpha-sig.figma.com/img/12ae/77b0/74f934182f097506d4eebe98293e2dc3?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nARAljKeDWucprLPjIsMWqcRjrmhlDrQqsQG0YYH90IAFCuozprggEav1jv6H~8F~PipnKWw92MPHJ7PHKWKDWE9Cit2nPGhWKT5KkLNVbevhP3KevYqQLa6BsNV1gVRJ7G5XoFSJoRQphIajbhKbt7QX~sY9v6XeRG88z48d~vJKSPbHJWywWofGHYKdjUcyhDKcS~Pabwk5EhoncxtakZ0tSYP2LewONVgliT1Y5k930vP2WV7PWEJMLUdCNjpjDaF8~5vCcNDu~QC3JegPB-fPVQEg878hA4-5mOvbgm317386oXHG0HyCHpjXGGVaV9Y~A8c6yibMcn8kfxqsA__"
+                src={fourthBlog}
                 loading="lazy"
                 fetchPriority="high"
                 alt=""
@@ -162,8 +161,93 @@ const Blogs = () => {
               </button>
             </div>
           </div>
+          <h2
+            className="text-Center"
+            style={{ margin: "30px 0", textAlign: "center" }}>
+            Today's Spotlight
+          </h2>
+          <div className="spotlight">
+            {/* Post 5 */}
+            <div className="post">
+              <img src={fifthBlo} loading="lazy" fetchPriority="high" alt="" />
+              <p
+                style={{
+                  fontWeight: "600",
+                  margin: "15px 0",
+                  fontSize: "1.4rem",
+                }}>
+                <strong>An Overnight Millionaire</strong>
+              </p>
+              <p>
+                Lisa Ann, a nurse and mother of two, entered real estate with
+                KEEV's support. After investing $80,000 in September 2023, her
+                property is now worth $2 million—an inspiring story of
+                education, connections, and smart investing.
+              </p>
+              <button
+                style={{
+                  border: "none",
+                  background: "transparent",
+                  color: "var(--clr-logo)",
+                }}>
+                <strong>Read More</strong>
+              </button>
+            </div>
+            {/* last Blog */}
+            <div className="post">
+              <img src={lastBlog} loading="lazy" fetchPriority="high" alt="" />
+              <p
+                style={{
+                  fontWeight: "600",
+                  margin: "15px 0",
+                  fontSize: "1.4rem",
+                }}>
+                <strong>Slow And Steady</strong>
+              </p>
+              <p>
+                Alex, a first-time investor, transformed an overlooked suburban
+                property into a success through strategic vision and bold
+                renovations. Learn from the challenges he overcame and the smart
+                decisions that led to his impressive real estate win.
+              </p>
+              <button
+                style={{
+                  border: "none",
+                  background: "transparent",
+                  color: "var(--clr-logo)",
+                }}>
+                <strong>Read More</strong>
+              </button>
+            </div>
+          </div>
+          {/* News Letter */}
+          <div className="newsLetter">
+            <h2>Subscribe to our Newsletter</h2>
+            <div className="newsLetterDiv">
+              <div className="newsLetterText">
+                <p>
+                  Stay up to date with the latest news, trends, and offers in
+                  the real estate industry.
+                </p>
+              </div>
+              <div className="newsLetterInput">
+                <form action="">
+                  <input
+                    type="text"
+                    placeholder="Enter your email"
+                    id="inputNews"
+                    name="Email"
+                  />
+                  <button type="submit" id="subscribeBtn">
+                    Subscribe
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

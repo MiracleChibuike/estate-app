@@ -16,6 +16,7 @@
     background: var(--clr-green-faint);
     height: 87vh;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding: 15px 30px;
     margin-bottom: 50px;
@@ -48,14 +49,14 @@
     filter: saturate(30%);
 }
 /* Blogs */
-.blogPosts{
+.blogPosts, .spotlight{
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 25px;
     row-gap: 30px;
         padding: 15px 30px;
 }
-.post img{
+.post img, .spotlight .post img{
     width: 100%;
     transform: transition background-color 0.9s ease, color 0.9s ease;
 }
@@ -83,7 +84,7 @@
         transform: rotate(10deg);
     }
     /* Blogs */
-    .blogPosts{
+    .blogPosts, .spotlight{
         grid-template-columns: 1fr;
        row-gap: 25px;
     }

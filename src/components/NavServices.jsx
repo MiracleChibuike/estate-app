@@ -84,7 +84,12 @@ const NavServices = () => {
               <li>Just Sold</li>
               <li>
                 <Link to="/EditProfile">
-                  <img src={user} alt="" id="user" ref={imageBannerNav} />
+                  <img
+                    src="https://i.pinimg.com/736x/49/17/c9/4917c92ac5f017b1d26e324d53cac668.jpg"
+                    alt=""
+                    id="user"
+                    ref={imageBannerNav}
+                  />
                 </Link>
               </li>
             </ul>

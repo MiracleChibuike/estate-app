@@ -146,6 +146,8 @@
 }
 #search-icon-media{
     display: block;
+    /* background: var(--primary-dark); */
+    width: 5%;
 }
 #search-icon-Desktop{
     display: none;

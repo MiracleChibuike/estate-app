@@ -52,10 +52,45 @@
     color: var(--primary-white);
     border-radius: 5px;
 }
+.modal_Contact{
+    background: var(--clr-logo);
+    color: var(--primary-white);
+    border-radius: 5px;
+    box-shadow: 0 0 30px var(--clr-color-gray-trans);
+    padding: 12px 7px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 150px;
+    top: 20%;
+    border: 2px solid var(--clr-color-gray-trans);
+    animation: trans 0.2s ease-in-out;
+    display: none;
+}
+.modal_Contact p i{
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+@keyframes trans {
+    from{
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    to{
+        transform: scale(0);
+        opacity: 0;
+    }
+}
 
 @media screen and (min-width: 0) and (max-width: 820px){
     .contactForm{
         margin: 10px 15px;
+    }
+    .modal_Contact{
+        margin: 0 40px;
     }
     
 }
