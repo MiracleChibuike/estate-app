@@ -10,7 +10,18 @@ import axios from "axios";
 import emailjs from "emailjs-com";
 
 const Contact = () => {
+
+  // Loading Animation states
+  // const [loader, setLoader] = useState(false);
+  const bodyContent = useRef(null);
+  const loaderAnim = useRef(null)
+  // Validate Modal toggling
      const [isModalVisible, setIsModalVisible] = useState(false);
+    //  Validate Error Toggling
+    const [isErrorVisible, setIsErrorVisible] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('')
+    const errorContent = useRef(null);
+    const updateErrorContent = errorContent.current;
      const modalShow = useRef(null);
      const modalIcon = useRef(null);
      const formHandler = useRef(null);
@@ -48,20 +59,26 @@ const Contact = () => {
        const form = formHandler.current;
        emailjs
          .sendForm(
-           "service_vb3crwp", // Your service ID
-           "template_w56qs5r", // Your template ID
+           "service_vb3crwp", // My service ID
+           "template_w56qs5r", // My template ID
            form, // The form element
-           "HsZSbeZEi3KERFFS6" // Your user ID
+           "HsZSbeZEi3KERFFS6" // My user ID
          )
          .then(
            (response) => {
              console.log("Message sent:", response);
              setIsModalVisible(true); // Show modal
+            //  if (setIsModalVisible) {
+            //   modalShow.current.scrollIntoView({ behavior: "smooth"})
+            //  }
              form.reset(); // Optionally reset the form after successful submission
            },
            (error) => {
              console.error("Error sending message:", error);
-             alert("There was an error sending your message.");
+             setIsErrorVisible(true);
+            //  console.log(updateErrorContent.textContent = "hello can work")
+             setErrorMessage(`There was an error sending your message: Response status returned  "${error.status}" \n Try checking your internet connection and try again.`);
+            //  alert("There was an error sending your message.");
            }
          );
      };
@@ -90,6 +107,26 @@ const Contact = () => {
        setIsModalVisible(false);
      };
 
+    //  Close the Error Modal
+    const closeErrorModal = () => {
+      setIsErrorVisible(false);
+    }
+
+    useEffect(() => {
+          // setLoader(true);
+          const loadreShow = () => {
+            // loaderAnim.current.style.display = "block";
+            // bodyContent.current.style.display = "none";
+            setTimeout(() => {
+                  loaderAnim.current.style.display = "none";
+                  bodyContent.current.style.display = "block";
+            }, 4000)
+          };
+
+          loadreShow();
+        
+    }, [])
+
 
 
   return (
@@ -98,8 +135,12 @@ const Contact = () => {
         <title>Contact Us | KEEV</title>
         <meta name="description" content="Contact page" />
       </Helmet>
+      {/* Loadre Animation Container */}
+      <div id="headerShow" ref={loaderAnim}>
+        <span id="loader"></span>
+      </div>
       {/* Container for Contact */}
-      <div className="contact-Container">
+      <div className="contact-Container" ref={bodyContent}>
         <Nav />
         <div className="contact">
           <div className="headerContact">
@@ -150,6 +191,18 @@ const Contact = () => {
             </div>
           </div>
         )}
+        {/* Error message to show once an error occurs while sending form */}
+        {isErrorVisible && (
+          <div className="displayError">
+            <div className="content">
+              <p>
+                {" "}
+                <i className="fa-solid fa-xmark" onClick={closeErrorModal}></i>
+              </p>
+              {errorMessage && <p>{errorMessage}</p>}
+            </div>
+          </div>
+        )}
         {/* Maps */}
         <div className="maps" style={{ margin: "40px 0" }}>
           <h2 className="text-center" style={{ margin: "40px 0" }}>
@@ -164,8 +217,8 @@ const Contact = () => {
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 };

@@ -110,7 +110,7 @@ const Home = () => {
         />
       </Helmet>
       <header id="headertag" ref={headerRef}>
-        <span className="loader"></span>
+        <span id="loader"></span>
       </header>
       <div ref={bodyContainer} className="edit">
         <Nav />

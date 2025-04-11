@@ -41,7 +41,7 @@ const About = () => {
           <meta name="keywords" content="About KEEV" />
         </Helmet>
         <header id="headreTag" ref={headre}>
-          <span className="loader"></span>
+          <span id="loader"></span>
         </header>
         {/* About Container */}
         <div className="aboutPage" ref={abtPage}>

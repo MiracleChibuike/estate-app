@@ -21,38 +21,59 @@
     min-height: 100vh;
     background: var(--primary-dark);
 }
-.loader {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      position: relative;
-      background: var(--clr-light-green);
-    }
-    .loader:before , .loader:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: var(--clr-logo);
-      animation: slide 1s infinite linear alternate;
-      opacity: 0.5;
-    }
-    .loader:after {
-      animation: slide2 1s infinite linear alternate;
-      opacity: 1;
+#loader {
+  width: 48px;
+  height: 48px;
+  position: relative;
+ 
+}
+#loader::before , #loader::after{
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50% , -50%);
+  width: 48em;
+  height: 48em;
+  background-image:
+    radial-gradient(circle 10px, var(--clr-logo) 100%, transparent 0),
+    radial-gradient(circle 10px, var(--clr-logo) 100%, transparent 0),
+    radial-gradient(circle 10px, var(--clr-logo) 100%, transparent 0),
+    radial-gradient(circle 10px, var(--clr-logo) 100%, transparent 0),
+    radial-gradient(circle 10px, var(--clr-logo) 100%, transparent 0),
+    radial-gradient(circle 10px, var(--clr-logo) 100%, transparent 0),
+    radial-gradient(circle 10px, var(--clr-logo) 100%, transparent 0),
+    radial-gradient(circle 10px, var(--clr-logo) 100%, transparent 0);
+  background-position: 0em -18em, 0em 18em, 18em 0em, -18em 0em,
+                       13em -13em, -13em -13em, 13em 13em, -13em 13em;
+    background-repeat: no-repeat;
+  font-size: 0.5px;
+  border-radius: 50%;
+  animation: blast 1s ease-in infinite;
+}
+#loader::after {
+  font-size: 1px;
+  background: var(--clr-light-green);
+  animation: bounce 1s ease-in infinite;
+}
 
-    }
-    @keyframes slide {
-      0% , 20% {  transform: translate(0, 0)  }
-      80% , 100% { transform: translate(15px, 15px) }
-    }
-    @keyframes slide2 {
-      0% , 20% {  transform: translate(0, 0) }
-      80% , 100% { transform: translate(-15px, -15px) }
-    }
+@keyframes bounce {
+  0% , 100%{ font-size: 0.75px }
+  50% { font-size: 1.5px }
+}
+@keyframes blast {
+  0% , 40% {
+    font-size: 0.5px;
+  }
+  70% {
+    opacity: 1;
+    font-size: 4px;
+  }
+   100% {
+     font-size: 6px;
+    opacity: 0;
+  }
+}
 
 .aboutHome{
     background: linear-gradient(rgba(115, 115, 115, 0.7), rgba(115, 115, 115, 0.7)), 

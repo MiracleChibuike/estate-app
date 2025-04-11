@@ -5,8 +5,70 @@
   --green-deem: rgba(12, 188, 139, 0.1);
   --primary-white: #fff;
     --clr-color-gray-trans: #ccc;
+     --danger-faint: #e37474;
+}
+.contact-Container{
+    display: none;
+}
+#headerShow{
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    background: var(--primary-dark);
+}
+#loader {
+  width: 48px;
+  height: 48px;
+  position: relative;
+ 
+}
+#loader::before , #loader::after{
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50% , -50%);
+  width: 48em;
+  height: 48em;
+  background-image:
+    radial-gradient(circle 10px, var(--clr-logo) 100%, transparent 0),
+    radial-gradient(circle 10px, var(--clr-logo) 100%, transparent 0),
+    radial-gradient(circle 10px, var(--clr-logo) 100%, transparent 0),
+    radial-gradient(circle 10px, var(--clr-logo) 100%, transparent 0),
+    radial-gradient(circle 10px, var(--clr-logo) 100%, transparent 0),
+    radial-gradient(circle 10px, var(--clr-logo) 100%, transparent 0),
+    radial-gradient(circle 10px, var(--clr-logo) 100%, transparent 0),
+    radial-gradient(circle 10px, var(--clr-logo) 100%, transparent 0);
+  background-position: 0em -18em, 0em 18em, 18em 0em, -18em 0em,
+                       13em -13em, -13em -13em, 13em 13em, -13em 13em;
+    background-repeat: no-repeat;
+  font-size: 0.5px;
+  border-radius: 50%;
+  animation: blast 1s ease-in infinite;
+}
+#loader::after {
+  font-size: 1px;
+  background: var(--clr-light-green);
+  animation: bounce 1s ease-in infinite;
 }
 
+@keyframes bounce {
+  0% , 100%{ font-size: 0.75px }
+  50% { font-size: 1.5px }
+}
+@keyframes blast {
+  0% , 40% {
+    font-size: 0.5px;
+  }
+  70% {
+    opacity: 1;
+    font-size: 4px;
+  }
+   100% {
+     font-size: 6px;
+    opacity: 0;
+  }
+}
 .contact{
     margin: 90px 0 0 0;
     padding: 10px 30px;
@@ -52,7 +114,7 @@
     color: var(--primary-white);
     border-radius: 5px;
 }
-.modal_Contact{
+.modal_Contact, .displayError{
     background: var(--clr-logo);
     color: var(--primary-white);
     border-radius: 5px;
@@ -67,7 +129,10 @@
     animation: trans 0.2s ease-in-out;
     /* display: none; */
 }
-.modal_Contact p i{
+.displayError{
+    background: var(--danger-faint);
+}
+.modal_Contact p i, .displayError p i{
     display: flex;
     justify-content: flex-end;
     padding: 5px 15px;
@@ -89,8 +154,8 @@
     .contactForm{
         margin: 10px 15px;
     }
-    .modal_Contact{
-        margin: 0 40px;
+    .modal_Contact, .displayError{
+        margin: 0 30px;
     }
     
 }
