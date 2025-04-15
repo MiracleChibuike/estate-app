@@ -94,7 +94,33 @@ const Home = () => {
 
   useEffect(() => {
     Aos.init();
-  }, [])
+  }, []);
+
+  const [isScrollable, setIscrollable] = useState(false);
+
+  useEffect(() => {
+     const scrollOnWindow = () => {
+       if (window.scrollY > 0) {
+         setIscrollable(true);
+       }else{
+      setIscrollable(false);
+       }
+     }
+       window.addEventListener("scroll", scrollOnWindow);
+       return () => {
+        window.removeEventListener("scroll", scrollOnWindow)
+       }
+  });
+
+    const scrollDown = () => {
+      // Scroll back to the starting point top of page
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      // setIscrollable(false)
+    };
+
 
   return (
     <>
@@ -213,6 +239,11 @@ const Home = () => {
             </div>
           </div>
         </div>
+        {isScrollable && (
+          <div className="scrollUp">
+            <i class="fa-solid fa-arrow-up" onClick={scrollDown}></i>
+          </div>
+        )}
         {/* Why Choose US */}
         <div className="chooseUs">
           <h2 className="chooseHeading">Why Choose Us</h2>
