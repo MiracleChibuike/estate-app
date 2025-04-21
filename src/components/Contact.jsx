@@ -107,7 +107,7 @@ const Contact = () => {
        setIsModalVisible(false);
      };
 
-    //  Close the Error Modal
+    //  Close the Error Modal 
     const closeErrorModal = () => {
       setIsErrorVisible(false);
     }

@@ -136,7 +136,7 @@
 .personalInfo h2{
     text-align: center;
 }
-#userForm{
+#userForm, .langSearch{
     margin: 35px 0;
 }
 .fullName, .userName, .email, .mobile, .location{
@@ -144,7 +144,59 @@
     display: flex;
     flex-direction: column;
 }
-.fullName input, .userName input, .email input, .mobile input, .location select, #location-user{
+.languageModalSuccess{
+    background: var(--green-deem);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2.9px 10px #ccc;
+}
+#search-input{
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 9px 10px;
+}
+.searchList, .currencyLists{
+    width: 100%;
+    background: var(--clr-logo);
+    color: var(--primary-white);
+    border-radius: 7px;
+    /* padding: 15px 20px; */
+    box-shadow: 0 2.9px 10px #ccc;
+    transition: transform 0.9s, background-color 0.9s ease;
+}
+.searchList div, .currencyLists div{
+    padding: 13px 10px;
+    margin: 10px;
+    transition: transform 0.9s, background-color 0.9s ease;
+    border-radius: 4px;
+}
+.searchList div:hover, .currencyLists div:hover{
+    transition: .4s;
+     background: var(--green-deem);
+     cursor: pointer;
+}
+.currencyLists div{
+    display: flex;
+    position: relative;
+    top: -20px;
+    /* flex-direction: column; */
+}
+.currencyDesc{
+    display: flex;
+    flex-direction: column;
+    /* margin: 0 10px; */
+}
+.currencyLists div img{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+}
+/* #search-input:focus{
+    outline: 2px solid var(--clr-light-green);
+} */
+.fullName input, .userName input, .email input, 
+.mobile input, .location select, #location-user, .inputLang input,
+.inputCurrency input{
     padding: 7px 10px;
     margin: 10px 0;
     outline: none;
@@ -152,7 +204,8 @@
     border-radius: 5px; 
 }
 .fullName input:focus, .userName input:focus, .email input:focus, 
-.mobile input:focus, .location select:focus, #location-user:focus{
+.mobile input:focus, .location select:focus, #location-user:focus,
+.inputLang input:focus, .inputCurrency input:focus{
     border: 1px solid var(--clr-logo);
     outline: 2px solid var(--clr-logo);
     transition: .2s;

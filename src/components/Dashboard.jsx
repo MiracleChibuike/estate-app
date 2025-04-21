@@ -24,12 +24,26 @@ const Dashboard = () => {
     });
   }, []);
 
+  // navigate to language Page
+  const langNav = useNavigate();
+
+  const navigateToLang = () => {
+    langNav("/Langs");
+  };
+
+  // Navigate to the Currency Component
+  const currencyNav = useNavigate();
+
+  const loadCurrencyComponent = () => {
+    currencyNav("/Currency");
+  }
+
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>General Information | KEEV</title>
         <meta name="description" content="General Information Page" />
-    </Helmet>
+      </Helmet>
       <div className="container_Dashboard">
         <div className="icon_Back">
           <img src={backlink} id="backLink" onClick={backLinkNav} alt="" />
@@ -43,8 +57,8 @@ const Dashboard = () => {
             Profile Settings
           </button>
           <button>Property Alerts</button>
-          <button>Currency Preferences</button>
-          <button>Language Options</button>
+          <button onClick={loadCurrencyComponent}>Currency Preferences</button>
+          <button onClick={navigateToLang}>Language Options</button>
           <button>Terms And Conditions</button>
           <button>Help</button>
           <button>Location Preferences</button>
