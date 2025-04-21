@@ -1,9 +1,7 @@
-
-
-:root{
+:root {
   --primary-dark: #020202;
   --clr-logo: rgba(0, 121, 107, 1);
-  --clr-light-green : rgba(12, 188, 139, 0.4);
+  --clr-light-green: rgba(12, 188, 139, 0.4);
   --green-deem: rgba(12, 188, 139, 0.1);
   --primary-white: #fff;
 }
@@ -12,32 +10,37 @@
    single CSS file as to not have many CSS files
  */
 
- .loader-container{
-    display: grid;
-    place-content: center;
-    min-height: 100vh;
-    background: var(--primary-white)
- }
- .loader2 {
+.loader-container {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  background: var(--primary-white);
+}
+.loader2 {
   width: 300px;
   height: 300px;
   display: block;
   margin: auto;
   position: relative;
-  background: #FFF;
+  background: #fff;
   box-sizing: border-box;
 }
 .loader2::after {
-  content: '';
+  content: "";
   width: calc(100% - 30px);
   height: calc(100% - 30px);
   top: 25px;
   left: 15px;
   position: absolute;
-  background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
-   radial-gradient(circle 50px , #DDD 100%, transparent 0),
-   linear-gradient(#DDD 16px, transparent 0),
-   linear-gradient(#DDD 24px, transparent 0);
+  background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.5) 50%,
+      transparent 100%
+    ),
+    radial-gradient(circle 50px, #ddd 100%, transparent 0),
+    linear-gradient(#ddd 16px, transparent 0),
+    linear-gradient(#ddd 24px, transparent 0);
   background-repeat: no-repeat;
   background-size: 75px 175px, 100% 100px, 80% 16px, 80% 16px;
   background-position: -185px 0, center 10px, center 125px, center 155px;
@@ -50,79 +53,81 @@
     background-position: 185px 0, center 10px, center 125px, center 155px;
   }
 }
-  /* Display Profile Container none by default */
-  #profileContentLoad{
-    display: none;
-  }
-.container_Dashboard, .profile_Container{
-    padding: 20px 30px;
+/* Display Profile Container none by default */
+#profileContentLoad {
+  display: none;
+}
+.container_Dashboard,
+.profile_Container {
+  padding: 20px 30px;
 }
 
-.pageHead{
-    text-align: center;
-    margin: 10px 0;
-    /* color: var(--clr-logo);
+.pageHead {
+  text-align: center;
+  margin: 10px 0;
+  /* color: var(--clr-logo);
     margin-bottom: 20px; */
 }
-.pageHead h2{
-    font-weight: 700;
-    line-height: 68.26px;
+.pageHead h2 {
+  font-weight: 700;
+  line-height: 68.26px;
 }
 
-.buttonsNav{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 40px;
-    column-gap: 20px;
-    margin: 30px 0 0 0;
+.buttonsNav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 40px;
+  column-gap: 20px;
+  margin: 30px 0 0 0;
 }
-.buttonsNav button{
-    padding: 15px;
-    border: 1px solid var(--primary-dark);
-    background: var(--primary-white);
+.buttonsNav button {
+  padding: 15px;
+  border: 1px solid var(--primary-dark);
+  background: var(--primary-white);
 }
 
-.buttonsNav button:hover, .buttonsNav button:focus{
-    transition: .3s ease;
-    background: var(--clr-logo);
-    color: var(--primary-white);
-    border: 1px solid var(--clr-logo);
+.buttonsNav button:hover,
+.buttonsNav button:focus {
+  transition: 0.3s ease;
+  background: var(--clr-logo);
+  color: var(--primary-white);
+  border: 1px solid var(--clr-logo);
 }
 
 /* Styles for Profile Component */
-.profileImage{
-    text-align: center;
-    position: relative;
-    left: 10px;
+.profileImage {
+  text-align: center;
+  position: relative;
+  left: 10px;
 }
-.editButton{
-    text-align: center;
-    margin: 20px 0 0 0;
+.editButton {
+  text-align: center;
+  margin: 20px 0 0 0;
 }
-.editButton button{
-    padding: 5px 50px;
-    /* width: 30%; */
-    border: none;
-    background: var(--clr-logo);
-    color: var(--primary-white);
-    border-radius: 5px;
+.editButton button {
+  padding: 5px 50px;
+  /* width: 30%; */
+  border: none;
+  background: var(--clr-logo);
+  color: var(--primary-white);
+  border-radius: 5px;
 }
-#user-image-profile{
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
+#user-image-profile {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
 }
-#user-camera-profile{
-    width: 30px;
-    height: 30px;
-    background: var(--clr-logo);
-    padding: 5px;
-    border-radius: 50%;
-    position: relative;
-    top: 35px;
-    left: -35px;
-    box-shadow: 0 0 5px var(--primary-dark);
-    cursor: pointer;
+#user-camera-profile {
+  width: 30px;
+  height: 30px;
+  background: var(--clr-logo);
+  padding: 5px;
+  border-radius: 50%;
+  position: relative;
+  top: 35px;
+  left: -35px;
+  box-shadow: 0 0 5px var(--primary-dark);
+  cursor: pointer;
 }
 
 /* FA Icon */
@@ -130,101 +135,121 @@
     font-size: 100px;
     position: relative;
 } */
-.personalInfo{
-    margin: 35px 0;
+.personalInfo {
+  margin: 35px 0;
 }
-.personalInfo h2{
-    text-align: center;
+.personalInfo h2 {
+  text-align: center;
 }
-#userForm, .langSearch{
-    margin: 35px 0;
+#userForm,
+.langSearch {
+  margin: 35px 0;
 }
-.fullName, .userName, .email, .mobile, .location{
-    margin: 25px 0;
-    display: flex;
-    flex-direction: column;
+.fullName,
+.userName,
+.email,
+.mobile,
+.location {
+  margin: 25px 0;
+  display: flex;
+  flex-direction: column;
 }
-.languageModalSuccess{
-    background: var(--green-deem);
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0 2.9px 10px #ccc;
+.languageModalSuccess {
+  background: var(--green-deem);
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 2.9px 10px #ccc;
 }
-#search-input{
-    width: 100%;
-    border: 1px solid #ccc;
-    padding: 9px 10px;
+#search-input {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 9px 10px;
 }
-.searchList, .currencyLists{
-    width: 100%;
-    background: var(--clr-logo);
-    color: var(--primary-white);
-    border-radius: 7px;
-    /* padding: 15px 20px; */
-    box-shadow: 0 2.9px 10px #ccc;
-    transition: transform 0.9s, background-color 0.9s ease;
+.searchList,
+.currencyLists {
+  width: 100%;
+  background: var(--clr-logo);
+  color: var(--primary-white);
+  border-radius: 7px;
+  padding: 15px 20px;
+  box-shadow: 0 2.9px 10px #ccc;
+  transition: transform 0.9s, background-color 0.9s ease;
 }
-.searchList div, .currencyLists div{
-    padding: 13px 10px;
-    margin: 10px;
-    transition: transform 0.9s, background-color 0.9s ease;
-    border-radius: 4px;
+.searchList div,
+.currencyLists div {
+  padding: 13px 10px;
+  margin: 10px;
+  transition: transform 0.9s, background-color 0.9s ease;
+  border-radius: 4px;
 }
-.searchList div:hover, .currencyLists div:hover{
-    transition: .4s;
-     background: var(--green-deem);
-     cursor: pointer;
+.searchList div:hover,
+.currencyLists div:hover {
+  transition: 0.4s;
+  background: var(--green-deem);
+  cursor: pointer;
 }
-.currencyLists div{
-    display: flex;
-    position: relative;
-    top: -20px;
-    /* flex-direction: column; */
+.currencyitem {
+  display: flex;
+  position: relative;
+  /* top: -20px; */
+  /* flex-direction: column; */
 }
-.currencyDesc{
-    display: flex;
-    flex-direction: column;
-    /* margin: 0 10px; */
+.currencyDesc {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  top: -25px;
+  /* margin: 0 10px; */
 }
-.currencyLists div img{
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
+.currencyLists div img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 /* #search-input:focus{
     outline: 2px solid var(--clr-light-green);
 } */
-.fullName input, .userName input, .email input, 
-.mobile input, .location select, #location-user, .inputLang input,
-.inputCurrency input{
-    padding: 7px 10px;
-    margin: 10px 0;
-    outline: none;
-    border: 1px solid var(--primary-dark);
-    border-radius: 5px; 
+.fullName input,
+.userName input,
+.email input,
+.mobile input,
+.location select,
+#location-user,
+.inputLang input,
+.inputCurrency input {
+  padding: 7px 10px;
+  margin: 10px 0;
+  outline: none;
+  border: 1px solid var(--primary-dark);
+  border-radius: 5px;
 }
-.fullName input:focus, .userName input:focus, .email input:focus, 
-.mobile input:focus, .location select:focus, #location-user:focus,
-.inputLang input:focus, .inputCurrency input:focus{
-    border: 1px solid var(--clr-logo);
-    outline: 2px solid var(--clr-logo);
-    transition: .2s;
-    box-shadow: 0 0 4px var(--primary-dark);
+.fullName input:focus,
+.userName input:focus,
+.email input:focus,
+.mobile input:focus,
+.location select:focus,
+#location-user:focus,
+.inputLang input:focus,
+.inputCurrency input:focus {
+  border: 1px solid var(--clr-logo);
+  outline: 2px solid var(--clr-logo);
+  transition: 0.2s;
+  box-shadow: 0 0 8px var(--green-deem);
 }
-.saveDiv{
-    text-align: center;
+.saveDiv {
+  text-align: center;
 }
-.saveDiv button{
-    width: 80%;
-    padding: 8px;
-    border: none;
-    background: var(--clr-logo);
-    color: var(--primary-white);
-    border-radius: 5px;
+.saveDiv button {
+  width: 80%;
+  padding: 8px;
+  border: none;
+  background: var(--clr-logo);
+  color: var(--primary-white);
+  border-radius: 5px;
 }
-@media screen and (min-width: 0) and (max-width: 768px){
-    .buttonsNav{
-        grid-template-columns: repeat(1, 1fr);
-    }
-    
+@media screen and (min-width: 0) and (max-width: 768px) {
+  .buttonsNav {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
