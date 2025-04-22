@@ -26,7 +26,7 @@ useEffect(() => {
   allLangs.current = document.querySelectorAll(".langItem");
 
   const searchLangs = () => {
-    const filterSearch = inputSearch.current.value.toLowerCase();
+    const filterSearch = inputSearch.current.value.trim().toLowerCase();
     let matFoundText = false;
 
     allLangs.current.forEach((lang) => {

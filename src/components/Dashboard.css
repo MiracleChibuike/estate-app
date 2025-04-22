@@ -177,7 +177,7 @@
 }
 .searchList div,
 .currencyLists div {
-  padding: 13px 10px;
+  padding: 5px 5px;
   margin: 10px;
   transition: transform 0.9s, background-color 0.9s ease;
   border-radius: 4px;
@@ -190,17 +190,21 @@
 }
 .currencyitem {
   display: flex;
-  position: relative;
+  /* background: var(--primary-dark); */
+  height: 100px;
   /* top: -20px; */
   /* flex-direction: column; */
 }
 .currencyDesc {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  /* width: 100%; */
   position: relative;
-  top: -25px;
+  top: -18px;
   /* margin: 0 10px; */
+}
+.currencyDesc:hover{
+  background: var(--clr-logo);
 }
 .currencyLists div img {
   width: 50px;
