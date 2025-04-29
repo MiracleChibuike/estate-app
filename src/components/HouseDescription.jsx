@@ -286,7 +286,7 @@ const HouseDescription = () => {
           ref={houseName}>
           <div className="modal_Container">
             <div className="modalClose">
-              <button ref={modal_Close} id="closeMd" className="btn-secondary ">
+              <button ref={modal_Close} id="closeMd" className="">
                 <i className="fa-solid fa-xmark"></i>
               </button>
             </div>

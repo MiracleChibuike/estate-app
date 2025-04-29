@@ -31,6 +31,18 @@ const currencyConfigs = [
     endpoint: "name/nigeria",
     currencyKey: "NGN",
   },
+  {
+    code: "CAD",
+    name: "Canadian Dollar",
+    endpoint: "name/canada",
+    currencyKey: "CAD"
+  },
+  {
+    code: "CNY",
+    name: "Chinese Yuan",
+    endpoint: "name/china",
+    currencyKey: "CNY"
+  }
 ];
 
 const Currency = () => {
@@ -62,7 +74,8 @@ const Currency = () => {
         );
         setCurrencies(results);
       } catch (err) {
-        setError(`An error occurred fetching currency data: ${err}`);
+        setError(`An error occurred fetching currency data: ${err} - Please check your 
+          internet connection and try again`);
         console.error(err);
       }
     };

@@ -16,6 +16,7 @@ import ProfileEdit from './components/ProfileEdit';
 import Contact from './components/Contact';
 import About from './components/About';
 import Blogs from './components/Blogs'
+import Agents from './components/Agents'
 import LanguagesOpt from './components/LanguagesOpt';
 import Currency from './components/Currency';
 import { HelmetProvider} from 'react-helmet-async'
@@ -41,6 +42,7 @@ function App() {
             <Route path="/Contact" element={<Contact />} />
             <Route path="/Langs" element={<LanguagesOpt />} />
             <Route path="/Currency" element={<Currency />} />
+            <Route path="/Agents" element={<Agents />} />
           </Routes>
         </Router>
       </HelmetProvider>

@@ -1,0 +1,12 @@
+:root {
+  --primary-dark: #020202;
+  --clr-logo: rgba(0, 121, 107, 1);
+  --clr-light-green: rgba(12, 188, 139, 0.4);
+  --green-deem: rgba(12, 188, 139, 0.1);
+  --primary-white: #fff;
+}
+
+.agentsContainer{
+    padding: 20px 30px;
+    margin: 100px 0 0 0;
+}
