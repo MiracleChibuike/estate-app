@@ -7,6 +7,125 @@
 }
 
 .agentsContainer{
-    padding: 20px 30px;
-    margin: 100px 0 0 0;
+    padding: 20px 0;
+    margin: 70px 0 0 0;
+}
+.agents-home{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background: var(--clr-light-green);
+  padding: 60px 0;
+}
+.agents-home-text h2{
+  font-weight: 700;
+  font-size: 2.1rem;
+  line-height: 1.4;
+  margin: 20px 0;
+}
+.agents-home-text{
+  margin-top: 50px;
+  font-size: 1.5rem;
+  line-height: 34px;
+  font-weight: 500;
+}
+/* Services Here */
+.servicesCover{
+  margin: 30px 10px 80px 40px;
+  padding-left: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background: var(--clr-light-green);
+  border-top-left-radius: 300px;
+  border-bottom-left-radius: 300px;
+  display: flex;
+  /* justify-content: space-around; */
+  flex-wrap: wrap;
+  background: linear-gradient(103.77deg, #00796B 21.56%, rgba(12, 188, 139, 0.11) 21.56%, rgba(12, 188, 139, 0) 111.03%);
+
+}
+#soldAgent{
+  width: 406px;
+  height: 406px;
+  position: relative;  
+  top: 25px;
+  left: 10px;
+}
+#consultAgent{
+  width: 406px;
+  height: 406px;
+}
+.services-info{
+  margin-left: 100px;
+  margin-top: 10px;
+}
+.services-info h2, .coverInfo h2{
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+.services-info p, .coverInfo p{
+  font-size: 1.2rem;
+  line-height: 34px;
+  font-weight: 500;
+}
+.btn button{
+  background: var(--clr-logo);
+  color: var(--primary-white);
+  border: none;
+  border-radius: 7px;
+  padding: 10px 25px;
+}
+.cover2{
+  background: linear-gradient(103.77deg, #00796B 21.56%, rgba(12, 188, 139, 0.11) 21.56%, rgba(12, 188, 139, 0.0704282) 53.75%, rgba(12, 188, 139, 0) 111.03%);
+  margin: 30px 80px 80px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-top-left-radius: 300px;
+  border-bottom-left-radius: 300px;
+  transform: rotate(180deg);
+  padding-left: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  
+}
+.coverInfo{
+  padding-left: 100px;
+}
+/* #soldAgent{
+  
+} */
+
+@media screen and (min-width: 0) and (max-width: 780px) {
+  .agents-home{
+    display: block;
+    padding: 30px;
+  }
+  .agents-home-text{
+    margin-top: 0;
+  }
+  .imgBar img, #soldAgent{
+    width: 90%;
+  }
+  #soldAgent{
+    position: relative;
+    left: 0;
+    top: 0;
+  }
+  .servicesCover, .services-info, .cover2{
+    display: block;
+    margin-left: 0;
+    margin-right: 10px;
+    border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  }
+  .services-info{
+    padding: 10px 3px;
+  }
+  .coverInfo{
+    padding: 10px 20px;
+  }
+  /* #soldAgent{
+  
+} */
 }
