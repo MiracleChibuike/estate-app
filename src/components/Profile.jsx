@@ -92,16 +92,16 @@ const Profile = () => {
   };
   //    store User details in LS
   useEffect(() => {
+    const reteriveDetails = localStorage.getItem("userDataKeev");
+    console.log(JSON.parse(reteriveDetails));
+    console.log(JSON.parse(reteriveDetails).username);
+    const nameNew = JSON.parse(reteriveDetails).username;
+    const EmailNew = JSON.parse(reteriveDetails).userEmail;
     if (
-      userFullName.current &&
-      userName.current &&
-      userEmail.current &&
-      userMobile.current
-
-    ) {
+      reteriveDetails) {
       userFullName.current.value = localStorage.getItem("fullName") || "";
-      userName.current.value = localStorage.getItem("userName") || "";
-      userEmail.current.value = localStorage.getItem("userEmail") || "";
+      userName.current.value = nameNew;
+      userEmail.current.value = EmailNew;
       userMobile.current.value = localStorage.getItem("userMobile") || "";
       userState.current.value = localStorage.getItem("userState") || "";
     }
@@ -203,6 +203,7 @@ const Profile = () => {
                 placeholder="User Name"
                 id="user-name"
                 ref={userName}
+                readOnly
               />
             </div>
             <div className="email">
@@ -213,6 +214,7 @@ const Profile = () => {
                 id="email-address"
                 placeholder="Email"
                 ref={userEmail}
+                readOnly
               />
             </div>
             <div className="mobile">

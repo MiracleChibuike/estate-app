@@ -46,6 +46,7 @@
     padding: 5px 20px;
     /* font-weight: bold; */
     font-weight: 700;
+    color: var(--primary-dark)
 }
 .activeLink{
     color: var(--clr-logo);
@@ -113,6 +114,7 @@
     }
     .nav-Links ul li{
         padding: 30px 10px;
+        color: var(--primary-white);
     }
     .nav-Links ul li:hover{
         border-bottom: none;

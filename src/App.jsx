@@ -19,6 +19,8 @@ import Blogs from './components/Blogs'
 import Agents from './components/Agents'
 import LanguagesOpt from './components/LanguagesOpt';
 import Currency from './components/Currency';
+import SignUp from './components/SignUp';
+import LogIn from './components/LogIn'
 import { HelmetProvider} from 'react-helmet-async'
 
 function App() {
@@ -43,6 +45,8 @@ function App() {
             <Route path="/Langs" element={<LanguagesOpt />} />
             <Route path="/Currency" element={<Currency />} />
             <Route path="/Agents" element={<Agents />} />
+            <Route path='/Signup' element={<SignUp />} />
+            <Route path='/LogIn' element={<LogIn />} />
           </Routes>
         </Router>
       </HelmetProvider>

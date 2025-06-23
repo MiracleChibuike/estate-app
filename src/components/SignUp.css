@@ -1,0 +1,149 @@
+
+:root{
+    --primary-dark: #020202;
+    --clr-logo: rgba(0, 121, 107, 1);
+    --clr-light-green : rgba(12, 188, 139, 0.4);
+    --green-deem: rgba(12, 188, 139, 0.1);
+    --primary-white: #fff;
+      --clr-color-gray-trans: #605e5e;
+       --danger-faint: #e37474;
+  }
+a{
+    color: var(--primary-white);
+}
+  a:hover{
+    color: #fff;
+}
+ 
+.signUp, .logIn{
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    /* background: var(--clr-logo); */
+    opacity: .9;
+    color: var(--primary-dark);
+    background: linear-gradient(rgb(0, 121, 107,1), rgb(0, 121, 107, 0.7)),
+    url(../assets/background.png) no-repeat center/cover;
+}
+
+.signContents, .logInContents{
+    /* box-shadow: 0 0 20px var(--green-deem); */
+    padding: 20px 50px;
+    border-radius: 10px;
+    background: var(--primary-white);
+    box-shadow: 0 0 50px var(--primary-dark);
+    animation-name: formSnap;
+    animation-duration: 0.7s;
+    animation-timing-function: 1;
+    animation-iteration-count: 1;
+    transition: transfrom 0.9s ease, background-color 0.9s ease;
+}
+@keyframes formSnap {
+    0%{
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.logInContents{
+    animation-name: formSnap2;
+    animation-duration: 0.7s;
+    animation-timing-function: 1;
+    animation-iteration-count: 1;
+    transition: transfrom 0.9s ease, background-color 0.9s ease;
+}
+@keyframes formSnap2 {
+    0%{
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.signContents h2, .logInContents h2{
+    padding: 20px 0;
+}
+.createForm form > div, .logInForm form > div{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+
+}
+label{
+    font-weight: bold;
+}
+.createForm form > div input, .logInForm form > div input{
+    padding: 10px 10px;
+  margin: 10px 0;
+  outline: none;
+  border: 1px solid var(--clr-light-green);
+  border-radius: 5px;
+  transition: transform 0.9s ease, background-color 0.9 ease;
+}
+.createForm form > div input:focus, .logInForm form > div input:focus{
+    border: 1px solid var(--clr-light-green);
+    outline: 5px solid var(--clr-light-green);
+    transition: 0.1s;
+    /* box-shadow: 0 0 8px var(--clr-logo); */
+}
+.signBtn, .LogBtn{
+    margin: 10px 0;
+}
+.signBtn button, .LogBtn button{
+    border: none;
+    background: var(--clr-logo);
+    color: var(--primary-white);
+    padding: 13px 0;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+.signBtn button:hover, .LogBtn button:hover{
+    cursor: pointer;
+    transition: .5s;
+    transform: scale(1.1);
+}
+.errorDisplay, .successMsg{
+    background: var(--danger-faint);
+    padding: 10px;
+    color: var(--primary-white);
+    font-weight: bold;
+    border-radius: 7px;
+    animation-name: splash;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
+    animation-timing-function: 1;
+    transition: transform 0.9s ease, background-color 0.9s ease;
+}
+.successMsg{
+background: var(--clr-logo);
+animation-name: splash2;
+    animation-duration: 0.7s;
+    animation-iteration-count: 1;
+    animation-timing-function: 1;
+    transition: transform 0.9s ease, background-color 0.9s ease;
+}
+@keyframes splash {
+    0%{
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes splash2 {
+    0%{
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

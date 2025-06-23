@@ -89,28 +89,32 @@ const HouseDescription = () => {
           field.current.style.outline = "1px solid red"; // Highlight empty fields
           allFilled = false;
         } else {
-          field.current.style.outline = "1px solid #ccc";
+          field.current.style.outline = "none";
         }
       });
 
       if (!allFilled) {
-        alert("Please fill all fields.");
+        // alert("Please fill all fields.");
         return;
       }
+
 
       // Hide house name and show success message
       houseName.current.style.display = "none";
       message_Success.current.style.display = "block";
 
       // Clear input fields
-      fields.forEach((field) => {
+      const fieldsArray = [eq_Name, eq_Email, eq_textArea];
+      fieldsArray.forEach((field) => {
         field.current.value = ""; // Reset each input field
+        // field.current.style.outline = "none"
       });
 
       setTimeout(() => {
         message_Success.current.style.display = "none";
       }, 4000);
     };
+  
 
     eq_Form.current.addEventListener("submit", handleSubmit);
 

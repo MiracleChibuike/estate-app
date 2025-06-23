@@ -16,11 +16,10 @@
 }
 a{
     text-decoration: none;
-    color: var(--primary-dark);
 }
 @media screen and (min-width: 0) and (max-width: 780px) {
     a{
     text-decoration: none;
-    color: var(--primary-white);
+    /* color: var(--primary-white); */
 }
 }
