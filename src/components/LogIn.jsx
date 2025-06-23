@@ -127,7 +127,7 @@ const LogIn = () => {
               </div>
             )}
             <h2>
-              Welcome back, Log In to <br /> your account
+              Welcome back, Log In to your <br /> account
             </h2>
             <div className="logInForm">
               <form action="" id="logInForm" ref={loginForm}>
