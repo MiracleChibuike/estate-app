@@ -25,6 +25,9 @@ const Profile = () => {
   const userImage = useRef(null);
   const cameraIcon = useRef(null);
   const userIcon = useRef(null);
+  const [isFormFilled, setIsFormFilled] = useState(false);
+  const [isUserSuccesful, setIsUserSuccesful] = useState(false);
+  const [isUserOkay, setIsUserOkay] = useState("");
 
   useEffect(() => {
     fileInput.current.addEventListener("change", (event) => {
@@ -72,29 +75,36 @@ const Profile = () => {
       userMobile.current.value.trim() == "" ||
       userState.current.value == ""
     ) {
-      alert("Please fill all fields");
+      setIsFormFilled(true);
+      setTimeout(() => {
+        setIsFormFilled(false)
+      }, 5000)
       // const selectedvalue = userState.current.value;
       // const selectedOption = userState.current.options[userState.current.selectedIndex];
       // console.log(selectedOption.text)
     } else {
-      alert(
-        `Thank you, ${userFullName.current.value.trim()}. Your account has been succesfully registered
-        and profile updated succesfully. `
-      );
+      setIsUserSuccesful(true)
+      setIsUserOkay(`Thank you, ${userFullName.current.value.trim()}. Your account has been succesfully registered
+        and profile updated succesfully. `);
+        setTimeout(() => {
+            setIsUserSuccesful(false)
+        }, 5000)
       console.log(userState.current.value)
       localStorage.setItem("fullName", userFullName.current.value.trim());
       localStorage.setItem("userName", userName.current.value.trim());
       localStorage.setItem("userEmail", userEmail.current.value.trim());
       localStorage.setItem("userMobile", userMobile.current.value.trim());
       localStorage.setItem("userState", userState.current.value.trim());
+     setTimeout(() => {
       EditPageNavigate("/EditProfile");
+     }, 5000)
     }
   };
   //    store User details in LS
   useEffect(() => {
     const reteriveDetails = localStorage.getItem("userDataKeev");
-    console.log(JSON.parse(reteriveDetails));
-    console.log(JSON.parse(reteriveDetails).username);
+    // console.log(JSON.parse(reteriveDetails));
+    // console.log(JSON.parse(reteriveDetails).username);
     const nameNew = JSON.parse(reteriveDetails).username;
     const EmailNew = JSON.parse(reteriveDetails).userEmail;
     if (
@@ -116,7 +126,8 @@ const Profile = () => {
   }, []);
 
   // Fetch lists of states API
-
+  const dataInput = useRef(null);
+  // console.log(dataInput.current)
   useEffect(() => {
        const headers = new Headers();
       //  headers.append("X-Api-Key", "4hueXJfjAZAV3FaBKX93Z9xun0Ffnxdo");
@@ -137,14 +148,25 @@ const Profile = () => {
                    },
                  }
                );
+               console.log(statesURl.statusText)
                // console.log(statesURl.statusText)
                const statesData = await statesURl.data.data;
                console.log(statesData);
                setNewData(statesURl.data.data);
               
              } catch (error) {
+            const newYes  = error;
+            const newEl = document.createElement("div");
+            newEl.textContent = `An Error occured fetching states: ${
+              error.response?.status || "Unable to reach Server."
+            } - (${error.message}). Make sure you are connected to the Internet `;
+            dataInput.current.appendChild(newEl)
                console.error(
-                 `Error fetching data: ${error.response?.status || "Unknown"} - ${error.message} `
+                 `An Error occured fetching states: ${
+                   error.response?.status || "Unable to reach Server."
+                 } - ${
+                   (error.message)
+                 }. Make sure you are connected to the Internet`
                );
              } finally {
                setLoader(false);
@@ -157,10 +179,10 @@ const Profile = () => {
 
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>Profile | KEEV</title>
         <meta name="description" content="Profile page" />
-    </Helmet>
+      </Helmet>
       <div className="profile_Container">
         <div className="icon_Back">
           <img src={backlink} id="backLink" onClick={backLinkNav} alt="" />
@@ -183,6 +205,26 @@ const Profile = () => {
           <img src={Camera} id="user-camera-profile" ref={cameraIcon} alt="" />
         </div>
         <div className="personalInfo">
+          {isFormFilled && (
+            <div className="errorDisplay">
+              <p>
+                {" "}
+                <i class="fa-solid fa-triangle-exclamation"></i> Please provide
+                all your credentials
+              </p>
+            </div>
+          )}
+          {isUserSuccesful && (
+            <div className="successMsg" style={{ textAlign: "center" }}>
+              <p>
+                <i
+                  className="fa-solid fa-circle-check"
+                  style={{ fontSize: "30px" }}></i>
+                <strong style={{ marginLeft: "5px" }}>Success</strong>
+              </p>
+              {isUserOkay && <p></p>}
+            </div>
+          )}
           <h2>Personal Information</h2>
           <form action="" id="userForm" ref={userForm}>
             <div className="fullName">
@@ -231,13 +273,17 @@ const Profile = () => {
               <label htmlFor="location-user">Location</label>
               <select name="address" id="location-user" ref={userState}>
                 <option value=""> Select a State </option>
-                  {newData.map((state) => (
-                    <option key={state.id} value={state.name}>
-                      {state.name}
-                    </option>
-                  ))}
+                {newData.map((state) => (
+                  <option key={state.id} value={state.name}>
+                    {state.name}
+                  </option>
+                ))}
               </select>
             </div>
+            <div
+              ref={dataInput}
+              style={{ color: "#e37474", position: "relative", top: "-20px" }}
+              className="messageError"></div>
             <div className="saveDiv">
               <button id="save-button" type="submit">
                 Save

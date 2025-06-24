@@ -21,7 +21,7 @@ const LogIn = () => {
 
           loginFields.forEach((field) => {
             if (field.current.value.trim() === "") {
-              field.current.style.outline = "2px solid #700505";
+              field.current.style.outline = "2px solid  #e37474";
               field.current.style.border = "none";
               isValid = false;
             } else {
@@ -82,7 +82,7 @@ const LogIn = () => {
             if (input.current.value.trim() !== "") {
               input.current.style.outline = "2px solid rgba(0, 121, 107, 1)";
             } else {
-              input.current.style.outline = "2px solid #700505";
+              input.current.style.outline = "2px solid  #e37474";
             }
           });
         });
@@ -127,7 +127,7 @@ const LogIn = () => {
               </div>
             )}
             <h2>
-              Welcome back, Log In to your <br /> account
+              Welcome back, Log In to <br /> your account
             </h2>
             <div className="logInForm">
               <form action="" id="logInForm" ref={loginForm}>

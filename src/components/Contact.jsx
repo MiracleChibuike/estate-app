@@ -19,7 +19,8 @@ const Contact = () => {
      const [isModalVisible, setIsModalVisible] = useState(false);
     //  Validate Error Toggling
     const [isErrorVisible, setIsErrorVisible] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('')
+    const [errorMessage, setErrorMessage] = useState('');
+    const [isFormFilled, setIsFormFilled] = useState(false);
     const errorContent = useRef(null);
     const updateErrorContent = errorContent.current;
      const modalShow = useRef(null);
@@ -45,13 +46,16 @@ const Contact = () => {
        });
 
        if (!isValid) {
-         alert("Please fill all fields");
+         setIsFormFilled(true);
+         setTimeout(() => {
+          setIsFormFilled(false)
+         }, 5000)
          return false;
        }
 
        // If valid, send email
        sendEmail();
-       return true;
+       return isValid;
      };
 
      // Function to send email using EmailJS
@@ -148,6 +152,16 @@ const Contact = () => {
           </div>
           {/* Contact Form */}
           <div className="contactForm">
+            {/* Error message when form field isn't filled */}
+            {isFormFilled && (
+              <div className="errorDisplay">
+                <p>
+                  {" "}
+                  <i class="fa-solid fa-triangle-exclamation"></i> Please
+                  fill all fields
+                </p>
+              </div>
+            )}
             <form
               ref={formHandler}
               action="https://getform.io/f/bxowndea"

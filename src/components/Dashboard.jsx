@@ -7,6 +7,7 @@ import "./Dashboard.css";
 import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
+  
   const navigateBack = useNavigate();
   const backLinkNav = () => {
     navigateBack("/Services");
@@ -37,7 +38,11 @@ const Dashboard = () => {
   const loadCurrencyComponent = () => {
     currencyNav("/Currency");
   }
-
+  // Navigate to Property Alerts
+  const prorpertyNav = useNavigate();
+  const loadPropertyAlert = () => {
+    prorpertyNav("/Properties");
+  }
   return (
     <>
       <Helmet>
@@ -56,7 +61,7 @@ const Dashboard = () => {
           <button className="Profile_Tab" ref={profileTxt}>
             Profile Settings
           </button>
-          <button>Property Alerts</button>
+          <button onClick={loadPropertyAlert}>Property Alerts</button>
           <button onClick={loadCurrencyComponent}>Currency Preferences</button>
           <button onClick={navigateToLang}>Language Options</button>
           <button>Terms And Conditions</button>

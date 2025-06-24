@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
-  
   const profileNav = useNavigate();
   const [isFilledIn, setIsFilledIn] = useState(false);
   const [isPassWordSame, setIsPasswordSame] = useState(false);
@@ -19,6 +18,11 @@ const SignUp = () => {
   const password = useRef(null);
   const passwordConfirm = useRef(null);
   const checkBox = useRef(null);
+
+  const closeErrorModal = () => {
+    setIsFilledIn(false)
+  }
+  
   useEffect(() => {
     const accountCreate = (e) => {
       e.preventDefault();
@@ -27,7 +31,7 @@ const SignUp = () => {
 
       formInputs.forEach((input) => {
         if (input.current.value.trim() === "") {
-          input.current.style.outline = "2px solid #700505";
+          input.current.style.outline = "2px solid #e37474";
           input.current.style.border = "none";
           isValid = false;
         } else {
@@ -38,7 +42,7 @@ const SignUp = () => {
         setIsFilledIn(true);
         setTimeout(() => {
           setIsFilledIn(false);
-        }, 5000);
+        }, 9000);
         return;
       }
       // Check for password Confirm
@@ -72,7 +76,7 @@ const SignUp = () => {
       // Navigate to the Dashboard Section after creating an account
       setTimeout(() => {
         profileNav("/Profile");
-      }, 5000)
+      }, 5000);
     };
     formEl.current.addEventListener("submit", accountCreate);
     let formInputs = [userName, userEmail, password, passwordConfirm];
@@ -81,12 +85,13 @@ const SignUp = () => {
         if (input.current.value.trim() !== "") {
           input.current.style.outline = "2px solid rgba(0, 121, 107, 1)";
         } else {
-          input.current.style.outline = "2px solid #700505";
+          input.current.style.outline = "2px solid #e37474";
         }
       });
     });
-    
+
     // document.addEventListener("input", chekIfValid);
+
   }, []);
   return (
     <>
@@ -100,8 +105,12 @@ const SignUp = () => {
             <div className="errorDisplay">
               <p>
                 {" "}
-                <i class="fa-solid fa-triangle-exclamation"></i> Please fill all
-                fields
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </p>
+              <p className="fd">Please fill all fields</p>
+              <p id="getMe">
+                {" "}
+                <i onClick={closeErrorModal} className="fa-solid fa-xmark"></i>
               </p>
             </div>
           )}
@@ -109,7 +118,7 @@ const SignUp = () => {
             <div className="successMsg" style={{ textAlign: "center" }}>
               <p>
                 <i
-                  class="fa-solid fa-circle-check"
+                  className="fa-solid fa-circle-check"
                   style={{ fontSize: "30px" }}></i>
                 <strong style={{ marginLeft: "5px" }}>Success</strong>
               </p>

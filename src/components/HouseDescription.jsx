@@ -76,6 +76,7 @@ const HouseDescription = () => {
   const eq_Name = useRef(null);
   const eq_Email = useRef(null);
   const eq_textArea = useRef(null);
+  const [isFormFilled, setIsFormFilled] = useState(false)
 
   useEffect(() => {
     const handleSubmit = (e) => {
@@ -86,14 +87,19 @@ const HouseDescription = () => {
 
       fields.forEach((field) => {
         if (field.current.value.trim() === "") {
-          field.current.style.outline = "1px solid red"; // Highlight empty fields
+          field.current.style.outline = "2px solid #e37474"; // Highlight empty fields
+          field.current.style.border = "none";
           allFilled = false;
         } else {
-          field.current.style.outline = "none";
+          field.current.style.outline = "2px solid rgba(0, 121, 107, 1)";
         }
       });
 
       if (!allFilled) {
+        setIsFormFilled(true);
+        setTimeout(() => {
+          setIsFormFilled(false)
+        }, 5000)
         // alert("Please fill all fields.");
         return;
       }
@@ -107,6 +113,7 @@ const HouseDescription = () => {
       const fieldsArray = [eq_Name, eq_Email, eq_textArea];
       fieldsArray.forEach((field) => {
         field.current.value = ""; // Reset each input field
+        field.current.style.outline = "2px solid #ccc";
         // field.current.style.outline = "none"
       });
 
@@ -114,10 +121,19 @@ const HouseDescription = () => {
         message_Success.current.style.display = "none";
       }, 4000);
     };
-  
+    const fieldsArray = [eq_Name, eq_Email, eq_textArea];
+    fieldsArray.forEach((input) => {
+      input.current.addEventListener("input", () => {
+        if (input.current.value.trim() !== "") {
+          input.current.style.outline = "2px solid rgba(0, 121, 107, 1)";
+        } else {
+          input.current.style.outline = "2px solid #e37474";
+        }
+      });
+    });
 
     eq_Form.current.addEventListener("submit", handleSubmit);
-
+    // window.location.reload();
     // return () => eq_Form.current.removeEventListener("submit", handleSubmit);
   }, []);
 
@@ -138,6 +154,8 @@ const HouseDescription = () => {
   // Error Message when a user clicks on cancel Request
   const cancelBar = useRef(null);
   const cancelBarIcon = useRef(null);
+  console.log(cancelBarIcon);
+  
 
   useEffect(() => {
     modal_Close2.current.addEventListener("click", () => {
@@ -269,7 +287,7 @@ const HouseDescription = () => {
               position: "relative",
               top: "-5px",
             }}></i>
-          <p>Operation Cancelled. We hope you are going to come back again</p>
+          <p style={{color: "#fff"}}>Operation Cancelled. We hope you are going to come back again</p>
         </div>
         {/* Modal for a success Message Purchase */}
         <div className="success_purchase">
@@ -298,6 +316,15 @@ const HouseDescription = () => {
               You're One Step Away from Your Dream Home
             </h2>
             <div className="form_Contents">
+              {isFormFilled && (
+                <div className="errorDisplay">
+                  <p>
+                    {" "}
+                    <i class="fa-solid fa-triangle-exclamation"></i> Please fill
+                    all fields
+                  </p>
+                </div>
+              )}
               <form
                 ref={eq_Form}
                 action="james@gmail.com"

@@ -59,7 +59,9 @@ const NavServices = () => {
             if (userImageStored) {
               imageBannerNav.current.src = userImageStored
             }
-          }, [])
+          }, []);
+
+          const userDashBoard = useRef(null);
 
     return (
       <>
@@ -75,8 +77,8 @@ const NavServices = () => {
           <div className="nav-Links">
             <ul>
               <li id="HomeTxt">Buy</li>
-              <Link to="/Dashboard">
-                <li>Dashboard</li>
+              <Link to={"/Dashboard"}>
+                <li ref={userDashBoard}>Dashboard</li>
               </Link>
               <li>Find Realtors</li>
               <li>Lease</li>

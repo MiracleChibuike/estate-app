@@ -118,6 +118,25 @@ label{
     animation-iteration-count: 1;
     animation-timing-function: 1;
     transition: transform 0.9s ease, background-color 0.9s ease;
+    /* text-align: center; */
+}
+#getMe{
+    position: relative;
+    left: 80px;
+    cursor: pointer;
+}
+.errorDisplay{
+    padding: 10px 15px;
+    display: flex;
+    width: 80%;
+}
+.errorDisplay p, .successMsg p{
+    position: relative;
+    top: 7px;
+}
+.fd{
+    position: relative;
+    left: 12px 
 }
 .successMsg{
 background: var(--clr-logo);
@@ -145,5 +164,24 @@ animation-name: splash2;
     100%{
         transform: translateX(0);
         opacity: 1;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .errorDisplay{
+        width: 100%;
+        justify-content: space-between;
+    }
+    #getMe{
+        left: 0;
+    }
+    .logIn h2{
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 1180px) {
+    #getMe{
+        left: 50px;
     }
 }

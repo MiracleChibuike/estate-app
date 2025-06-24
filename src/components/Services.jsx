@@ -33,7 +33,7 @@ const Services = () => {
 const navigateHouse = useNavigate()
   useEffect(() => {
     cards.current = document.querySelectorAll(".cardFeatured");
-    console.log(cards);
+    // console.log(cards);
     cards.current.forEach((card) => {
       card.addEventListener("click", (event) => {
         const imgSrc = card.querySelector("img")?.src || "";
@@ -69,6 +69,26 @@ const navigateHouse = useNavigate()
 
   }, [])
 
+
+     // Check if user is logged in before accessing the Dashboard
+          const routeToSignUp = useNavigate()
+         useEffect(() => {
+            const checkUser = () => {
+              const userData = localStorage.getItem("userDataKeev");
+              // console.log(userData);
+              const userNameExist = JSON.parse(userData).username;
+              const userEmailExist = JSON.parse(userData).userEmail;
+              const userPasswordExist = JSON.parse(userData).userpassword;
+              // console.log(userNameExist, userEmailExist, userPasswordExist)
+              if (!userNameExist && !userEmailExist && userPasswordExist) {
+                alert("User is not logged in");
+                routeToSignUp("/Signup")
+                return;
+              }
+            };
+  
+            checkUser();
+         }, []);
 
   // Script to get all images and route to specific pages when selected
 //   const allImages = useRef(null);
@@ -178,8 +198,8 @@ const navigateHouse = useNavigate()
   const filterRef = useRef(null);
 
   useEffect(() => {
-    console.log(filterRef);
-          console.log(cards);
+    // console.log(filterRef);
+          // console.log(cards);
 
     const runFilter = () => {
       const filterCase = filterRef.current.value.toLowerCase();
