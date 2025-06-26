@@ -141,18 +141,19 @@ const Profile = () => {
          
              try {
                const statesURl = await axios.get(
-                 "https://naija-places.toneflix.com.ng/api/v1/states",
-                 {
-                   headers: {
-                     "X-Api-Key": "4hueXJfjAZAV3FaBKX93Z9xun0Ffnxdo",
-                   },
-                 }
+                 "nigeria_states.json",
+                //  Swith to local Json API for stataes call 
+                //  {
+                //    headers: {
+                //      "X-Api-Key": "4hueXJfjAZAV3FaBKX93Z9xun0Ffnxdo",
+                //    },
+                //  }
                );
-               console.log(statesURl.statusText)
+               console.log(statesURl.statusText);
                // console.log(statesURl.statusText)
-               const statesData = await statesURl.data.data;
-               console.log(statesData);
-               setNewData(statesURl.data.data);
+               const statesData = await statesURl.data;
+              //  console.log(statesData);
+               setNewData(statesData);
               
              } catch (error) {
             const newYes  = error;
@@ -272,12 +273,13 @@ const Profile = () => {
             <div className="location">
               <label htmlFor="location-user">Location</label>
               <select name="address" id="location-user" ref={userState}>
-                <option value=""> Select a State </option>
-                {newData.map((state) => (
-                  <option key={state.id} value={state.name}>
-                    {state.name}
-                  </option>
-                ))}
+                <option value="" selected>
+                  {" "}
+                  Select a State{" "}
+                </option>
+            {newData.map((state) => (
+              <option key={state.postalCode} value={state.state}>{state.state}</option>
+            ))};
               </select>
             </div>
             <div

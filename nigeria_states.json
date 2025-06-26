@@ -1,0 +1,187 @@
+[
+  {
+    "state": "Abia",
+    "capital": "Umuahia",
+    "postalCode": "440001"
+  },
+  {
+    "state": "Adamawa",
+    "capital": "Yola",
+    "postalCode": "640001"
+  },
+  {
+    "state": "Akwa Ibom",
+    "capital": "Uyo",
+    "postalCode": "520001"
+  },
+  {
+    "state": "Anambra",
+    "capital": "Awka",
+    "postalCode": "420001"
+  },
+  {
+    "state": "Bauchi",
+    "capital": "Bauchi",
+    "postalCode": "740001"
+  },
+  {
+    "state": "Bayelsa",
+    "capital": "Yenagoa",
+    "postalCode": "561001"
+  },
+  {
+    "state": "Benue",
+    "capital": "Makurdi",
+    "postalCode": "970001"
+  },
+  {
+    "state": "Borno",
+    "capital": "Maiduguri",
+    "postalCode": "600001"
+  },
+  {
+    "state": "Cross River",
+    "capital": "Calabar",
+    "postalCode": "540001"
+  },
+  {
+    "state": "Delta",
+    "capital": "Asaba",
+    "postalCode": "320001"
+  },
+  {
+    "state": "Ebonyi",
+    "capital": "Abakaliki",
+    "postalCode": "840001"
+  },
+  {
+    "state": "Edo",
+    "capital": "Benin City",
+    "postalCode": "300001"
+  },
+  {
+    "state": "Ekiti",
+    "capital": "Ado-Ekiti",
+    "postalCode": "360001"
+  },
+  {
+    "state": "Enugu",
+    "capital": "Enugu",
+    "postalCode": "400001"
+  },
+  {
+    "state": "FCT - Abuja",
+    "capital": "Abuja",
+    "postalCode": "900001"
+  },
+  {
+    "state": "Gombe",
+    "capital": "Gombe",
+    "postalCode": "760001"
+  },
+  {
+    "state": "Imo",
+    "capital": "Owerri",
+    "postalCode": "460001"
+  },
+  {
+    "state": "Jigawa",
+    "capital": "Dutse",
+    "postalCode": "720001"
+  },
+  {
+    "state": "Kaduna",
+    "capital": "Kaduna",
+    "postalCode": "800001"
+  },
+  {
+    "state": "Kano",
+    "capital": "Kano",
+    "postalCode": "700001"
+  },
+  {
+    "state": "Katsina",
+    "capital": "Katsina",
+    "postalCode": "820001"
+  },
+  {
+    "state": "Kebbi",
+    "capital": "Birnin Kebbi",
+    "postalCode": "860001"
+  },
+  {
+    "state": "Kogi",
+    "capital": "Lokoja",
+    "postalCode": "260001"
+  },
+  {
+    "state": "Kwara",
+    "capital": "Ilorin",
+    "postalCode": "240001"
+  },
+  {
+    "state": "Lagos",
+    "capital": "Ikeja",
+    "postalCode": "100001"
+  },
+  {
+    "state": "Nasarawa",
+    "capital": "Lafia",
+    "postalCode": "950001"
+  },
+  {
+    "state": "Niger",
+    "capital": "Minna",
+    "postalCode": "920001"
+  },
+  {
+    "state": "Ogun",
+    "capital": "Abeokuta",
+    "postalCode": "110001"
+  },
+  {
+    "state": "Ondo",
+    "capital": "Akure",
+    "postalCode": "340001"
+  },
+  {
+    "state": "Osun",
+    "capital": "Oshogbo",
+    "postalCode": "230001"
+  },
+  {
+    "state": "Oyo",
+    "capital": "Ibadan",
+    "postalCode": "200001"
+  },
+  {
+    "state": "Plateau",
+    "capital": "Jos",
+    "postalCode": "930001"
+  },
+  {
+    "state": "Rivers",
+    "capital": "Port Harcourt",
+    "postalCode": "500001"
+  },
+  {
+    "state": "Sokoto",
+    "capital": "Sokoto",
+    "postalCode": "840001"
+  },
+  {
+    "state": "Taraba",
+    "capital": "Jalingo",
+    "postalCode": "660001"
+  },
+  {
+    "state": "Yobe",
+    "capital": "Damaturu",
+    "postalCode": "320001"
+  },
+  {
+    "state": "Zamfara",
+    "capital": "Gusau",
+    "postalCode": "860001"
+  }
+]

@@ -31,211 +31,163 @@ const Services = () => {
 
   const cards = useRef(null);
 const navigateHouse = useNavigate()
-  useEffect(() => {
-    cards.current = document.querySelectorAll(".cardFeatured");
-    // console.log(cards);
-    cards.current.forEach((card) => {
-      card.addEventListener("click", (event) => {
-        const imgSrc = card.querySelector("img")?.src || "";
-        const houseInfo = card.querySelector(".housedetails")?.textContent || "";
-        const houseLocation = card.querySelector(".houseLocation")?.textContent || "";
-        // Store both image and info in LocalStorage
-        localStorage.setItem(
-          "selectedHouse",
-          JSON.stringify({ imgSrc, houseInfo, houseLocation }));
-          navigateHouse("/HouseDescription");
-      });
-    });
+  // useEffect(() => {
+  //   cards.current = document.querySelectorAll(".cardFeatured");
+  //   // console.log(cards);
+  //   cards.current.forEach((card) => {
+  //     card.addEventListener("click", (event) => {
+  //       const imgSrc = card.querySelector("img")?.src || "";
+  //       const houseInfo = card.querySelector(".housedetails")?.textContent || "";
+  //       const houseLocation = card.querySelector(".houseLocation")?.textContent || "";
+  //       // Store both image and info in LocalStorage
+  //       localStorage.setItem(
+  //         "selectedHouse",
+  //         JSON.stringify({ imgSrc, houseInfo, houseLocation }));
+  //         navigateHouse("/HouseDescription");
+  //     });
+  //   });
 
 
     // Clean up event listeners
-    return () => {
-        cards.current.forEach((card) => {
-          card.removeEventListener("click", (event) => {
-            const imgSrc = card.querySelector("img")?.src || "";
-             const houseInfo =
-               card.querySelector(".housedetails")?.textContent || "";
-             const houseLocation =
-               card.querySelector(".houseLocation")?.textContent || "";
-            // Store both image and info in LocalStorage
-            localStorage.setItem(
-              "selectedHouse",
-              JSON.stringify({ imgSrc, houseInfo, houseLocation })
-            );
-            navigateHouse("/HouseDescription");
-          });
-        });
-    };
+  //   return () => {
+  //       cards.current.forEach((card) => {
+  //         card.removeEventListener("click", (event) => {
+  //           const imgSrc = card.querySelector("img")?.src || "";
+  //            const houseInfo =
+  //              card.querySelector(".housedetails")?.textContent || "";
+  //            const houseLocation =
+  //              card.querySelector(".houseLocation")?.textContent || "";
+  //           // Store both image and info in LocalStorage
+  //           localStorage.setItem(
+  //             "selectedHouse",
+  //             JSON.stringify({ imgSrc, houseInfo, houseLocation })
+  //           );
+  //           navigateHouse("/HouseDescription");
+  //         });
+  //       });
+  //   };
 
-  }, [])
+  // }, [])
+
+  const messageDiv = useRef(null);
+  const filterRef = useRef(null);
+  const errorDisplay = useRef(null)
+  // Hook to use for API Fetching
+const [Listings, setListings] = useState([]);
+const [loader, setIsLoader] = useState(false);
+useEffect(() => {
+  const fetchHouseListings = async () => {
+    try {
+      const response = await axios.get("http://localhost:3001/houseListings");
+    //  console.log(response.statusText);
+     const result = await response.data;
+    //  console.log(result)
+     setListings(result);
+     setIsLoader(true)
+    } catch (error) {
+      const newYes = error;
+      const newEl = document.createElement("div");
+      newEl.textContent = `An Error occured fetching house listings: ${
+        error.response?.status || "Unable to reach Server."
+      } - (${error.message}). Make sure you are connected to the Internet or refresh this page `;
+      errorDisplay.current.appendChild(newEl);
+      console.error(
+        `An Error occured fetching house listings: ${
+          error.response?.status || "Unable to reach Server."
+        } - ${error.message}. Make sure you are connected to the Internet or refresh this page`
+      );
+    }finally{
+      setIsLoader(false)
+    }
+  };
+  fetchHouseListings();
+});
+
+// API to search for Houses
+const [results, setResults] = useState([])
+const [searchTerm, setSearchTerm] = useState("");
+const [messageRef, setIsMessageRef] = useState(false);
+
+const runFilter = async () => {
+  const inputValue = filterRef.current.value.trim().toLowerCase();
+
+  if (!inputValue) {
+    alert("Please enter a search term");
+    setResults([]);
+    return;
+  }
+
+  try {
+    const response = await axios.get(`http://localhost:3001/houseListings`);
+    // Manually filter for EXACT matches in the name field
+    const exactMatches = response.data.filter((house) =>
+      house.name.toLowerCase().includes(inputValue) || house.location.toLowerCase().includes(inputValue)
+    );
+
+    setResults(exactMatches);
+
+    if (exactMatches.length > 0) {
+      alert(`Found ${exactMatches.length} house(s) matching "${inputValue}"`);
+      setIsMessageRef(false);
+    } else {
+      // alert(`No house found matching "${inputValue}"`);
+      setIsMessageRef(true);
+      errorDisplay.current.style.display = "none";
+      setResults([]);
+    }
+  } catch (error) {
+    console.error("Error searching listings:", error);
+    setResults([]);
+    setIsMessageRef(true);
+    errorDisplay.current.style.display = "none";
+  }
+};
 
 
-     // Check if user is logged in before accessing the Dashboard
-          const routeToSignUp = useNavigate()
-         useEffect(() => {
-            const checkUser = () => {
-              const userData = localStorage.getItem("userDataKeev");
-              // console.log(userData);
-              const userNameExist = JSON.parse(userData).username;
-              const userEmailExist = JSON.parse(userData).userEmail;
-              const userPasswordExist = JSON.parse(userData).userpassword;
-              // console.log(userNameExist, userEmailExist, userPasswordExist)
-              if (!userNameExist && !userEmailExist && userPasswordExist) {
-                alert("User is not logged in");
-                routeToSignUp("/Signup")
-                return;
-              }
-            };
-  
-            checkUser();
-         }, []);
 
-  // Script to get all images and route to specific pages when selected
-//   const allImages = useRef(null);
-//   const houseNavigate = useNavigate()
-// useEffect(() => {
-//   allImages.current = document.querySelectorAll(".imageDesc");
-//   console.log(allImages);
 
-//   allImages.current.forEach((img) => {
-//     img.addEventListener("click", (e) => {
-//       localStorage.setItem("selectedImg", e.target.src);
-//       houseNavigate("/House");
-//     });
-//   });
 
-//   // Cleanup function to remove event listeners when the component unmounts
-//   return () => {
-//     allImages.current.forEach((img) => {
-//       img.removeEventListener("click", (e) => {
-//         localStorage.setItem("selectedImg", e.target.src);
-//         houseNavigate("/House");
-//       });
-//     });
-//   };
-// }, []);
-
-// const allCardsInfo = useRef(null);
-
-// useEffect(() => {
-//     allCardsInfo.current = document.querySelectorAll(".cardInfo");
-//     console.log(allCardsInfo);
-//     allCardsInfo.current.forEach((info) => {
-//       info.addEventListener("click", (e) => {
-//         sessionStorage.setItem("houseInfo", info.textContent)
-//        houseNavigate("/House")
-//       })
-//     })
-// }, [])
-
-  // Fetch Data from API
-
-  // const selectTag = useRef(null);
-  // // const errorDisplayVal = useRef(null);
-  // // errorDisplayVal.style.display = "none";
-  // const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState(null);
-  // const [data, setData] = useState([]);
-  // const [errorMessage, setErrorMessage] = useState("")
+  // const [showMessage, setMessage] = useState(false);
 
   // useEffect(() => {
-  //   // if (!selectTag.current) return;
-  //   // errorDisplayVal = document.getElementById("errorDisplay");
-  //   const headers = new Headers();
-  //       headers.append("X-Api-Key", "4hueXJfjAZAV3FaBKX93Z9xun0Ffnxdo");
+  //   // console.log(filterRef);
+  //         // console.log(cards);
 
-  //   const options = {
-  //     method: "GET",
-  //     headers: headers,
-  //     redirect: "follow",
-  //   };
+  //   const runFilter = () => {
+  //     const filterCase = filterRef.current.value.toLowerCase();
+  //     let matchFound = false;
+  //     cards.current.forEach((list) => {
+  //       const cardText = list.textContent;
+  //       if (cardText.toLowerCase().includes(filterCase.toLowerCase())) {
+  //         list.style.display = "";
+  //         matchFound = true;
+  //         //  messageDiv.current.style.display == "none";
+  //       }else{
+  //         list.style.display = "none"
+  //         // return messageDiv.current
+  //       //  messageDiv.current.style.display = "block"
+  //       }
+  //     });
 
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "https://naija-places.toneflix.com.ng/api/v1/states", options
-  //       );
-  //       setData(response.data.data);
-  //       // console.log(response)
-  //       // const showAllData = response.data.data;
-  //       // console.log(showAllData);
-  //       // // // console.log(showAllData[0].name);
-  //     // if (selectTag.current) {
-  //     //   showAllData.forEach((state) => {
-  //     //     const option = document.createElement("option");
-  //     //     option.value = state.name;
-  //     //     option.textContent = state.name;
-  //     //     selectTag.current.appendChild(option);
-  //     //   });
-  //     // }
-
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //       const errorTxt = `Sorry can't fetch states: ${error.message}`;
-       
-  //         if (!errorMessage) {
-  //            setErrorMessage(errorTxt);
-  //            alert(errorTxt);
-  //         }
-  //     } finally {
-  //       setLoading(false);
+  //     if (matchFound) {
+  //       messageDiv.current.style.display = "none"
+  //     }else{
+  //       messageDiv.current.style.display = "block"
   //     }
   //   };
-  //   // console.log(selectTag);
-  //   // console.log(errorDisplayVal)
-
-  //   fetchData();
-  //   // selectTag.addEventListener("click", fetchData)
+  //   filterRef.current.addEventListener("input", runFilter)
+  
   // }, []);
 
-  // if (loading) {
-  //   return <div>Fetching states.....</div>;
-  // }
-
-  // Return houses according to user search
-  const [showMessage, setMessage] = useState(false);
-  const messageDiv = useRef(null)
-  const filterRef = useRef(null);
-
-  useEffect(() => {
-    // console.log(filterRef);
-          // console.log(cards);
-
-    const runFilter = () => {
-      const filterCase = filterRef.current.value.toLowerCase();
-      let matchFound = false;
-      cards.current.forEach((list) => {
-        const cardText = list.textContent;
-        if (cardText.toLowerCase().includes(filterCase.toLowerCase())) {
-          list.style.display = "";
-          matchFound = true;
-          //  messageDiv.current.style.display == "none";
-        }else{
-          list.style.display = "none"
-          // return messageDiv.current
-        //  messageDiv.current.style.display = "block"
-        }
-      });
-
-      if (matchFound) {
-        messageDiv.current.style.display = "none"
-      }else{
-        messageDiv.current.style.display = "block"
-      }
-    };
-    filterRef.current.addEventListener("input", runFilter)
-  
-  }, []);
-
+  // Handle loader
   const servicesContainer = useRef(null);
   const loadreServices = useRef(null);
-
   useEffect(() => {
       const servicesAnim = () => {
         setTimeout(() => {
             loadreServices.current.style.display = "none"
             servicesContainer.current.style.display = "block";
-        }, 3000)
+        }, 1000)
       };
 
       servicesAnim();
@@ -416,304 +368,65 @@ const navigateHouse = useNavigate()
                 ref={filterRef}
                 id="filter"
               />
+              <button id="buyButton" onClick={runFilter}>
+                Search
+              </button>
             </div>
             {/* Div to display incase search houses return error */}
-            <div
-              className="messageInvalid"
-              style={{ display: "none" }}
-              ref={messageDiv}>
-              No houses match your search. Keep searching, your perfect match
-              might be here
-            </div>
-            <div className="featuredHouses">
-              <div className="cardFeatured">
-                <img src={house2} className="imageDesc" alt="" />
-                <div className="cardInfo">
-                  <div className="housedetails">
-                    <p>
-                      {" "}
-                      <strong className="houseName">Bluebell Cottage</strong>
-                    </p>
-
-                    <p>
-                      {" "}
-                      <strong>₦23,500,000</strong>
-                    </p>
-                  </div>
-                  <div className="houseLocation">
-                    <p>Lagos, Nigeria</p>
-                    <p>4 Bedroom Flat</p>
-                  </div>
-                </div>
+            {messageRef && (
+              <div className="messageInvalid" ref={messageDiv}>
+                No houses match your search. Keep searching, your perfect match
+                might be here
               </div>
-              {/* Card 2 */}
-              <div className="cardFeatured">
-                <img src={house7} className="imageDesc" alt="" />
-                <div className="cardInfo">
-                  <div className="housedetails">
-                    <p>
-                      <strong>Willow Cottage</strong>
-                    </p>
-
-                    <p>
-                      {" "}
-                      <strong>₦20,500,000</strong>
-                    </p>
-                  </div>
-                  <div className="houseLocation">
-                    <p>Delta, Nigeria</p>
-                    <p>3 Bedroom Flat</p>
-                  </div>
-                </div>
+            )}
+            {/* Load Animation when fetching data from API */}
+            {loader && (
+              <div className="propLoader">
+                <span class="loader"></span>
+                <p>Getting available properties...</p>
               </div>
-              {/* Card 3 */}
-              <div className="cardFeatured">
-                <img src={background} className="imageDesc" alt="" />
-                <div className="cardInfo">
-                  <div className="housedetails">
-                    <p>
-                      {" "}
-                      <strong>Ivy Hall</strong>
-                    </p>
-                    <p>
-                      <strong>₦50,500,000</strong>
-                    </p>
-                  </div>
-                  <div className="houseLocation">
-                    <p>Anambra, Nigeria</p>
-                    <p>4 Bedroom Flat</p>
-                  </div>
-                </div>
-              </div>
-              {/* Card 4 */}
-              <div className="cardFeatured">
-                <img src={house3} className="imageDesc" alt="" />
-                <div className="cardInfo">
-                  <div className="housedetails">
-                    <p>
-                      {" "}
-                      <strong>Tranquility Base</strong>
-                    </p>
-                    <p>
-                      <strong>₦30,000,000</strong>
-                    </p>
-                  </div>
-                  <div className="houseLocation">
-                    <p>Enugu, Nigeria</p>
-                    <p>5 Bedroom Flat</p>
-                  </div>
-                </div>
-              </div>
-              {/* Card 5 */}
-              <div className="cardFeatured">
-                <img src={house4} className="imageDesc" alt="" />
-                <div className="cardInfo">
-                  <div className="housedetails">
-                    <p>
-                      {" "}
-                      <strong>Bella Vista</strong>
-                    </p>
-                    <p>
-                      <strong>₦30,500,000</strong>
-                    </p>
-                  </div>
-                  <div className="houseLocation">
-                    <p>Bayelsa, Nigeria</p>
-                    <p>2 Bedroom Flat</p>
-                  </div>
-                </div>
-              </div>
-              {/* card 6 */}
-              <div className="cardFeatured">
-                <img src={house5} className="imageDesc" alt="" />
-                <div className="cardInfo">
-                  <div className="housedetails">
-                    <p>
-                      {" "}
-                      <strong>Lakeside Bliss</strong>
-                    </p>
-                    <p>
-                      <strong>₦25,000,000</strong>
-                    </p>
-                  </div>
-                  <div className="houseLocation">
-                    <p>Ebonyi, Nigeria</p>
-                    <p>5 Bedroom Flat</p>
-                  </div>
-                </div>
-              </div>
-              {/* Card 7 */}
-              <div className="cardFeatured">
-                <img src={house6} className="imageDesc" alt="" />
-                <div className="cardInfo">
-                  <div className="housedetails">
-                    <p>
-                      {" "}
-                      <strong>Pebble Brook</strong>
-                    </p>
-                    <p>
-                      <strong>₦5,500,000</strong>
-                    </p>
-                  </div>
-                  <div className="houseLocation">
-                    <p>Ondo, Nigeria</p>
-                    <p>4 Bedroom Flat</p>
-                  </div>
-                </div>
-              </div>
-              {/* Card 8 */}
-              <div className="cardFeatured">
-                <img src={house8} className="imageDesc" alt="" />
-                <div className="cardInfo">
-                  <div className="housedetails">
-                    <p>
-                      {" "}
-                      <strong>Greenland Estate</strong>
-                    </p>
-                    <p>
-                      <strong>₦53,500,000</strong>
-                    </p>
-                  </div>
-                  <div className="houseLocation">
-                    <p>Imo, Nigeria</p>
-                    <p>4 Bedroom Flat</p>
-                  </div>
-                </div>
-              </div>
-              {/* Card 9 */}
-              <div className="cardFeatured">
-                <img src={house9} className="imageDesc" alt="" />
-                <div className="cardInfo">
-                  <div className="housedetails">
-                    <p>
-                      {" "}
-                      <strong>Raven Shadow</strong>
-                    </p>
-                    <p>
-                      <strong>₦50,000,000</strong>
-                    </p>
-                  </div>
-                  <div className="houseLocation">
-                    <p>Abuja, Nigeria</p>
-                    <p>3 Bedroom Flat</p>
-                  </div>
-                </div>
-              </div>
-              {/* Card 10 */}
-              <div className="cardFeatured">
-                <img src={house10} className="imageDesc" alt="" />
-                <div className="cardInfo">
-                  <div className="housedetails">
-                    <p>
-                      {" "}
-                      <strong>Pinecone Lodge</strong>
-                    </p>
-                    <p>
-                      <strong>₦50,500,000</strong>
-                    </p>
-                  </div>
-                  <div className="houseLocation">
-                    <p>Bayelsa, Nigeria</p>
-                    <p>5 Bedroom Flat</p>
-                  </div>
-                </div>
-              </div>
-              {/* Card 11 */}
-              <div className="cardFeatured">
-                <img src={hous11} className="imageDesc" alt="" />
-                <div className="cardInfo">
-                  <div className="housedetails">
-                    <p>
-                      {" "}
-                      <strong>Miracle Garden Villa</strong>
-                    </p>
-                    <p>
-                      <strong>₦97,000,000</strong>
-                    </p>
-                  </div>
-                  <div className="houseLocation">
-                    <p>Imo, Nigeria</p>
-                    <p>7 Bedroom Flat</p>
-                  </div>
-                </div>
-              </div>
-              {/* Card 12 */}
-              <div className="cardFeatured">
-                <img src={main} className="imageDesc" alt="" />
-                <div className="cardInfo">
-                  <div className="housedetails">
-                    <p>
-                      {" "}
-                      <strong>Dragonspire Keep</strong>
-                    </p>
-                    <p>
-                      <strong>₦100,000,000</strong>
-                    </p>
-                  </div>
-                  <div className="houseLocation">
-                    <p>Abuja, Nigeria</p>
-                    <p>6 Bedroom Flat</p>
-                  </div>
-                </div>
-              </div>
-              {/* Card 13 */}
-              <div className="cardFeatured">
-                <img src={house7} className="imageDesc" alt="" />
-                <div className="cardInfo">
-                  <div className="housedetails">
-                    <p>
-                      <strong>Willow Cottage</strong>
-                    </p>
-
-                    <p>
-                      {" "}
-                      <strong>₦20,500,000</strong>
-                    </p>
-                  </div>
-                  <div className="houseLocation">
-                    <p>Delta, Nigeria</p>
-                    <p>3 Bedroom Flat</p>
-                  </div>
-                </div>
-              </div>
-              {/* Card 14 */}
-              <div className="cardFeatured">
-                <img src={background} className="imageDesc" alt="" />
-                <div className="cardInfo">
-                  <div className="housedetails">
-                    <p>
-                      {" "}
-                      <strong>Ivy Hall</strong>
-                    </p>
-                    <p>
-                      <strong>₦50,500,000</strong>
-                    </p>
-                  </div>
-                  <div className="houseLocation">
-                    <p>Anambra, Nigeria</p>
-                    <p>4 Bedroom Flat</p>
-                  </div>
-                </div>
-              </div>
-              {/* Card 15 */}
-              <div className="cardFeatured">
-                <img src={house3} className="imageDesc" alt="" />
-                <div className="cardInfo">
-                  <div className="housedetails">
-                    <p>
-                      {" "}
-                      <strong>Tranquility Base</strong>
-                    </p>
-                    <p>
-                      <strong>₦30,000,000</strong>
-                    </p>
-                  </div>
-                  <div className="houseLocation">
-                    <p>Enugu, Nigeria</p>
-                    <p>5 Bedroom Flat</p>
-                  </div>
-                </div>
-              </div>
+            )}
+            <div className="featuredHouses" ref={errorDisplay}>
+              {results.length > 0
+                ? results.map((houseResult) => (
+                    <div className="cardFeatured" key={houseResult.id}>
+                      <img src={houseResult.image} alt="" />
+                      <div className="cardInfo">
+                        <div className="housedetails">
+                          <p>
+                            <b>{houseResult.name}</b>
+                          </p>
+                          <p>
+                            <b>{houseResult.amount}</b>
+                          </p>
+                        </div>
+                        <div className="houseLocation">
+                          <p>{houseResult.location}</p>
+                          <p>{houseResult.description_short}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                : // Show full listings only if no search has happened
+                  Listings.map((house) => (
+                    <div className="cardFeatured" key={house.id}>
+                      <img src={house.image} alt="" />
+                      <div className="cardInfo">
+                        <div className="housedetails">
+                          <p>
+                            <b>{house.name}</b>
+                          </p>
+                          <p>
+                            <b>{house.amount}</b>
+                          </p>
+                        </div>
+                        <div className="houseLocation">
+                          <p>{house.location}</p>
+                          <p>{house.description_short}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
             </div>
           </div>
         </div>

@@ -1,0 +1,340 @@
+{
+
+    "users": [
+        {
+          "id": 1,
+          "username": "miracle",
+          "email": "miracle@example.com",
+          "password": "123456"
+        },
+        {
+            "id": 2,
+            "username": "jamesEstateProp",
+            "email": "james@gmail.com",
+            "password": "James@123"
+        }
+      ],
+
+    "houseListings": [
+            {
+              "id": 1,
+              "name": "Bluebell Cottage",
+              "location": "Lagos, Nigeria",
+              "amount": "₦23,500,000",
+              "image": "https://images.unsplash.com/photo-1668911494509-14baf3b42fda?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTE4fHxob3VzZXxlbnwwfDB8MHx8fDA%3D",
+              "description_short": "4 Bedroom Flat",
+              "description": "A luxurious 4-bedroom flat with all modern amenities and 24/7 power supply.",
+              "features": [
+                "24/7 power",
+                "Furnished kitchen",
+                "Air conditioning",
+                "WiFi",
+                "Parking space"
+              ]
+            },
+            {
+              "id": 2,
+              "name": "Willow Cottage",
+              "location": "Delta, Nigeria",
+              "amount": "₦20,5000,000",
+              "image": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTh8fGhvdXNlfGVufDB8MHwwfHx8MA%3D%3D",
+              "description_short": "3 Bedroom Flat",
+              "description": "Spacious duplex with 3 bedrooms and a private garage.",
+              "features": [
+                "Garage",
+                "Balcony",
+                "Water heater",
+                "Security",
+                "Garden"
+              ]
+            },
+            {
+              "id": 3,
+              "name": "Ivy Hall",
+              "location": "Anambra, Nigeria",
+              "amount": "₦4,471,281",
+              "image": "https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA4fHxob3VzZXxlbnwwfDB8MHx8fDA%3D",
+              "description_short": "4 Bedroom Flat",
+              "description": "Spacious and well-located 4 bedroom flat, perfect for families or professionals.",
+              "features": [
+                "Air conditioning",
+                "Swimming pool",
+                "Garden",
+                "Parking space",
+                "Balcony"
+              ]
+            },
+            {
+              "id": 4,
+              "name": "Tranquility Base",
+              "location": "Enugu, Nigeria",
+              "amount": "₦50,994,180",
+              "image": "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fGhvdXNlfGVufDB8MHwwfHx8MA%3D%3D",
+              "description_short": "5 Bedroom Flat",
+              "description": "Spacious and well-located 5 bedroom flat, perfect for families or professionals.",
+              "features": [
+                "Swimming pool",
+                "Garage",
+                "Garden",
+                "Gym",
+                "Parking space"
+              ]
+            },
+            {
+              "id": 5,
+              "name": "Bella Vista",
+              "location": "Bayelsa, Nigeria",
+              "amount": "₦30,529,940",
+              "image": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fGhvdXNlfGVufDB8MHwwfHx8MA%3D%3D",
+              "description_short": "2 Bedroom Flat",
+              "description": "Spacious and well-located 2 bedroom flat, perfect for families or professionals.",
+              "features": [
+                "Gym",
+                "Garden",
+                "Garage",
+                "Security",
+                "Swimming pool"
+              ]
+            },
+            {
+              "id": 6,
+              "name": "Lakeside Bliss",
+              "location": "Ebonyi, Nigeria",
+              "amount": "₦25,002,201",
+              "image": "https://plus.unsplash.com/premium_photo-1733342586521-6d04831831bd?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTU0fHxob3VzZXxlbnwwfDB8MHx8fDA%3D",
+              "description_short": "5 Bedroom Flat",
+              "description": "Spacious and well-located 5 bedroom flat, perfect for families or professionals.",
+              "features": [
+                "Furnished kitchen",
+                "Parking space",
+                "Garage",
+                "Air conditioning",
+                "Security"
+              ]
+            },
+            {
+              "id": 7,
+              "name": "Pebble Brook",
+              "location": "Ondo, Nigeria",
+              "amount": "₦5,511,714",
+              "image": "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTQwfHxob3VzZXxlbnwwfDB8MHx8fDA%3D",
+              "description_short": "4 Bedroom Flat",
+              "description": "Spacious and well-located 4 bedroom flat, perfect for families or professionals.",
+              "features": [
+                "Security",
+                "Gym",
+                "Water heater",
+                "WiFi",
+                "Swimming pool"
+              ]
+            },
+            {
+              "id": 8,
+              "name": "Greenland Estate",
+              "location": "Imo, Nigeria",
+              "amount": "₦53,509,680",
+              "image": "https://images.unsplash.com/photo-1628744448839-a475cc0e90c3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTgzfHxob3VzZXxlbnwwfDB8MHx8fDA%3D",
+              "description_short": "4 Bedroom Flat",
+              "description": "Spacious and well-located 4 bedroom flat, perfect for families or professionals.",
+              "features": [
+                "Gym",
+                "Air conditioning",
+                "Garden",
+                "WiFi",
+                "Garage"
+              ]
+            },
+            {
+              "id": 9,
+              "name": "Raven Shadow",
+              "location": "Abuja, Nigeria",
+              "amount": "₦50,004,797",
+              "image": "https://images.unsplash.com/photo-1614846384571-1e31322ed3a9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjAwfHxob3VzZXxlbnwwfDB8MHx8fDA%3D",
+              "description_short": "3 Bedroom Flat",
+              "description": "Spacious and well-located 3 bedroom flat, perfect for families or professionals.",
+              "features": [
+                "Swimming pool",
+                "24/7 power",
+                "Water heater",
+                "Garden",
+                "WiFi"
+              ]
+            },
+            {
+              "id": 10,
+              "name": "Pinecone Lodge",
+              "location": "Bayelsa, Nigeria",
+              "amount": "50,587,509",
+              "image": "https://images.unsplash.com/photo-1540882082344-a56ecd70ba96?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjI4fHxob3VzZXxlbnwwfDB8MHx8fDA%3D",
+              "description_short": "5 Bedroom Flat",
+              "description": "Spacious and well-located 5 bedroom flat, perfect for families or professionals.",
+              "features": [
+                "Garden",
+                "Swimming pool",
+                "Air conditioning",
+                "Balcony",
+                "24/7 power"
+              ]
+            },
+            {
+              "id": 11,
+              "name": "Miracle Garden Villa",
+              "location": "Imo, Nigeria",
+              "amount": "₦97,700,455",
+              "image": "https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjAzfHxob3VzZXxlbnwwfDB8MHx8fDA%3D",
+              "description_short": "7 Bedroom Flat",
+              "description": "Spacious and well-located 7 bedroom flat, perfect for families or professionals.",
+              "features": [
+                "24/7 power",
+                "Air conditioning",
+                "Water heater",
+                "Garage",
+                "Parking space"
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Dragonspire Keep",
+              "location": "Abuja, Nigeria",
+              "amount": "₦105,000,522",
+              "image": "https://images.unsplash.com/photo-1721222204632-bf9abe6f023f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjIxfHxob3VzZXxlbnwwfDB8MHx8fDA%3D",
+              "description_short": "6 Bedroom Flat",
+              "description": "Spacious and well-located 6 bedroom flat, perfect for families or professionals.",
+              "features": [
+                "Garden",
+                "Gym",
+                "WiFi",
+                "24/7 power",
+                "Water heater"
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Marina Bay Residence",
+              "location": "Maitama, Abuja",
+              "amount": "₦8,929,599",
+              "image": "https://plus.unsplash.com/premium_photo-1661962841993-99a07c27c9f4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aG91c2V8ZW58MHwwfDB8fHww",
+              "description_short": "5 Bedroom Flat",
+              "description": "Spacious and well-located 5 bedroom flat, perfect for families or professionals.",
+              "features": [
+                "Garden",
+                "Balcony",
+                "Water heater",
+                "Swimming pool",
+                "Air conditioning"
+              ]
+            },
+            {
+              "id": 14,
+              "name": "Realtor's Haven",
+              "location": "Port Harcourt, Nigeria",
+              "amount": "₦23,314,849",
+              "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aG91c2V8ZW58MHwwfDB8fHww",
+              "description_short": "4 Bedroom Flat",
+              "description": "Spacious and well-located 4 bedroom flat, perfect for families or professionals.",
+              "features": [
+                "WiFi",
+                "Swimming pool",
+                "Water heater",
+                "Furnished kitchen",
+                "Garden"
+              ]
+            },
+            {
+              "id": 15,
+              "name": "Digital Nomad's Retreat",
+              "location": "Abia, Nigeria",
+              "amount": "₦5,527,885",
+              "image": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGhvdXNlfGVufDB8MHwwfHx8MA%3D%3D",
+              "description_short": "3 Bedroom Flat",
+              "description": "Spacious and well-located 3 bedroom flat, perfect for families or professionals.",
+              "features": [
+                "Swimming pool",
+                "Garden",
+                "Furnished kitchen",
+                "Balcony",
+                "Air conditioning"
+              ]
+            },
+            {
+              "id": 16,
+              "name": "All Stars Residence",
+              "location": "Enugu, Nigeria",
+              "amount": "₦12,791,336",
+              "image": "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGhvdXNlfGVufDB8MHwwfHx8MA%3D%3D",
+              "description_short": "7 Bedroom Flat",
+              "description": "Spacious and well-located 7 bedroom flat, perfect for families or professionals.",
+              "features": [
+                "WiFi",
+                "Security",
+                "Garage",
+                "Parking space",
+                "Furnished kitchen"
+              ]
+            },
+            {
+              "id": 17,
+              "name": "Inspiration Heights",
+              "location": "Imo, Nigeria",
+              "amount": "₦34,129,519",
+              "image": "https://images.unsplash.com/photo-1560184897-ae75f418493e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fGhvdXNlfGVufDB8MHwwfHx8MA%3D%3D",
+              "description_short": "6 Bedroom Flat",
+              "description": "Spacious and well-located 6 bedroom flat, perfect for families or professionals.",
+              "features": [
+                "Garden",
+                "Gym",
+                "Furnished kitchen",
+                "24/7 power",
+                "Balcony"
+              ]
+            },
+            {
+              "id": 18,
+              "name": "Essential Estate",
+              "location": "FCT, Abuja",
+              "amount": "₦510,202,161",
+              "image": "https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzZ8fGhvdXNlfGVufDB8MHwwfHx8MA%3D%3D",
+              "description_short": "Estate Flat",
+              "description": "Spacious and well-located Estate flats containing of 25 duplex with modern amenities, perfect for families or professionals.",
+              "features": [
+                "Swimming pool",
+                "Garage",
+                "Balcony",
+                "Security",
+                "Furnished kitchen"
+              ]
+            },
+            {
+              "id": 19,
+              "name": "Heights Haven",
+              "location": "Anambra, Nigeria",
+              "amount": "₦23,940,121",
+              "image": "https://images.unsplash.com/photo-1575517111478-7f6afd0973db?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzR8fGhvdXNlfGVufDB8MHwwfHx8MA%3D%3D",
+              "description_short": "4 Bedroom Flat",
+              "description": "Spacious and well-located 4 bedroom flat, perfect for families or professionals.",
+              "features": [
+                "Garden",
+                "Parking space",
+                "Furnished kitchen",
+                "Gym",
+                "WiFi"
+              ]
+            },
+            {
+              "id": 20,
+              "name": "Naomi's Garden",
+              "location": "Enugu, Nigeria",
+              "amount": "₦120,776,438",
+              "image": "https://images.unsplash.com/photo-1533682850979-2f18860789d6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjcxfHxob3VzZXxlbnwwfDB8MHx8fDA%3D",
+              "description_short": "5 Bedroom Flat",
+              "description": "Spacious and well-located 5 bedroom flat, perfect for families or professionals.",
+              "features": [
+                "Garden",
+                "Security",
+                "WiFi",
+                "Parking space",
+                "Gym"
+              ]
+            }
+          ]
+}

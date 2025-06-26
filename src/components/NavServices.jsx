@@ -23,7 +23,7 @@ const NavServices = () => {
 
             // Add shadow to the NavContainer via useRef on Scroll
           const navContainerRef = useRef(null);
-          console.log(navContainerRef)
+          // console.log(navContainerRef)
 
            useEffect(() => {
              const handleScroll = () => {
