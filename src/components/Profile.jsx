@@ -141,7 +141,7 @@ const Profile = () => {
          
              try {
                const statesURl = await axios.get(
-                 "nigeria_states.json",
+                 "/nigeria_states.json",
                 //  Swith to local Json API for stataes call 
                 //  {
                 //    headers: {
