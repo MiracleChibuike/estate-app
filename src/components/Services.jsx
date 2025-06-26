@@ -78,10 +78,10 @@ const [loader, setIsLoader] = useState(false);
 useEffect(() => {
   const fetchHouseListings = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/houseListings");
+      const response = await axios.get("/db.json");
     //  console.log(response.statusText);
-     const result = await response.data;
-    //  console.log(result)
+     const result = await response.data.houseListings;
+     console.log(result)
      setListings(result);
      setIsLoader(true)
     } catch (error) {
@@ -118,10 +118,12 @@ const runFilter = async () => {
   }
 
   try {
-    const response = await axios.get(`http://localhost:3001/houseListings`);
+    const response = await axios.get(`/db.json`);
     // Manually filter for EXACT matches in the name field
-    const exactMatches = response.data.filter((house) =>
-      house.name.toLowerCase().includes(inputValue) || house.location.toLowerCase().includes(inputValue)
+    const exactMatches = response.data.houseListings.filter(
+      (house) =>
+        house.name.toLowerCase().includes(inputValue) ||
+        house.location.toLowerCase().includes(inputValue)
     );
 
     setResults(exactMatches);

@@ -14,9 +14,9 @@ import { Helmet } from "react-helmet-async";
 
 
 const Profile = () => {
-  const navigateBack = useNavigate();
+  const navigateBackDash = useNavigate();
   const backLinkNav = () => {
-    navigateBack("/Dashboard");
+    navigateBackDash("/Dashboard");
   };
 
   const EditPageNavigate = useNavigate();
@@ -273,7 +273,7 @@ const Profile = () => {
             <div className="location">
               <label htmlFor="location-user">Location</label>
               <select name="address" id="location-user" ref={userState}>
-                <option value="" selected>
+                <option value="" defaultValue={"Selected"}>
                   {" "}
                   Select a State{" "}
                 </option>
