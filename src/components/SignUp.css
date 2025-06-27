@@ -168,6 +168,9 @@ animation-name: splash2;
 }
 
 @media screen and (max-width: 850px) {
+    .signContents, .logInContents{
+        padding: 20px 50px;
+    }
     .errorDisplay{
         width: 100%;
         justify-content: space-between;

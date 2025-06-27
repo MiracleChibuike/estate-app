@@ -79,6 +79,7 @@ const SignUp = () => {
       }, 5000);
     };
     formEl.current.addEventListener("submit", accountCreate);
+    // btnSign.current.disabled = true;
     let formInputs = [userName, userEmail, password, passwordConfirm];
     formInputs.forEach((input) => {
       input.current.addEventListener("input", () => {
@@ -176,6 +177,7 @@ const SignUp = () => {
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
+                  flexWrap: "wrap",
                   margin: "5px 0",
                 }}>
                 <label htmlFor="check" style={{ fontWeight: "lighter" }}>
@@ -189,6 +191,7 @@ const SignUp = () => {
                     width: "15px",
                     height: "15px",
                     transform: "scale(1.5)",
+                    // margin: "10px 0"
                   }}
                   required
                 />

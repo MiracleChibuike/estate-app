@@ -81,9 +81,9 @@ useEffect(() => {
       const response = await axios.get("/db.json");
     //  console.log(response.statusText);
      const result = await response.data.houseListings;
-     console.log(result)
-     setListings(result);
-     setIsLoader(true)
+    //  console.log(result)
+  setIsLoader(true);
+  setListings(result);
     } catch (error) {
       const newYes = error;
       const newEl = document.createElement("div");
@@ -97,7 +97,7 @@ useEffect(() => {
         } - ${error.message}. Make sure you are connected to the Internet or refresh this page`
       );
     }finally{
-      setIsLoader(false)
+      setIsLoader(false);
     }
   };
   fetchHouseListings();
@@ -136,6 +136,9 @@ const runFilter = async () => {
       setIsMessageRef(true);
       errorDisplay.current.style.display = "none";
       setResults([]);
+      setTimeout(() => {
+        location.reload();
+      }, 3000)
     }
   } catch (error) {
     console.error("Error searching listings:", error);
@@ -144,6 +147,25 @@ const runFilter = async () => {
     errorDisplay.current.style.display = "none";
   }
 };
+
+useEffect(() => {
+  const inputValue = filterRef.current;
+
+  const handleSearchKey = (e) => {
+    if (e.key === "Enter") {
+      runFilter()
+    }
+  };
+
+  inputValue.addEventListener("keydown", handleSearchKey);
+
+  //Clean up Event
+  return () => {
+    inputValue.removeEventListener("keydown", handleSearchKey);
+  }
+
+}, [])
+
 
 
 

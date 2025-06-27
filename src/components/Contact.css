@@ -5,6 +5,7 @@
   --green-deem: rgba(12, 188, 139, 0.1);
   --primary-white: #fff;
     --clr-color-gray-trans: #ccc;
+  --clr-gray-contact: rgb(233, 235, 236);
      --danger-faint: #e37474;
 }
 .contact-Container{
@@ -71,7 +72,7 @@
 }
 .contact{
     margin: 90px 0 0 0;
-    padding: 10px 30px;
+    padding: 10px 270px;
 }
 #contact_header{
     font-weight: 800;
@@ -87,15 +88,15 @@
     flex-direction: column;
 }
 .formName input, .formEmail input, .formMessage textarea{
-    padding: 7px 10px;
+    padding: 9px 10px;
     margin: 10px 0;
     outline: none;
     border: none;
-    background: var(--clr-color-gray-trans);
+    background: var(--clr-gray-contact);
     border-radius: 5px; 
 }
 .formName input:focus, .formEmail input:focus, .formMessage textarea:focus{
-     border: 1px solid var(--clr-color-gray-trans);
+     border: 1px solid var(--clr-logo);
     outline: 2px solid var(--clr-logo);
     transition: .2s;
     box-shadow: 0 0 4px var(--clr-color-gray-trans);
@@ -151,6 +152,10 @@
 }
 
 @media screen and (min-width: 0) and (max-width: 820px){
+  .contact{
+    margin: 90px 0 0 0;
+    padding: 10px 40px;
+}
     .contactForm{
         margin: 10px 15px;
     }

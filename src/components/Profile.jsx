@@ -28,6 +28,7 @@ const Profile = () => {
   const [isFormFilled, setIsFormFilled] = useState(false);
   const [isUserSuccesful, setIsUserSuccesful] = useState(false);
   const [isUserOkay, setIsUserOkay] = useState("");
+  const [isProfileAvatar, setIsProfileAvatar] = useState(false);
 
   useEffect(() => {
     fileInput.current.addEventListener("change", (event) => {
@@ -36,6 +37,7 @@ const Profile = () => {
         const reader = new FileReader();
         reader.onload = (e) => {
           userImage.current.src = e.target.result;
+          setIsProfileAvatar(false)
           localStorage.setItem("userProfile", userImage.current.src);
         };
         reader.readAsDataURL(files);
@@ -54,6 +56,8 @@ const Profile = () => {
     if (getUserImage) {
       //  userIcon.current.style.display = "none";
       userImage.current.src = getUserImage; // Use the stored image
+    }else{
+      setIsProfileAvatar(true)
     }
   }, []);
 
@@ -201,6 +205,14 @@ const Profile = () => {
             style={{ display: "none" }}
           />
           <img id="user-image-profile" ref={userImage} alt="" />
+          {/* Real User Image - Avatar */}
+          {isProfileAvatar && (
+            <img
+              src="https://i.pinimg.com/736x/49/17/c9/4917c92ac5f017b1d26e324d53cac668.jpg"
+              id="user-image"
+              alt=""
+            />
+          )}
           {/* Default image to be shown on page load */}
           {/* <i className="fa-solid fa-user" id="iconUser" ref={userIcon}></i> */}
           <img src={Camera} id="user-camera-profile" ref={cameraIcon} alt="" />
@@ -277,9 +289,12 @@ const Profile = () => {
                   {" "}
                   Select a State{" "}
                 </option>
-            {newData.map((state) => (
-              <option key={state.postalCode} value={state.state}>{state.state}</option>
-            ))};
+                {newData.map((state) => (
+                  <option key={state.postalCode} value={state.state}>
+                    {state.state}
+                  </option>
+                ))}
+                ;
               </select>
             </div>
             <div
