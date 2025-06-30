@@ -4,25 +4,38 @@ import "./NavServices.css";
 import menu from "../assets/hamburger.png";
 import user from "../assets/user.jpg";
 import { useNavigate, Link } from "react-router-dom";
+import logo from "../assets/folder/favicon.png";
 const NavServices = () => {
 
-        let menuIcon = (null);
-            let navsItem = (null);
-        
-            useEffect(() => {
-                menuIcon = document.getElementById("menuIcon");
-                navsItem = document.querySelector(".nav-Links");
-            }, [])
-        
-            const showNavs = () => {
-                // console.log(menuIcon, navsItem)
-                navsItem.classList.toggle("show");
-                navsItem.classList.add("rushnav");
-                let una = document.getElementById("hello");
-            };
+  //Show and Hide Nav Menu
+  const navContainerRef = useRef(null);
+  const navItems = useRef(null)
+  const navBarIcon = useRef(null);
+  const [isNavVisible, setIsNavVisible] = useState(false);
+ 
+  const openNav = () => {
+    setIsNavVisible(prev => !prev)
+  }
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        navBarIcon.current &&
+        !navBarIcon.current.contains(event.target) &&
+        navItems.current &&
+        !navItems.current.contains(event.target)
+      ) {
+        setIsNavVisible(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+   })
+      
             // Add shadow to the NavContainer via useRef on Scroll
-          const navContainerRef = useRef(null);
           // console.log(navContainerRef)
 
            useEffect(() => {
@@ -68,13 +81,14 @@ const NavServices = () => {
         <div className="NavContainer" ref={navContainerRef}>
           <div className="logo">
             <Link to="/">
-              <h2 className="logoText">KEEV</h2>
+            <img src={logo} width={'45px'} alt="" />
+              {/* <h2 className="logoText">KEEV</h2> */}
             </Link>
           </div>
           <div className="menu">
-            <img src={menu} alt="" onClick={showNavs} id="menuIcon" />
+            <img src={menu} ref={navBarIcon} onClick={openNav} alt="" id="menuIcon" />
           </div>
-          <div className="nav-Links">
+          <div className={`nav-Links ${isNavVisible ? "visible" : "hidden"}`} ref={navItems}>
             <ul>
               <li id="HomeTxt">Buy</li>
               <Link to={"/Dashboard"}>
