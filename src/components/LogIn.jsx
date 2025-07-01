@@ -1,20 +1,21 @@
 import { Helmet } from "react-helmet-async";
 import "./SignUp.css";
-import { Link, useNavigate } from "react-router-dom";
+import { data, Link, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import axios from "axios";
 
 const LogIn = () => {
     const profileNav = useNavigate();
     const [isUserValid, setIsUserValid] = useState(false);
     const [isUserFound, setIsUserFound] = useState(false);
-    const [isLoggedIn, setIsLoggIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const user_name = useRef(null);
     const user_email = useRef(null);
     const user_password = useRef(null);
     const loginForm = useRef(null);
 
     useEffect(() => {
-        const handleLogIn = (e) => {
+        const handleLogIn = async (e) => {
           e.preventDefault();
           const loginFields = [user_name, user_email, user_password];
           let isValid = true;
@@ -37,40 +38,45 @@ const LogIn = () => {
             return;
           }
           // Check if user exists
-          const userData = localStorage.getItem("userDataKeev");
-          console.log(userData);
-          if (userData) {
-            const nameNew = JSON.parse(userData).username;
-            const EmailNew = JSON.parse(userData).userEmail;
-            const PasswordNew = JSON.parse(userData).userpassword;
+         
+          try {
+            const userEmail = user_email.current.value.trim(); // Remove .toLowerCase()
+            const userpassword = user_password.current.value.trim(); // Keep raw
 
-            if (
-              user_name.current.value.trim() === nameNew &&
-              user_email.current.value.trim() === EmailNew &&
-              user_password.current.value.trim() === PasswordNew
-            ) {
-              setIsLoggIn(true);
-              setTimeout(() => {
-                setIsLoggIn(false);
-              }, 5000);
-              setTimeout(() => {
-                profileNav("/Profile");
-              }, 5000);
-            } else {
-              // Incorrect Credentials
+            console.log("Attempting login with:", { userEmail, userpassword });
+
+            // 1. First check if user exists by email only
+            const emailCheck = await axios.get(
+              `https://estate-app-keev.onrender.com/users?userEmail=${userEmail}`
+            );
+
+            if (emailCheck.data.length === 0) {
+              console.log("No user with this email exists");
               setIsUserFound(true);
-              setTimeout(() => {
-                setIsUserFound(false);
-              }, 5000);
+              return;
             }
-          }else{
-            // No user found
-            setIsUserFound(true);
-            setTimeout(() => {
-                setIsUserFound(false)
-            }, 5000)
-          }
 
+            // 2. Now check password
+            const fullCheck = await axios.get(
+              `https://estate-app-keev.onrender.com/users?userEmail=${userEmail}&userpassword=${userpassword}`
+            );
+
+            if (fullCheck.data.length === 1) {
+              const user = fullCheck.data[0];
+              sessionStorage.setItem("userData", JSON.stringify(user));
+
+              // Immediate redirect
+              window.location.href = "/Profile";
+              return;
+            }
+
+            // If we get here, password was wrong
+            console.log("Invalid password");
+            setIsUserFound(true);
+          } catch (err) {
+            console.error("Login error:", err);
+            setIsUserFound(true);
+          }
         };
         
 

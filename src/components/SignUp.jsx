@@ -2,8 +2,9 @@ import { Helmet } from "react-helmet-async";
 import { react, useEffect, useState } from "react";
 import "./SignUp.css";
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { data, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const SignUp = () => {
   const profileNav = useNavigate();
@@ -24,7 +25,7 @@ const SignUp = () => {
   }
   
   useEffect(() => {
-    const accountCreate = (e) => {
+    const accountCreate =  async (e) => {
       e.preventDefault();
       let formInputs = [userName, userEmail, password, passwordConfirm];
       let isValid = true;
@@ -62,21 +63,44 @@ const SignUp = () => {
 
       // get information from users to store
       const userObject = {
-        username: userName.current.value.trim(),
-        userEmail: userEmail.current.value.trim(),
+        username: userName.current.value.trim().toLowerCase(),
+        userEmail: userEmail.current.value.trim().toLowerCase(),
         userpassword: password.current.value.trim(),
-        confirmPassword: passwordConfirm.current.value.trim(),
       };
 
       console.log(userObject);
-      const getUserDetails = localStorage.setItem(
-        "userDataKeev",
-        JSON.stringify(userObject)
-      );
-      // Navigate to the Dashboard Section after creating an account
-      setTimeout(() => {
-        profileNav("/Profile");
-      }, 5000);
+      // const getUserDetails = localStorage.setItem(
+      //   "userDataKeev",
+      //   JSON.stringify(userObject)
+      // );
+
+      // Replace with our new Server
+      try {
+        const response = await axios.post(
+          "https://estate-app-keev.onrender.com/users",
+          userObject,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        if (!response.status) {
+          throw new Error(
+            `failed to create account - ${response.status} - ${response.statusText}`
+          )};
+          // return response.data;
+        const result = await response.data;
+        console.log("User created", result);
+        sessionStorage.setItem("userData", JSON.stringify(result));
+        // Navigate to the Dashboard Section after creating an account
+        setTimeout(() => {
+          profileNav("/Profile");
+        }, 5000);
+        console.log(result);
+      } catch (error) {
+        console.error(`Error creating user: ${error}`)
+      }
     };
     formEl.current.addEventListener("submit", accountCreate);
     // btnSign.current.disabled = true;

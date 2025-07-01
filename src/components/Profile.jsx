@@ -106,8 +106,10 @@ const Profile = () => {
   };
   //    store User details in LS
   useEffect(() => {
-    const reteriveDetails = localStorage.getItem("userDataKeev");
+    const reteriveDetails = sessionStorage.getItem("userData");
+    // console.log(reteriveDetails);
     // console.log(JSON.parse(reteriveDetails));
+    // console.log(JSON.parse(reteriveDetails).username);
     // console.log(JSON.parse(reteriveDetails).username);
     const nameNew = JSON.parse(reteriveDetails).username;
     const EmailNew = JSON.parse(reteriveDetails).userEmail;
