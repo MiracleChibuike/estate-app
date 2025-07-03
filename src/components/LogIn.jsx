@@ -13,6 +13,7 @@ const LogIn = () => {
     const user_email = useRef(null);
     const user_password = useRef(null);
     const loginForm = useRef(null);
+    const messageDisplay = useRef(null)
 
     useEffect(() => {
         const handleLogIn = async (e) => {
@@ -40,42 +41,50 @@ const LogIn = () => {
           // Check if user exists
          
           try {
-            const userEmail = user_email.current.value.trim(); // Remove .toLowerCase()
-            const userpassword = user_password.current.value.trim(); // Keep raw
+            const userEmail = user_email.current.value.trim().toLowerCase(); // Remove .toLowerCase()
+            const userpassword = user_password.current.value.trim().toLowerCase(); // Keep raw
+            const username = user_name.current.value.trim().toLowerCase();
 
-            console.log("Attempting login with:", { userEmail, userpassword });
+            console.log("Attempting login with:", { userEmail, userpassword, username });
 
-            // 1. First check if user exists by email only
-            const emailCheck = await axios.get(
-              `https://estate-app-keev.onrender.com/users?userEmail=${userEmail}`
-            );
-
-            if (emailCheck.data.length === 0) {
-              console.log("No user with this email exists");
-              setIsUserFound(true);
-              return;
-            }
-
-            // 2. Now check password
+            // Get user by email and password
             const fullCheck = await axios.get(
-              `https://estate-app-keev.onrender.com/users?userEmail=${userEmail}&userpassword=${userpassword}`
+              `https://estate-app-keev.onrender.com/users?username=${username}&userEmail=${userEmail}&userpassword=${userpassword}`
             );
+
+            console.log(fullCheck.data);
 
             if (fullCheck.data.length === 1) {
               const user = fullCheck.data[0];
               sessionStorage.setItem("userData", JSON.stringify(user));
 
-              // Immediate redirect
-              window.location.href = "/Profile";
-              return;
-            }
+              setIsLoggedIn(true);
+              setTimeout(() => {
+                setIsLoggedIn(false)
+              }, 3000);
 
-            // If we get here, password was wrong
-            console.log("Invalid password");
-            setIsUserFound(true);
+              setTimeout(() => {
+                // Navigae to the profile tab component
+                profileNav("/Profile");
+              }, 3000)
+
+            }else{
+              setIsUserFound(true);
+              setTimeout(() => {
+                setIsUserFound(false);
+              }, 7000)
+            }
           } catch (err) {
             console.error("Login error:", err);
+            const loginError = document.createElement("div");
+            loginError.className = "ErrorData";
+            loginError.textContent = `Login Error: This occured \n due to
+             (${err.message}) - {${err.code}}.`;
+            messageDisplay.current.appendChild(loginError)
             setIsUserFound(true);
+            setTimeout(() => {
+              setIsUserFound(false);
+            }, 4000)
           }
         };
         
@@ -135,7 +144,7 @@ const LogIn = () => {
             <h2>
               Welcome back, Log In to <br /> your account
             </h2>
-            <div className="logInForm">
+            <div className="logInForm" ref={messageDisplay}>
               <form action="" id="logInForm" ref={loginForm}>
                 <div className="nameInput">
                   <label htmlFor="name">User Name</label>

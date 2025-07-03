@@ -66,11 +66,11 @@ const ProfileEdit = () => {
               alert(
                 `Thank you, ${userFullName.current.value.trim()}. Your account has been succesfully registered. `
               );
-              localStorage.setItem("fullName", userFullName.current.value.trim());
-              localStorage.setItem("userName", userName.current.value.trim());
-              localStorage.setItem("userEmail", userEmail.current.value.trim());
-              localStorage.setItem("userMobile", userMobile.current.value.trim());
-              localStorage.setItem("userState", userState.current.value.trim());
+              sessionStorage.setItem("fullName", userFullName.current.value.trim());
+              sessionStorage.setItem("userName", userName.current.value.trim());
+              sessionStorage.setItem("userEmail", userEmail.current.value.trim());
+              sessionStorage.setItem("userMobile", userMobile.current.value.trim());
+              sessionStorage.setItem("userState", userState.current.value.trim());
               return ProfileEdit;
             }
           };
@@ -83,11 +83,11 @@ const ProfileEdit = () => {
               userMobile.current
         
             ) {
-              userFullName.current.value = localStorage.getItem("fullName") || "";
-              userName.current.value = localStorage.getItem("userName") || "";
-              userEmail.current.value = localStorage.getItem("userEmail") || "";
-              userMobile.current.value = localStorage.getItem("userMobile") || "";
-              userState.current.value = localStorage.getItem("userState") || "";
+              userFullName.current.value = sessionStorage.getItem("fullName") || "";
+              userName.current.value = sessionStorage.getItem("userName") || "";
+              userEmail.current.value = sessionStorage.getItem("userEmail") || "";
+              userMobile.current.value = sessionStorage.getItem("userMobile") || "";
+              userState.current.value = sessionStorage.getItem("userState") || "";
             }
           }, []);
           

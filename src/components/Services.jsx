@@ -89,6 +89,7 @@ useEffect(() => {
     } catch (error) {
       const newYes = error;
       const newEl = document.createElement("div");
+      newEl.className = "ErrorData"
       newEl.textContent = `An Error occured fetching house listings: ${
         error.response?.status || "Unable to reach Server."
       } - (${error.message}). Make sure you are connected to the Internet or refresh this page `;
@@ -108,13 +109,17 @@ useEffect(() => {
 // API to search for Houses
 const [results, setResults] = useState([])
 const [searchTerm, setSearchTerm] = useState("");
+const [isInputFilled, setIsInputFilled] = useState(false);
 const [messageRef, setIsMessageRef] = useState(false);
 
 const runFilter = async () => {
   const inputValue = filterRef.current.value.trim().toLowerCase();
 
   if (!inputValue) {
-    alert("Please enter a search term");
+    setIsInputFilled(true);
+    setTimeout(() => {
+      setIsInputFilled(false)
+    }, 7000)
     setResults([]);
     return;
   }
@@ -351,7 +356,16 @@ useEffect(() => {
             <h2 className="featuresHead">
               Our Featured <span>Property</span>
             </h2>
-
+            {/* Message to load when user doesn't provide a search term */}
+            {isInputFilled && (
+              <div className="searchValid">
+                <div>
+                  {" "}
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <p> Please enter name of property or location</p>
+              </div>
+            )}
             {/* Filter Section */}
             {/* <div className="filter">
             <div className="filterItems">
@@ -414,6 +428,7 @@ useEffect(() => {
                 <p>Getting available properties...</p>
               </div>
             )}
+
             <div className="featuredHouses" ref={errorDisplay}>
               {results.length > 0
                 ? results.map((houseResult) => (

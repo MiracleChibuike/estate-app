@@ -47,12 +47,22 @@
   {
     "state": "Delta",
     "capital": "Asaba",
+    "postalCode": "320003"
+  },
+  {
+    "state": "Sokoto",
+    "capital": "Sokoto",
+    "postalCode": "840006"
+  },
+  {
+    "state": "Delta",
+    "capital": "Asaba",
     "postalCode": "320001"
   },
   {
     "state": "Ebonyi",
     "capital": "Abakaliki",
-    "postalCode": "840001"
+    "postalCode": "740005"
   },
   {
     "state": "Edo",
@@ -167,7 +177,7 @@
   {
     "state": "Sokoto",
     "capital": "Sokoto",
-    "postalCode": "840001"
+    "postalCode": "840005"
   },
   {
     "state": "Taraba",
@@ -177,11 +187,11 @@
   {
     "state": "Yobe",
     "capital": "Damaturu",
-    "postalCode": "320001"
+    "postalCode": "320002"
   },
   {
     "state": "Zamfara",
     "capital": "Gusau",
-    "postalCode": "860001"
+    "postalCode": "860002"
   }
 ]

@@ -24,7 +24,6 @@ const SignUp = () => {
     setIsFilledIn(false)
   }
   
-  useEffect(() => {
     const accountCreate =  async (e) => {
       e.preventDefault();
       let formInputs = [userName, userEmail, password, passwordConfirm];
@@ -96,14 +95,14 @@ const SignUp = () => {
         // Navigate to the Dashboard Section after creating an account
         setTimeout(() => {
           profileNav("/Profile");
-        }, 5000);
+        }, 4000);
         console.log(result);
       } catch (error) {
         console.error(`Error creating user: ${error}`)
       }
     };
-    formEl.current.addEventListener("submit", accountCreate);
     // btnSign.current.disabled = true;
+   useEffect(() => {
     let formInputs = [userName, userEmail, password, passwordConfirm];
     formInputs.forEach((input) => {
       input.current.addEventListener("input", () => {
@@ -114,10 +113,9 @@ const SignUp = () => {
         }
       });
     });
+   })
 
     // document.addEventListener("input", chekIfValid);
-
-  }, []);
   return (
     <>
       <Helmet>
@@ -152,7 +150,7 @@ const SignUp = () => {
           )}
           <h2>Create an account with us</h2>
           <div className="createForm">
-            <form action="" id="formTag" ref={formEl}>
+            <form action="" id="formTag" ref={formEl} onSubmit={accountCreate}>
               <div className="nameInput">
                 <label htmlFor="name">Name</label>
                 <input
@@ -179,6 +177,7 @@ const SignUp = () => {
                   type="password"
                   id="password"
                   placeholder="***********"
+                  autoComplete="new-password"
                   className="inputField"
                   ref={password}
                 />
@@ -189,6 +188,7 @@ const SignUp = () => {
                   type="password"
                   id="passwordConfirm"
                   placeholder="***********"
+                  autoComplete="new-password"
                   className="inputField"
                   ref={passwordConfirm}
                 />

@@ -14,12 +14,11 @@ import { Helmet } from "react-helmet-async";
 
 
 const Profile = () => {
-  const navigateBackDash = useNavigate();
+
   const backLinkNav = () => {
     navigateBackDash("/Dashboard");
   };
 
-  const EditPageNavigate = useNavigate();
 
   const fileInput = useRef(null);
   const userImage = useRef(null);
@@ -29,6 +28,8 @@ const Profile = () => {
   const [isUserSuccesful, setIsUserSuccesful] = useState(false);
   const [isUserOkay, setIsUserOkay] = useState("");
   const [isProfileAvatar, setIsProfileAvatar] = useState(false);
+
+  const navigateBackDash = useNavigate();
 
   useEffect(() => {
     fileInput.current.addEventListener("change", (event) => {
@@ -93,34 +94,33 @@ const Profile = () => {
         setTimeout(() => {
             setIsUserSuccesful(false)
         }, 5000)
-      console.log(userState.current.value)
-      localStorage.setItem("fullName", userFullName.current.value.trim());
-      localStorage.setItem("userName", userName.current.value.trim());
-      localStorage.setItem("userEmail", userEmail.current.value.trim());
-      localStorage.setItem("userMobile", userMobile.current.value.trim());
-      localStorage.setItem("userState", userState.current.value.trim());
+      // console.log(userState.current.value)
+      sessionStorage.setItem("fullName", userFullName.current.value.trim());
+      sessionStorage.setItem("userName", userName.current.value.trim());
+      sessionStorage.setItem("userEmail", userEmail.current.value.trim());
+      sessionStorage.setItem("userMobile", userMobile.current.value.trim());
+      sessionStorage.setItem("userState", userState.current.value.trim());
      setTimeout(() => {
-      EditPageNavigate("/EditProfile");
+      navigateBackDash("/EditProfile");
      }, 5000)
     }
   };
   //    store User details in LS
   useEffect(() => {
     const reteriveDetails = sessionStorage.getItem("userData");
-    // console.log(reteriveDetails);
-    // console.log(JSON.parse(reteriveDetails));
-    // console.log(JSON.parse(reteriveDetails).username);
-    // console.log(JSON.parse(reteriveDetails).username);
-    const nameNew = JSON.parse(reteriveDetails).username;
-    const EmailNew = JSON.parse(reteriveDetails).userEmail;
+    console.log(reteriveDetails);
+    const currentUserData = JSON.parse(reteriveDetails);
+    console.log(currentUserData)
+    const currentUserName = currentUserData.username;
+    const currentUserEmail = currentUserData.userEmail;
     if (
       reteriveDetails) {
-      userFullName.current.value = localStorage.getItem("fullName") || "";
-      userName.current.value = nameNew;
-      userEmail.current.value = EmailNew;
-      userMobile.current.value = localStorage.getItem("userMobile") || "";
-      userState.current.value = localStorage.getItem("userState") || "";
-    }
+        userFullName.current.value = sessionStorage.getItem("fullName") || "";
+        userName.current.value = currentUserName;
+        userEmail.current.value = currentUserEmail;
+        userMobile.current.value = sessionStorage.getItem("userMobile") || "";
+        userState.current.value = sessionStorage.getItem("userState") || "";
+      }
   }, []);
   
   // Call the function on button click
@@ -135,14 +135,6 @@ const Profile = () => {
   const dataInput = useRef(null);
   // console.log(dataInput.current)
   useEffect(() => {
-       const headers = new Headers();
-      //  headers.append("X-Api-Key", "4hueXJfjAZAV3FaBKX93Z9xun0Ffnxdo");
-
-      //  const options = {
-      //    method: "GET",
-      //    headers: headers,
-      //    redirect: "follow",
-      //  };
           const fetchAllStates = async () => {
          
              try {
@@ -224,7 +216,7 @@ const Profile = () => {
             <div className="errorDisplay">
               <p>
                 {" "}
-                <i class="fa-solid fa-triangle-exclamation"></i> Please provide
+                <i className="fa-solid fa-triangle-exclamation"></i> Please provide
                 all your credentials
               </p>
             </div>
