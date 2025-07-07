@@ -77,6 +77,7 @@ const [Listings, setListings] = useState([]);
 const [loader, setIsLoader] = useState(false);
 useEffect(() => {
   const fetchHouseListings = async () => {
+    setIsLoader(true); // Rigth place to put before I start making the call
     try {
       const response = await axios.get(
         "https://estate-app-keev.onrender.com/houseListings"
@@ -84,7 +85,7 @@ useEffect(() => {
     //  console.log(response.statusText);
      const result = await response.data;
     //  console.log(result)
-  setIsLoader(true);
+  // setIsLoader(true);// This is wrong because I have already gotten the data here
   setListings(result);
     } catch (error) {
       const newYes = error;
@@ -104,7 +105,7 @@ useEffect(() => {
     }
   };
   fetchHouseListings();
-});
+}, []);
 
 // API to search for Houses
 const [results, setResults] = useState([])

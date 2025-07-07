@@ -54,7 +54,7 @@ const Home = () => {
 
   useEffect(() => {
       image = document.querySelectorAll("img");
-      console.log(image)
+      // console.log(image)
   }, []);
 
   // useEffect(() => {

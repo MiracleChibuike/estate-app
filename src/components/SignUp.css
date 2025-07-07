@@ -107,6 +107,21 @@ label{
     transition: .5s;
     transform: scale(1.1);
 }
+.toggler, .toggler2{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 15px;
+    position: relative;
+    top: -40px;
+    left: 230px;
+    color: var(--clr-color-gray-trans);
+    width: 40px;
+}
+.toggler i, .toggler2 i{
+    cursor: pointer;
+    margin: 0 2px;
+    font-size: small;
+}
 .errorDisplay, .successMsg{
     background: var(--danger-faint);
     padding: 10px;

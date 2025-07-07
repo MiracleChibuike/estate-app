@@ -5,12 +5,17 @@ import { useRef } from "react";
 import { data, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
+// This import below is for storing a user data globally to access all pages
+import { UserContext } from "../contexts/UserContext";
+import { useContext } from "react";
 
 const SignUp = () => {
   const profileNav = useNavigate();
   const [isFilledIn, setIsFilledIn] = useState(false);
   const [isPassWordSame, setIsPasswordSame] = useState(false);
   const [isAccountSuccess, setIsAccountSuccess] = useState(false);
+  //Use React User Hook to set user data
+  const { setUser } = useContext(UserContext);
   const btnSign = useRef(null);
   const allInputs = document.querySelectorAll(".inputField");
   const formEl = useRef(null);
@@ -87,11 +92,15 @@ const SignUp = () => {
         if (!response.status) {
           throw new Error(
             `failed to create account - ${response.status} - ${response.statusText}`
-          )};
-          // return response.data;
+          );
+        }
+        // return response.data;
         const result = await response.data;
         console.log("User created", result);
-        sessionStorage.setItem("userData", JSON.stringify(result));
+        // sessionStorage.setItem("userData", JSON.stringify(result));
+        const userData = JSON.stringify(result);
+        //Get the user data using react user hook
+        setUser(result); // this will make the user data available globally
         // Navigate to the Dashboard Section after creating an account
         setTimeout(() => {
           profileNav("/Profile");
@@ -113,8 +122,49 @@ const SignUp = () => {
         }
       });
     });
-   })
+   });
 
+  //  Tooggle Password hide and show
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isPasswordInvisible, setIsPasswordInvisible] = useState(true)
+  const eyePassword = useRef(null);
+  const eyeSlashPassword = useRef(null);
+  const showPassword = () => {
+    if (password.current.type == "password") {
+      password.current.type = "text";
+      setIsPasswordVisible(true);
+      setIsPasswordInvisible(false);
+    }
+  };
+  // Hide Password back
+  const hidePassword = () => {
+   if (password.current.type == "text") {
+    password.current.type = "password";
+    setIsPasswordVisible(false);
+    setIsPasswordInvisible(true);
+   }
+  }
+
+  //Toggle Password hide and show for Confirm Password
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
+  const [isConfirmPasswordInvisible, setIsConfirmPasswordInvisible] = useState(true);
+    useState(true);
+  const showPasswordConfirm = () => {
+    if (passwordConfirm.current.type == "password") {
+      passwordConfirm.current.type = "text";
+      setIsConfirmPasswordVisible(true);
+      setIsConfirmPasswordInvisible(false);
+    }
+  };
+
+  // Hide password back
+  const hidePasswordConfirm = () => {
+    if (passwordConfirm.current.type == "text") {
+      passwordConfirm.current.type = "password";
+      setIsConfirmPasswordVisible(false);
+      setIsConfirmPasswordInvisible(true);
+    }
+  }
     // document.addEventListener("input", chekIfValid);
   return (
     <>
@@ -181,6 +231,21 @@ const SignUp = () => {
                   className="inputField"
                   ref={password}
                 />
+                <span className="toggler">
+                  {" "}
+                  {isPasswordInvisible && (
+                    <i
+                      className="fa-solid fa-eye-slash"
+                      onClick={showPassword}
+                      ref={eyeSlashPassword}></i>
+                  )}
+                  {isPasswordVisible && (
+                    <i
+                      className="fa-solid fa-eye"
+                      onClick={hidePassword}
+                      ref={eyePassword}></i>
+                  )}
+                </span>
               </div>
               <div className="passwordConfirm">
                 <label htmlFor="passwordConfirm">Confirm Password</label>
@@ -192,6 +257,18 @@ const SignUp = () => {
                   className="inputField"
                   ref={passwordConfirm}
                 />
+                <span className="toggler2">
+                  {isConfirmPasswordInvisible && (
+                    <i
+                      className="fa-solid fa-eye-slash"
+                      onClick={showPasswordConfirm}></i>
+                  )}
+                  {isConfirmPasswordVisible && (
+                    <i
+                      className="fa-solid fa-eye"
+                      onClick={hidePasswordConfirm}></i>
+                  )}
+                </span>
                 {isPassWordSame && (
                   <p style={{ color: "#700505" }}>Password does not match</p>
                 )}
@@ -205,7 +282,7 @@ const SignUp = () => {
                   margin: "5px 0",
                 }}>
                 <label htmlFor="check" style={{ fontWeight: "lighter" }}>
-                  Agree to our terms and conditions
+                  Agree to our terms and <br /> conditions
                 </label>
                 <input
                   type="checkbox"

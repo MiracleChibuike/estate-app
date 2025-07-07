@@ -11,6 +11,8 @@ import ProfileEdit from "../components/ProfileEdit";
 import axiox from "axios";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
 
 const Profile = () => {
@@ -28,6 +30,7 @@ const Profile = () => {
   const [isUserSuccesful, setIsUserSuccesful] = useState(false);
   const [isUserOkay, setIsUserOkay] = useState("");
   const [isProfileAvatar, setIsProfileAvatar] = useState(false);
+  const { user } = useContext(UserContext); // Use react hook to get user data
 
   const navigateBackDash = useNavigate();
 
@@ -107,21 +110,24 @@ const Profile = () => {
   };
   //    store User details in LS
   useEffect(() => {
-    const reteriveDetails = sessionStorage.getItem("userData");
-    console.log(reteriveDetails);
-    const currentUserData = JSON.parse(reteriveDetails);
-    console.log(currentUserData)
-    const currentUserName = currentUserData.username;
-    const currentUserEmail = currentUserData.userEmail;
-    if (
-      reteriveDetails) {
-        userFullName.current.value = sessionStorage.getItem("fullName") || "";
-        userName.current.value = currentUserName;
-        userEmail.current.value = currentUserEmail;
-        userMobile.current.value = sessionStorage.getItem("userMobile") || "";
-        userState.current.value = sessionStorage.getItem("userState") || "";
-      }
-  }, []);
+    
+    // const currentUserData = JSON.parse(reteriveDetails);
+    console.log(user);
+    
+    console.log(JSON.stringify(user))
+    // const currentUserEmail = user.userEmail;
+    if (user && user.length > 0) {
+      const currentUser = user[0];
+      const currentUserName = currentUser.username;
+      console.log(currentUserName);
+      const currentUserEmail = currentUser.userEmail;
+      userFullName.current.value = sessionStorage.getItem("fullName") || "";
+      userName.current.value = currentUserName;
+      userEmail.current.value = currentUserEmail;
+      userMobile.current.value = sessionStorage.getItem("userMobile") || "";
+      userState.current.value = sessionStorage.getItem("userState") || "";
+    }
+  }, [user]);
   
   // Call the function on button click
   useEffect(() => {
