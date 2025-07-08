@@ -66,11 +66,11 @@
 .features span{
     padding: 0 10px;
 }
-.buyButton, .buyNow{
+.buy, .buyNow{
     margin: 40px 0 0 0;
     text-align: center;
 }
-.buyButton button, .buyNow button{
+.buy button, .buyNow button{
     width: 50%;
     border: none;
     border-radius: 7px;

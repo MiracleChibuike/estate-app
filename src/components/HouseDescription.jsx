@@ -52,6 +52,9 @@ const HouseDescription = () => {
                 ))}
               </div>
             </div>
+            <div className="buy">
+              <button id="placeOrder">Buy Now</button>
+            </div>
           </div>
         </div>
       </div>
