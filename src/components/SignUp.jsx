@@ -97,10 +97,10 @@ const SignUp = () => {
         // return response.data;
         const result = await response.data;
         console.log("User created", result);
-        // sessionStorage.setItem("userData", JSON.stringify(result));
+        sessionStorage.setItem("userData", JSON.stringify(result));
         const userData = JSON.stringify(result);
         //Get the user data using react user hook
-        setUser(result); // this will make the user data available globally
+        // setUser(result); // this will make the user data available globally
         // Navigate to the Dashboard Section after creating an account
         setTimeout(() => {
           profileNav("/Profile");

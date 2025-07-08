@@ -111,23 +111,23 @@ const Profile = () => {
   //    store User details in LS
   useEffect(() => {
     
-    // const currentUserData = JSON.parse(reteriveDetails);
-    console.log(user);
-    
-    console.log(JSON.stringify(user))
+    const currentUserData = sessionStorage.getItem("userData");
+  //  console.log(currentUserData)
+   
     // const currentUserEmail = user.userEmail;
-    if (user && user.length > 0) {
-      const currentUser = user[0];
-      const currentUserName = currentUser.username;
-      console.log(currentUserName);
-      const currentUserEmail = currentUser.userEmail;
-      userFullName.current.value = sessionStorage.getItem("fullName") || "";
+    if (currentUserData) {
+      const expressData = JSON.parse(currentUserData);
+      // console.log(expressData);
+      userFullName.current.value = sessionStorage.getItem("fullName") || ""
+      const currentUserName = expressData.username;
+      // console.log(currentUserName);
+      const currentUserEmail = expressData.userEmail;
       userName.current.value = currentUserName;
       userEmail.current.value = currentUserEmail;
       userMobile.current.value = sessionStorage.getItem("userMobile") || "";
       userState.current.value = sessionStorage.getItem("userState") || "";
     }
-  }, [user]);
+  }, []);
   
   // Call the function on button click
   useEffect(() => {
@@ -258,7 +258,6 @@ const Profile = () => {
                 placeholder="User Name"
                 id="user-name"
                 ref={userName}
-                readOnly
               />
             </div>
             <div className="email">
@@ -269,7 +268,6 @@ const Profile = () => {
                 id="email-address"
                 placeholder="Email"
                 ref={userEmail}
-                readOnly
               />
             </div>
             <div className="mobile">

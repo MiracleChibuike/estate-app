@@ -5,6 +5,7 @@ import NavServices from "./NavServices";
 import "./Services.css";
 import Footer from "./Footer";
 import background from "../assets/background.png";
+import HouseDescription from "./HouseDescription";
 import Erect from "../assets/Erect.png"
 import house2 from "../assets/house2.png";
 import house3 from "../assets/house3.png";
@@ -28,6 +29,10 @@ import { Helmet } from "react-helmet-async";
 
 const Services = () => {
   const navigateDesc = useNavigate();
+  const handleHouseClick = (id) => {
+    navigateDesc(`/HouseDescription`);
+  };
+  
 
   const cards = useRef(null);
 const navigateHouse = useNavigate()
@@ -75,6 +80,7 @@ const navigateHouse = useNavigate()
   // Hook to use for API Fetching
 const [Listings, setListings] = useState([]);
 const [loader, setIsLoader] = useState(false);
+const [selectedHouse, setSelectedHouse] = useState(null); // A state for selected house
 useEffect(() => {
   const fetchHouseListings = async () => {
     setIsLoader(true); // Rigth place to put before I start making the call
@@ -82,11 +88,25 @@ useEffect(() => {
       const response = await axios.get(
         "https://estate-app-keev.onrender.com/houseListings"
       );
-    //  console.log(response.statusText);
-     const result = await response.data;
-    //  console.log(result)
-  // setIsLoader(true);// This is wrong because I have already gotten the data here
-  setListings(result);
+      //  console.log(response.statusText);
+      const result = await response.data;
+       console.log(result);
+      // setIsLoader(true);// This is wrong because I have already gotten the data here
+      setListings(result);
+      // Redirect users to a particular property according to their selection
+      result.forEach(
+        (property, hId, propname, propDescription, propAmount, propImage) => {
+          const houseName = property.name;
+          const houseDescriptionsLong = property.description;
+          const houseAmount = property.amount;
+          const houseImage = property.image;
+          // console.log(houseName, houseDescriptionsLong, houseAmount, houseImage)
+          property.features.forEach((features) => {
+            const houseFeatures = features;
+            // console.log(houseFeatures)
+          });
+        }
+      );
     } catch (error) {
       const newYes = error;
       const newEl = document.createElement("div");
@@ -177,42 +197,6 @@ useEffect(() => {
 }, [])
 
 
-
-
-
-
-  // const [showMessage, setMessage] = useState(false);
-
-  // useEffect(() => {
-  //   // console.log(filterRef);
-  //         // console.log(cards);
-
-  //   const runFilter = () => {
-  //     const filterCase = filterRef.current.value.toLowerCase();
-  //     let matchFound = false;
-  //     cards.current.forEach((list) => {
-  //       const cardText = list.textContent;
-  //       if (cardText.toLowerCase().includes(filterCase.toLowerCase())) {
-  //         list.style.display = "";
-  //         matchFound = true;
-  //         //  messageDiv.current.style.display == "none";
-  //       }else{
-  //         list.style.display = "none"
-  //         // return messageDiv.current
-  //       //  messageDiv.current.style.display = "block"
-  //       }
-  //     });
-
-  //     if (matchFound) {
-  //       messageDiv.current.style.display = "none"
-  //     }else{
-  //       messageDiv.current.style.display = "block"
-  //     }
-  //   };
-  //   filterRef.current.addEventListener("input", runFilter)
-  
-  // }, []);
-
   // Handle loader
   const servicesContainer = useRef(null);
   const loadreServices = useRef(null);
@@ -225,7 +209,16 @@ useEffect(() => {
       };
 
       servicesAnim();
-  }, [])
+  }, []);
+
+  // for testing
+  const loadHouseDescription = () => {
+    navigateHouse("/HouseDescription");
+  }
+
+ 
+  
+
 
   return (
     <>
@@ -354,7 +347,7 @@ useEffect(() => {
         </div> */}
           {/* Featured Property */}
           <div className="featured">
-            <h2 className="featuresHead">
+            <h2 className="featuresHead" onClick={loadHouseDescription}>
               Our Featured <span>Property</span>
             </h2>
             {/* Message to load when user doesn't provide a search term */}
@@ -431,9 +424,17 @@ useEffect(() => {
             )}
 
             <div className="featuredHouses" ref={errorDisplay}>
-              {results.length > 0
-                ? results.map((houseResult) => (
-                    <div className="cardFeatured" key={houseResult.id}>
+              {!selectedHouse ? (
+                results.length > 0 ? (
+                  results.map((houseResult) => (
+                    <div
+                      className="cardFeatured"
+                      key={houseResult.id}
+                      onClick={() =>
+                        navigateDesc("/houseDescription", {
+                          state: {house: houseResult },
+                        })
+                      }>
                       <img src={houseResult.image} alt="" />
                       <div className="cardInfo">
                         <div className="housedetails">
@@ -451,9 +452,14 @@ useEffect(() => {
                       </div>
                     </div>
                   ))
-                : // Show full listings only if no search has happened
+                ) : (
                   Listings.map((house) => (
-                    <div className="cardFeatured" key={house.id}>
+                    <div
+                      className="cardFeatured"
+                      key={house.id}
+                      onClick={() =>
+                        navigateDesc("/houseDescription", { state: { house } })
+                      }>
                       <img src={house.image} alt="" />
                       <div className="cardInfo">
                         <div className="housedetails">
@@ -470,7 +476,11 @@ useEffect(() => {
                         </div>
                       </div>
                     </div>
-                  ))}
+                  ))
+                )
+              ) : (
+                <HouseDescription house={selectedHouse} />
+              )}
             </div>
           </div>
         </div>

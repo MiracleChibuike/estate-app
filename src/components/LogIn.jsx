@@ -60,9 +60,14 @@ const LogIn = () => {
         );
 
         console.log(fullCheck.data);
-        setUser(fullCheck.data);
+        console.log(fullCheck)
+        sessionStorage.setItem("userData", JSON.stringify(fullCheck.data[0]));
+        const loginDetails = sessionStorage.getItem("userData");
+       const loginExpress = JSON.parse(loginDetails);
+       console.log(loginExpress)
+        // setUser(fullCheck.data);
         if (fullCheck.data.length === 1) {
-          const user = fullCheck.data[0];
+          
           
 
           setIsLoggedIn(true);
@@ -199,7 +204,7 @@ const LogIn = () => {
                   className="inputField"
                   ref={user_password}
                 />
-                <span className="toggler">
+                <span className="toggler" id="d-toggler">
                   {" "}
                   {isPasswordInvisible && (
                     <i

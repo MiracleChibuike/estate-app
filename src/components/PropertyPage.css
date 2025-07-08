@@ -13,11 +13,14 @@
     background: linear-gradient(rgba(0, 0, 0,  0.1), rgba(0, 0, 0, 0.2));
 }
 .propertyContainer{
-    padding: 20px 20px;
+    padding: 20px 120px;
 }
-.propetyHead{
+.propertyHead{
     text-align: center;
     margin: 15px 0;
+}
+.propertyHead h2{
+    margin: 20px 0;
 }
 #backLink{
     cursor: pointer;
@@ -49,6 +52,19 @@
     padding: 0 10px;
     line-height: 30px;
     font-weight: 500;
+}
+
+.mainFeature{
+    margin: 37px 0;
+}
+.mainFeature h2{
+    font-weight: 600;
+    line-height: 100%;
+    font-size: 1.8rem;
+    margin: 15px 0;
+}
+.features span{
+    padding: 0 10px;
 }
 .buyButton, .buyNow{
     margin: 40px 0 0 0;
@@ -195,6 +211,9 @@
     }
 }
 @media screen and (min-width: 0) and (max-width: 820px) {
+    .propertyContainer{
+        padding: 20px 20px;
+    }
     #btn-toggle-p, #close-btn-purchase{
        width: 70%;
     }
