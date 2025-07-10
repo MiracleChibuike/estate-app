@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import backlink from "../assets/backlink.svg";
 import "./Dashboard.css";
@@ -67,7 +67,9 @@ const Dashboard = () => {
           <button>Terms And Conditions</button>
           <button>Help</button>
           <button>Location Preferences</button>
-          <button>Log Out</button>
+          <button onClick={() => profileNavigate("/LogOut")}>
+            Log Out
+          </button>
         </div>
       </div>
     </>

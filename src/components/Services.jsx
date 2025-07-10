@@ -355,7 +355,7 @@ useEffect(() => {
               <div className="searchValid">
                 <div>
                   {" "}
-                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  <i className="fa-solid fa-triangle-exclamation"></i>
                 </div>
                 <p> Please enter name of property or location</p>
               </div>
@@ -376,7 +376,7 @@ useEffect(() => {
           </div> */}
             <div className="searchFilter">
               <i
-                class="fa-solid fa-magnifying-glass"
+                className="fa-solid fa-magnifying-glass"
                 id="search-icon-media"
                 style={{
                   color: "var(--clr-color-gray-trans)",
@@ -388,7 +388,7 @@ useEffect(() => {
                 }}></i>
               {/* Search Icon Desktop */}
               <i
-                class="fa-solid fa-magnifying-glass"
+                className="fa-solid fa-magnifying-glass"
                 id="search-icon-Desktop"
                 style={{
                   color: "var(--clr-color-gray-trans)",
@@ -418,7 +418,7 @@ useEffect(() => {
             {/* Load Animation when fetching data from API */}
             {loader && (
               <div className="propLoader">
-                <span class="loader"></span>
+                <span className="loader"></span>
                 <p>Getting available properties...</p>
               </div>
             )}

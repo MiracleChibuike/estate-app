@@ -1,0 +1,88 @@
+
+:root{
+    --primary-dark: #020202;
+    --clr-logo: rgba(0, 121, 107, 1);
+    --clr-light-green : rgba(12, 188, 139, 0.4);
+    --green-deem: rgba(12, 188, 139, 0.1);
+    --primary-white: #fff;
+      --clr-color-gray-trans: #605e5e;
+       --danger-faint: #e37474;
+       --secondary-white: rgb(255, 255, 250);
+  }
+
+  .modalShow, .logOutBox{
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    /* color: var(--primary-white); */
+  }
+  #logOutmsg{
+    background: var(--primary-white);
+    padding: 4px 30px;
+    color: var(--primary-dark);
+    border-radius: 5px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
+    animation-name: logOutAnim;
+    animation-timing-function: 1;
+    animation-iteration-count: 1;
+    animation-duration: 0.3s;
+    transition: transform  0.9s ease, background-color 0.9s ease;
+  }
+  @keyframes logOutAnim {
+    0%{
+      transform: scale(1);
+      opacity: 0;
+    }
+    100%{
+      transform: scale(0);
+      opacity: 1;
+    }
+  }
+  .modalContainer{
+    background: var(--primary-white);
+    padding: 4px 30px;
+    border-radius: 5px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
+  }
+  .modalActions{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  #warn{
+    text-align: center;
+  }
+  #warnIcon{
+    font-size: 30px;
+    background: var(--danger-faint);
+    color: var(--secondary-white);
+    padding: 10px 0 0 0;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+  .modalIn{
+    text-align: center;
+  }
+  .consent button{
+    margin: 15px 0;
+    padding: 10px 20px;
+    background: var(--clr-logo);
+    color: var(--primary-white);
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+  }
